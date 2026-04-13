@@ -405,9 +405,7 @@
       transition: transform .2s, box-shadow .2s;
     }
     .napoj-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .napoj-img { height: 160px; overflow: hidden; }
-    .napoj-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .napoj-card:hover .napoj-img img { transform: scale(1.05); }
+    .napoj-img { display: none; }
     .napoj-body { padding: 16px 18px; }
     .napoj-tag {
       display: inline-block;
@@ -674,6 +672,16 @@
 <!-- Progress bar -->
 <div id="progress"></div>
 
+<!-- ===== TÝDENNÍ NABÍDKA BANNER ===== -->
+<div id="weekly-banner" style="background:linear-gradient(90deg,#8b5a2b,#c08552);color:#fff;padding:.7rem 1rem;text-align:center;font-size:.92rem;position:relative;z-index:1001;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.75rem;">
+    <span style="font-weight:600;">✨ Týdenní nabídka &amp; novinky</span>
+    <span style="opacity:.85;">sledujte naše sociální sítě</span>
+    <a href="https://www.facebook.com/duocoffeehavirov" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:600;">Facebook ↗</a>
+    <a href="https://www.instagram.com/duocoffee_havirov/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:600;">Instagram ↗</a>
+  </div>
+</div>
+
 <!-- ===== HEADER ===== -->
 <header id="header">
   <div class="container">
@@ -682,13 +690,20 @@
       <nav aria-label="Hlavní navigace">
         <ul>
           <li><a href="#onas">O nás</a></li>
-          <li><a href="#napoje">Nápoje</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#dorty">Dorty</a></li>
+          <li><a href="#akce">Akce</a></li>
           <li><a href="#galerie">Galerie</a></li>
-          <li><a href="#recenze">Recenze</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav>
       <div class="nav-cta">
+        <a href="https://www.facebook.com/duocoffeehavirov" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#1877F2;color:#fff;margin-right:.4rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/duocoffee_havirov/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;margin-right:.7rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
         <a href="tel:595 544 353" class="nav-phone">📞 Zavolat</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Otevřít menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -698,10 +713,13 @@
   </div>
   <div class="mobile-menu" id="mobileMenu" role="navigation">
     <a href="#onas">O nás</a>
-    <a href="#napoje">Nápoje</a>
+    <a href="#menu">Menu</a>
+    <a href="#dorty">Dorty</a>
+    <a href="#akce">Akce &amp; workshopy</a>
     <a href="#galerie">Galerie</a>
-    <a href="#recenze">Recenze</a>
     <a href="#kontakt">Kontakt</a>
+    <a href="https://www.facebook.com/duocoffeehavirov" target="_blank" rel="noopener">📘 Facebook</a>
+    <a href="https://www.instagram.com/duocoffee_havirov/" target="_blank" rel="noopener">📷 Instagram</a>
     <a href="tel:595 544 353">📞 595 544 353</a>
   </div>
 </header>
@@ -711,15 +729,15 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text" data-r>
-        <div class="hero-badge">Havířov · Kavárna</div>
+        <div class="hero-badge">Havířov · Kavárna &amp; Brunch</div>
         <h1 class="hero-title">
-          Skvělá káva, ještě lepší atmosféra<br>
+          Skvělá káva, domácí dorty<br>
           <em>DUO coffee</em>
         </h1>
-        <p class="hero-sub">Přijďte si odpočinout s šálkem výborné kávy a domácím dezertem.</p>
+        <p class="hero-sub">Snídaně a brunch po celý den, domácí dorty (i bezlepkové a bezlaktózové) a poctivá káva. V srdci Havířova.</p>
         <div class="hero-actions">
-          <a href="#napoje" class="btn btn--fill">Naše nápoje ↓</a>
-          <a href="#kontakt" class="btn btn--outline">Kde nás najdete</a>
+          <a href="#menu" class="btn btn--fill">📖 Naše menu ↓</a>
+          <a href="#dorty" class="btn btn--outline">🍰 Dorty na zakázku</a>
         </div>
         <div class="hero-rating">
           <span class="stars">★★★★★</span>
@@ -730,13 +748,13 @@
       <div class="hero-visual" data-r>
         <div class="visual-stack">
           <div class="img-main">
-            <img src="../stock_photos/photo_1.jpg" alt="DUO coffee – kavárna" loading="lazy" />
+            <img src="photos/photo1.jpg" alt="DUO coffee – kavárna" loading="lazy" />
           </div>
           <div class="img-sub">
-            <img src="../stock_photos/photo_2.jpg" alt="DUO coffee – interiér" loading="lazy" />
+            <img src="photos/photo2.jpg" alt="DUO coffee – interiér" loading="lazy" />
           </div>
           <div class="img-sub">
-            <img src="../stock_photos/photo_1.jpg" alt="DUO coffee – káva" loading="lazy" style="filter: brightness(.95) saturate(1.1);" />
+            <img src="photos/photo5.jpg" alt="DUO coffee – káva" loading="lazy" />
           </div>
         </div>
         <div class="visual-float">
@@ -780,17 +798,19 @@
   <div class="container">
     <div class="onas-grid">
       <div class="onas-img" data-r>
-        <img src="../stock_photos/photo_2.jpg" alt="DUO coffee" loading="lazy" />
+        <img src="photos/photo3.jpg" alt="DUO coffee" loading="lazy" />
       </div>
       <div class="onas-text" data-r>
         <div class="section-label">O nás</div>
-        <h2>Váš oblíbený kout v Havířov</h2>
-        <p>Jsme malá kavárna s velkým srdcem. Každý den pražíme čerstvou kávu a pečeme domácí dezerty. Věříme, že dobrá kavárna je místem, kde se lidé cítí jako doma – a ke kterému se rádi vracejí.</p>
-        <p class="section-desc">Specialty káva a domácí dezerty v přátelské atmosféře.</p>
+        <h2>Váš oblíbený kout v Havířově</h2>
+        <p>Jsme kavárna s velkým srdcem, kde si zakládáme na kvalitní kávě a domácích dobrotách. Pečeme si vlastní dorty – a protože nám záleží na každém hostovi, nabízíme většinu jídel i v <strong>bezlepkové (GF)</strong> a <strong>bezlaktózové (LF)</strong> variantě.</p>
+        <p class="section-desc">Snídaně a brunch po celý den. Pořádáme i akce a workshopy – klidně o víkendu, když je kavárna zavřená.</p>
         <div class="onas-chips">
           <span class="chip">☕ Specialty káva</span>
-          <span class="chip">🍰 Domácí dezerty</span>
-          <span class="chip">🌿 Čerstvé suroviny</span>
+          <span class="chip">🥐 Snídaně po celý den</span>
+          <span class="chip">🍰 Domácí dorty</span>
+          <span class="chip">🌾 Bezlepkové (GF)</span>
+          <span class="chip">🥛 Bezlaktózové (LF)</span>
           <span class="chip">📍 Havířov</span>
         </div>
         <div style="margin-top:2rem;">
@@ -801,75 +821,376 @@
   </div>
 </section>
 
-<!-- ===== NÁPOJOVÝ LÍSTEK ===== -->
-<section id="napoje">
+<!-- ===== MENU ===== -->
+<section id="menu">
   <div class="container">
     <div class="napoje-header" data-r>
-      <div class="section-label">Nápojový lístek</div>
-      <h2>Co u nás dostanete</h2>
-      <p class="section-desc">Pečlivě vybraná káva, čerstvé nápoje a domácí dezerty připravené každý den.</p>
+      <div class="section-label">Menu</div>
+      <h2>Snídaně, brunch &amp; nápoje</h2>
+      <p class="section-desc">Celé menu si u nás můžete dát <strong>po celý den</strong>. U většiny jídel nabízíme i bezlepkovou <strong>(GF)</strong> nebo bezlaktózovou <strong>(LF)</strong> variantu – příplatek +35 Kč.</p>
+      <div style="display:inline-flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;font-size:.9rem;">
+        <span style="background:rgba(139,90,43,.15);padding:.35rem .8rem;border-radius:999px;">🌾 GF = bezlepková varianta možná</span>
+        <span style="background:rgba(139,90,43,.15);padding:.35rem .8rem;border-radius:999px;">🥛 LF = bezlaktózová varianta možná</span>
+      </div>
     </div>
     <div class="filter-bar" data-r>
       <button class="filter-btn active" data-filter="all">Vše</button>
+      <button class="filter-btn" data-filter="vejce">🍳 Vejce</button>
+      <button class="filter-btn" data-filter="bagely">🥯 Bagely</button>
+      <button class="filter-btn" data-filter="tortilly">🌯 Tortilly</button>
+      <button class="filter-btn" data-filter="tousty">🥪 Tousty &amp; krajíce</button>
+      <button class="filter-btn" data-filter="salaty">🥗 Saláty</button>
+      <button class="filter-btn" data-filter="sweet">🧇 Sweet</button>
+      <button class="filter-btn" data-filter="parky">🌭 Párky</button>
       <button class="filter-btn" data-filter="kava">☕ Káva</button>
-      <button class="filter-btn" data-filter="napoje">🥤 Nápoje</button>
-      <button class="filter-btn" data-filter="dezerty">🍰 Dezerty</button>
-      <button class="filter-btn" data-filter="specialita">✨ Specialita</button>
+      <button class="filter-btn" data-filter="speciality">✨ Speciality</button>
+      <button class="filter-btn" data-filter="caj">🍵 Čaj &amp; horké</button>
+      <button class="filter-btn" data-filter="nealko">🥤 Nealko</button>
+      <button class="filter-btn" data-filter="limo">🍋 Limonády</button>
+      <button class="filter-btn" data-filter="drinky">🍹 DUO drinky</button>
+      <button class="filter-btn" data-filter="vino">🍷 Víno &amp; pivo</button>
+      <button class="filter-btn" data-filter="matcha">🍵 Matcha</button>
     </div>
     <div class="napoje-grid" id="napojeGrid">
+
+      <!-- VEJCE -->
+      <div class="napoj-card" data-cat="vejce" data-r>
+        <div class="napoj-img"><img src="photos/photo4.jpg" alt="Míchaná vejce" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Vejce · GF/LF</span><h3>Míchaná vejce</h3><p>Šunka, cibule, chléb.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">149 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="vejce" data-r>
+        <div class="napoj-img"><img src="photos/photo6.jpg" alt="Omeleta" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Vejce · GF/LF</span><h3>Omeleta</h3><p>Špenát, cherry rajčata, sýr, chléb.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">159 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="vejce" data-r>
+        <div class="napoj-img"><img src="photos/photo7.jpg" alt="Brunch tortilla" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Vejce · DUO doporučuje</span><h3>Brunch tortilla</h3><p>Vejce, sýr, slanina, salát, bylinkový dressing.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">169 Kč</span></div>
+      </div>
+
+      <!-- BAGELY -->
+      <div class="napoj-card" data-cat="bagely" data-r>
+        <div class="napoj-img"><img src="photos/photo8.jpg" alt="Losos Bagel" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Bagel · GF/LF</span><h3>Losos Bagel</h3><p>Cream cheese, uzený losos, salát.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">189 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="bagely" data-r>
+        <div class="napoj-img"><img src="photos/photo9.jpg" alt="AVO Bagel" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Bagel · GF/LF</span><h3>AVO Bagel</h3><p>Avo pomazánka, cheddar, salát, vejce.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">179 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="bagely" data-r>
+        <div class="napoj-img"><img src="photos/photo10.jpg" alt="Slanina Bagel" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Bagel · GF/LF</span><h3>Slanina Bagel</h3><p>Slanina, vejce, cheddar, špenát, medovo-hořčičný dressing.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">179 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="bagely" data-r>
+        <div class="napoj-img"><img src="photos/photo11.jpg" alt="Bagel trhané maso" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Bagel · GF/LF</span><h3>Bagel trhané maso</h3><p>Cheddar, okurka, medovo-hořčičný dressing, salát.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">189 Kč</span></div>
+      </div>
+
+      <!-- TORTILLY -->
+      <div class="napoj-card" data-cat="tortilly" data-r>
+        <div class="napoj-img"><img src="photos/photo1.jpg" alt="Tortilla trhané maso" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Tortilla</span><h3>Tortilla trhané maso</h3><p>Mix salátu, cheddar, rajčata, dressing.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">179 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="tortilly" data-r>
+        <div class="napoj-img"><img src="photos/photo2.jpg" alt="Tortilla slanina" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Tortilla</span><h3>Tortilla slanina</h3><p>Slanina, sýr, salát, kukuřice, dressing.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">169 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="tortilly" data-r>
+        <div class="napoj-img"><img src="photos/photo3.jpg" alt="Tortilla křupavá sýrová" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Tortilla · DUO doporučuje</span><h3>Křupavá sýrová</h3><p>Mix sýrů, dip 2×.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">179 Kč</span></div>
+      </div>
+
+      <!-- TOUSTY & KRAJÍCE -->
+      <div class="napoj-card" data-cat="tousty" data-r>
+        <div class="napoj-img"><img src="photos/photo5.jpg" alt="Šunka & sýr toust" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Toust · GF/LF</span><h3>Šunka &amp; sýr</h3><p>Cheddar, šunka, rukola.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">129 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="tousty" data-r>
+        <div class="napoj-img"><img src="photos/photo6.jpg" alt="AVO Toust" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Toust · GF/LF · DUO doporučuje</span><h3>AVO Toust</h3><p>Avo pomazánka, cherry, rukola, feta.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">159 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="tousty" data-r>
+        <div class="napoj-img"><img src="photos/photo7.jpg" alt="Klasické krajíce" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Krajíce · oblíbené klasiky</span><h3>Klasické krajíce</h3><p>Vejce natvrdo 69 Kč · pažitka 69 Kč · šunka &amp; sýr 79 Kč · rajče 69 Kč · máslo &amp; marmeláda 59 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">od 59 Kč</span></div>
+      </div>
+
+      <!-- SALÁTY -->
+      <div class="napoj-card" data-cat="salaty" data-r>
+        <div class="napoj-img"><img src="photos/photo8.jpg" alt="Losos salát" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Salát · GF</span><h3>Losos salát</h3><p>Rajčata, losos, balkánský sýr.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">189 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="salaty" data-r>
+        <div class="napoj-img"><img src="photos/photo9.jpg" alt="Fresh řepa & feta" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Salát · GF · DUO doporučuje</span><h3>Fresh řepa &amp; feta</h3><p>Špenát, červená řepa, jablko, ořechy.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">179 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="salaty" data-r>
+        <div class="napoj-img"><img src="photos/photo10.jpg" alt="Ovocný salát" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Salát · GF/LF</span><h3>Ovocný salát</h3><p>Ovoce, oříšky, med.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">149 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="salaty" data-r>
+        <div class="napoj-img"><img src="photos/photo11.jpg" alt="Sýr & salát" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Salát · GF/LF</span><h3>Sýr &amp; salát</h3><p>Mix salát, cherry, salátová okurka.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">179 Kč</span></div>
+      </div>
+
+      <!-- SWEET -->
+      <div class="napoj-card" data-cat="sweet" data-r>
+        <div class="napoj-img"><img src="photos/photo1.jpg" alt="Waffle pistácie" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Sweet · GF/LF · DUO doporučuje</span><h3>Waffle pistácie</h3><p>Pistáciová pasta, banán, tvaroh.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">189 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="sweet" data-r>
+        <div class="napoj-img"><img src="photos/photo2.jpg" alt="Waffle hruška" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Sweet · DUO doporučuje</span><h3>Waffle hruška</h3><p>Opečené hrušky, vanilkový přeliv.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">169 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="sweet" data-r>
+        <div class="napoj-img"><img src="photos/photo3.jpg" alt="Jáhlová kaše" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Sweet · GF/LF</span><h3>Jáhlová kaše</h3><p>Ovoce, med, granola.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">139 Kč</span></div>
+      </div>
+
+      <!-- PÁRKY -->
+      <div class="napoj-card" data-cat="parky" data-r>
+        <div class="napoj-img"><img src="photos/photo4.jpg" alt="Grilované párky" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Párky · GF/LF</span><h3>Grilované párky</h3><p>Chléb, hořčice, kečup. Párek navíc +25 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">129 Kč</span></div>
+      </div>
+
+      <!-- KÁVA -->
       <div class="napoj-card" data-cat="kava" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_1.jpg" alt="Espresso" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Káva</span>
-          <h3>Espresso</h3>
-          <p>Silné, výrazné, s dokonalou crema. Základ každého rána.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">55 Kč</span></div>
+        <div class="napoj-img"><img src="photos/photo5.jpg" alt="Espresso" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Káva</span><h3>Espresso / Americano / Lungo</h3><p>Doppio 86 Kč · French press 68 Kč · Bezkofeinová 55 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">62 Kč</span></div>
       </div>
       <div class="napoj-card" data-cat="kava" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_2.jpg" alt="Flat white" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Káva</span>
-          <h3>Flat White</h3>
-          <p>Dvojitý espresso shot s hedvábným mléčným mikropěna.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">75 Kč</span></div>
+        <div class="napoj-img"><img src="photos/photo6.jpg" alt="Cappuccino" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Káva · hot / iced</span><h3>Cappuccino</h3><p>Klasika s hedvábnou mléčnou pěnou.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">72 Kč</span></div>
       </div>
-      <div class="napoj-card" data-cat="specialita" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_3.jpg" alt="Specialita" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Specialita</span>
-          <h3>Espresso Tonic</h3>
-          <p>Osvěžující letní drink – espresso, tonik a citrus.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">95 Kč</span></div>
-      </div>
-      <div class="napoj-card" data-cat="dezerty" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_4.jpg" alt="Cheesecake" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Dezert</span>
-          <h3>Domácí Cheesecake</h3>
-          <p>Pečený cheesecake s čerstvým ovocem – pečeme každý den.</p>
-        </div>
+      <div class="napoj-card" data-cat="kava" data-r>
+        <div class="napoj-img"><img src="photos/photo7.jpg" alt="Flat White" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Káva · hot / iced</span><h3>Flat White</h3><p>Dvojité espresso s mikro-pěnou.</p></div>
         <div class="napoj-footer"><span class="napoj-price">89 Kč</span></div>
       </div>
-      <div class="napoj-card" data-cat="napoje" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_5.jpg" alt="Matcha" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Nápoj</span>
-          <h3>Matcha Latte</h3>
-          <p>Japonský zelený čaj s teplým mlékem – jemný a uklidňující.</p>
-        </div>
+      <div class="napoj-card" data-cat="kava" data-r>
+        <div class="napoj-img"><img src="photos/photo8.jpg" alt="Latte macchiato" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Káva · hot / iced</span><h3>Latte macchiato</h3><p>Vrstvené mléko s kávou.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">75 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="kava" data-r>
+        <div class="napoj-img"><img src="photos/photo9.jpg" alt="Vídeňská káva" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Káva</span><h3>Vídeňská káva</h3><p>Káva se šlehačkou. Irská káva 99 Kč · Alžírská 92 Kč.</p></div>
         <div class="napoj-footer"><span class="napoj-price">85 Kč</span></div>
       </div>
-      <div class="napoj-card" data-cat="dezerty" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_3.jpg" alt="Brownie" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Dezert</span>
-          <h3>Čokoládové Brownie</h3>
-          <p>Hutné, šťavnaté – ideální k odpolední kávě.</p>
+
+      <!-- SPECIALITY COFFEE -->
+      <div class="napoj-card" data-cat="speciality" data-r>
+        <div class="napoj-img"><img src="photos/photo10.jpg" alt="Espresso Tonic DUO" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Ice &amp; speciality</span><h3>Espresso Tonic DUO</h3><p>Osvěžující letní drink – espresso, tonik, citrus.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">89 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="speciality" data-r>
+        <div class="napoj-img"><img src="photos/photo11.jpg" alt="Ledové pokušení" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Ice · DUO doporučuje</span><h3>Ledové pokušení</h3><p>Naše oblíbená letní specialita.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">88 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="speciality" data-r>
+        <div class="napoj-img"><img src="photos/photo1.jpg" alt="Ledová káva" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Ice</span><h3>Ledová káva</h3><p>Ledová káva se šlehačkou. Frappe 68 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">92 Kč</span></div>
+      </div>
+
+      <!-- MATCHA -->
+      <div class="napoj-card" data-cat="matcha" data-r>
+        <div class="napoj-img"><img src="photos/photo2.jpg" alt="Matcha latte" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Matcha · hot / iced · DUO doporučuje</span><h3>Matcha latte</h3><p>Japonský zelený čaj s mlékem.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">89 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="matcha" data-r>
+        <div class="napoj-img"><img src="photos/photo3.jpg" alt="Matcha limonáda" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Matcha</span><h3>Matcha limonáda</h3><p>Osvěžující letní nápoj.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">78 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="matcha" data-r>
+        <div class="napoj-img"><img src="photos/photo4.jpg" alt="Red Matcha" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Matcha · DUO doporučuje</span><h3>Red Matcha</h3><p>Řepa &amp; malina.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">89 Kč</span></div>
+      </div>
+
+      <!-- ČAJ & HORKÉ -->
+      <div class="napoj-card" data-cat="caj" data-r>
+        <div class="napoj-img"><img src="photos/photo5.jpg" alt="Čaj La Via del Té" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Čaj</span><h3>Čaj La Via del Té</h3><p>Dle denní nabídky.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">65 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="caj" data-r>
+        <div class="napoj-img"><img src="photos/photo6.jpg" alt="Domácí čaj 0,5l" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Čaj</span><h3>Domácí čaj 0,5 l</h3><p>Máta / zázvor / mango + limetka / švestka.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">82 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="caj" data-r>
+        <div class="napoj-img"><img src="photos/photo7.jpg" alt="Horká čokoláda" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Horké nápoje · DUO doporučuje</span><h3>Horká čokoláda</h3><p>Tmavá 62 Kč / bílá 72 Kč. Příchutě (pistácie, karamel, malina, perníček) 82 / 94 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">od 62 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="caj" data-r>
+        <div class="napoj-img"><img src="photos/photo8.jpg" alt="Horké víno" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Horké nápoje</span><h3>Grog &amp; horké víno</h3><p>Grog 55 Kč · horké víno 88 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">od 55 Kč</span></div>
+      </div>
+
+      <!-- LIMO -->
+      <div class="napoj-card" data-cat="limo" data-r>
+        <div class="napoj-img"><img src="photos/photo9.jpg" alt="DUO limonáda" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Domácí limonáda · DUO doporučuje</span><h3>DUO limonáda</h3><p>Dle denní nabídky. 0,4 l za 72 Kč / 1 l za 130 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">72 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="limo" data-r>
+        <div class="napoj-img"><img src="photos/photo10.jpg" alt="DUO ledový čaj" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Domácí limonáda</span><h3>DUO ledový čaj 0,5 l</h3><p>Osvěžující domácí ledový čaj.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">78 Kč</span></div>
+      </div>
+
+      <!-- NEALKO -->
+      <div class="napoj-card" data-cat="nealko" data-r>
+        <div class="napoj-img"><img src="photos/photo11.jpg" alt="Fresh džus" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Nealko</span><h3>Fresh džus 0,1 l</h3><p>Čerstvě vymačkaný.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">41 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="nealko" data-r>
+        <div class="napoj-img"><img src="photos/photo1.jpg" alt="Kombucha" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Nealko</span><h3>Kombucha 0,33 l</h3><p>Fermentovaný nápoj.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">65 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="nealko" data-r>
+        <div class="napoj-img"><img src="photos/photo2.jpg" alt="Milkshake" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Nealko</span><h3>Milkshake</h3><p>Dle nabídky.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">82 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="nealko" data-r>
+        <div class="napoj-img"><img src="photos/photo3.jpg" alt="Royal cola" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Nealko</span><h3>Royal cola / Rajec / Vinea</h3><p>0,25–0,33 l · Karafa vody 1 l 30 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">42 Kč</span></div>
+      </div>
+
+      <!-- DUO DRINKY -->
+      <div class="napoj-card" data-cat="drinky" data-r>
+        <div class="napoj-img"><img src="photos/photo4.jpg" alt="Aperol Spritz" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">DUO drink · alko / nealko</span><h3>Aperol Spritz</h3><p>Oblíbená klasika.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">119 / 99 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="drinky" data-r>
+        <div class="napoj-img"><img src="photos/photo5.jpg" alt="Sorbet mango" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">DUO drink · DUO doporučuje</span><h3>Sorbet mango</h3><p>Alko 119 Kč / nealko 82 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">119 / 82 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="drinky" data-r>
+        <div class="napoj-img"><img src="photos/photo6.jpg" alt="Hugo / Ovocný Spritz" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">DUO drink</span><h3>Hugo / Ovocný Spritz</h3><p>Alko 119 Kč / nealko 99 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">119 / 99 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="drinky" data-r>
+        <div class="napoj-img"><img src="photos/photo7.jpg" alt="Malinové mojito" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">DUO drink</span><h3>Malinové mojito</h3><p>Alko 119 Kč / nealko 99 Kč. Capito 109 Kč · Bechito 109 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">119 / 99 Kč</span></div>
+      </div>
+
+      <!-- VÍNO & PIVO -->
+      <div class="napoj-card" data-cat="vino" data-r>
+        <div class="napoj-img"><img src="photos/photo8.jpg" alt="Rozlévané víno" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Víno</span><h3>Rozlévané víno 0,1 l</h3><p>Bílé / červené / růžové.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">34 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="vino" data-r>
+        <div class="napoj-img"><img src="photos/photo9.jpg" alt="Prosecco" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Víno · alko / nealko</span><h3>Prosecco</h3><p>0,1 l za 44 Kč · 0,75 l za 380 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">44 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="vino" data-r>
+        <div class="napoj-img"><img src="photos/photo10.jpg" alt="Arménské meruňkové víno" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Víno</span><h3>Arménské meruňkové víno</h3><p>0,1 l za 49 Kč · 0,75 l za 455 Kč. Rosso Cioccolata 0,1 l / 38 Kč.</p></div>
+        <div class="napoj-footer"><span class="napoj-price">49 Kč</span></div>
+      </div>
+      <div class="napoj-card" data-cat="vino" data-r>
+        <div class="napoj-img"><img src="photos/photo11.jpg" alt="Bernard pivo" loading="lazy" /></div>
+        <div class="napoj-body"><span class="napoj-tag">Pivo</span><h3>Bernard 11° / Švestka free</h3><p>Na čepu i v láhvi (Bernard švestka / grep 0,5 l).</p></div>
+        <div class="napoj-footer"><span class="napoj-price">49 Kč</span></div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;font-size:.88rem;color:var(--muted);">
+      Přidej si: Bezlaktózové mléko +12 Kč · Alternativní mléko +22 Kč · Šlehačka +22 Kč · Med +8 Kč · Sirup +14 Kč · Zmrzlina +25 Kč
+    </div>
+  </div>
+</section>
+
+<!-- ===== DORTY ===== -->
+<section id="dorty" style="background:var(--cream-2);padding:6rem 0;">
+  <div class="container">
+    <div class="onas-grid">
+      <div class="onas-text" data-r>
+        <div class="section-label">Dorty na zakázku</div>
+        <h2>Pečeme si dorty sami – klidně i pro vás</h2>
+        <p>Všechny dorty pečeme ručně u nás v kavárně. Běžně je najdete ve vitríně, ale zvládneme i dort na <strong>zakázku</strong> – narozeniny, svatby, firemní akce. Nabízíme je i v <strong>bezlepkové (GF)</strong> a <strong>bezlaktózové (LF)</strong> variantě, takže si pochutná opravdu každý.</p>
+        <p>Kromě dortů umíme připravit i malý <strong>sweet bar</strong> nebo <strong>slaný bar</strong> na váš event – ideální na oslavy, svatby, křtiny nebo firemní posezení.</p>
+        <div class="onas-chips">
+          <span class="chip">🎂 Dorty na zakázku</span>
+          <span class="chip">🌾 GF varianta</span>
+          <span class="chip">🥛 LF varianta</span>
+          <span class="chip">🍬 Sweet bar</span>
+          <span class="chip">🧀 Slaný bar</span>
         </div>
-        <div class="napoj-footer"><span class="napoj-price">69 Kč</span></div>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#kontakt" class="btn btn--fill">Poptat dort</a>
+          <a href="tel:595 544 353" class="btn btn--outline">📞 Zavolat</a>
+        </div>
+      </div>
+      <div class="onas-img" data-r>
+        <img src="photos/photo4.jpg" alt="Domácí dorty DUO coffee" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AKCE & WORKSHOPY ===== -->
+<section id="akce" style="background:var(--cream);padding:6rem 0;">
+  <div class="container">
+    <div class="onas-grid">
+      <div class="onas-img" data-r>
+        <img src="photos/photo7.jpg" alt="Akce v DUO coffee" loading="lazy" />
+      </div>
+      <div class="onas-text" data-r>
+        <div class="section-label">Akce &amp; workshopy</div>
+        <h2>Uspořádejte si u nás vlastní akci</h2>
+        <p>Naše kavárna je otevřená <strong>různým akcím i workshopům</strong> – ať už jde o firemní posezení, workshop, narozeninovou oslavu, baby shower nebo komunitní setkání. Rádi vám prostor uzpůsobíme na míru.</p>
+        <p>Kavárna je pro akce k dispozici <strong>i o víkendu</strong>, kdy běžně nemáme otevřeno pro veřejnost – máte tak celý prostor jen pro sebe.</p>
+        <div class="onas-chips">
+          <span class="chip">🎉 Oslavy</span>
+          <span class="chip">💼 Firemní akce</span>
+          <span class="chip">🎨 Workshopy</span>
+          <span class="chip">📅 I o víkendu</span>
+          <span class="chip">👥 Celý prostor jen pro vás</span>
+        </div>
+        <div style="margin-top:2rem;">
+          <a href="#kontakt" class="btn btn--fill">Domluvit akci</a>
+        </div>
       </div>
     </div>
   </div>
@@ -938,7 +1259,7 @@
         <a href="#kontakt" class="btn btn--fill">Zjistit více</a>
       </div>
       <div class="special-img" data-r>
-        <img src="../stock_photos/photo_3.jpg" alt="Specialita DUO coffee" loading="lazy" />
+        <img src="photos/photo5.jpg" alt="Specialita DUO coffee" loading="lazy" />
       </div>
     </div>
   </div>
@@ -985,7 +1306,8 @@
       </div>
       <div class="kontakt-map" data-r>
         <iframe
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA6JKGsvhe3aoYdguPrtKmvMTEsIICJ3A4&q=Fibichova+228/23,+736+01+Havířov-Havířov+1,+Česko"
+          src="https://maps.google.com/maps?q=Fibichova%20228%2F23%2C%20736%2001%20Hav%C3%AD%C5%99ov&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          style="width:100%;height:100%;border:0;"
           allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Mapa DUO coffee"
@@ -1007,9 +1329,10 @@
         <h4>Navigace</h4>
         <ul>
           <li><a href="#onas">O nás</a></li>
-          <li><a href="#napoje">Nápojový lístek</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#dorty">Dorty na zakázku</a></li>
+          <li><a href="#akce">Akce &amp; workshopy</a></li>
           <li><a href="#galerie">Galerie</a></li>
-          <li><a href="#recenze">Recenze</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </div>
@@ -1018,8 +1341,16 @@
         <ul>
           <li><a href="tel:595 544 353">595 544 353</a></li>
           <li><a href="mailto:kavarna@duocoffee.cz">kavarna@duocoffee.cz</a></li>
-          <li>Fibichova 228/23</li>
+          <li>Fibichova 228/23, Havířov</li>
         </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sledujte nás</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/duocoffeehavirov" target="_blank" rel="noopener">📘 Facebook</a></li>
+          <li><a href="https://www.instagram.com/duocoffee_havirov/" target="_blank" rel="noopener">📷 Instagram</a></li>
+        </ul>
+        <p style="margin-top:.5rem;font-size:.82rem;color:var(--muted);">Týdenní nabídky a novinky najdete na našich sítích.</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1097,7 +1428,7 @@
   });
 
   /* --- Galerie marquee z fotek --- */
-  const photos = ['../stock_photos/photo_1.jpg','../stock_photos/photo_2.jpg','../stock_photos/photo_3.jpg','../stock_photos/photo_4.jpg','../stock_photos/photo_5.jpg'];
+  const photos = ['photos/photo1.jpg','photos/photo2.jpg','photos/photo3.jpg','photos/photo4.jpg','photos/photo5.jpg','photos/photo6.jpg','photos/photo7.jpg','photos/photo8.jpg','photos/photo9.jpg','photos/photo10.jpg','photos/photo11.jpg'];
   const track = document.getElementById('marqueeTrack');
   if (photos.length > 0 && photos[0]) {
     const doubled = [...photos, ...photos]; // duplikovat pro nekonečnou smyčku
