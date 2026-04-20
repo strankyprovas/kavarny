@@ -1,875 +1,1056 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>kavárna cafisco — Kavárna v Blansko</title>
-  <meta name="description" content="Vaše oblíbené místo na dobrou kávu." />
-  <meta name="theme-color" content="#fdf6ee" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kavárna Cafisco — Blansko, Bezručova 6</title>
+<meta name="description" content="Kavárna Cafisco v Blansku — káva Julius Meinl, snídaně, domácí pečivo a zmrzlina. Bezručova 6, otevřeno Po–Pá 8:00–19:00." />
+<meta name="theme-color" content="#2a1a10" />
+<meta property="og:title" content="Kavárna Cafisco — Blansko" />
+<meta property="og:description" content="Ten, kdo by rád kávu pil, Cafisco je jeho cíl." />
+<meta property="og:image" content="https://static.wixstatic.com/media/050c09_874859054eb54c0abad8acca37bbada2~mv2.jpg" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:         #f5ecde;
+    --bg-soft:    #ede0ca;
+    --paper:      #fbf4e8;
+    --ink:        #241509;
+    --ink-soft:   #4a3525;
+    --muted:      #7a6654;
+    --rule:       #d8c4a3;
+    --accent:     #b6552c;
+    --accent-2:   #d07a3d;
+    --espresso:   #2a1a10;
+    --gold:       #c89b4a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
 
-  <style>
-    /* ============ TOKENS ============ */
-    :root {
-      --cream:       #fdf6ee;
-      --cream-2:     #f7ede0;
-      --cream-3:     #f0e0cc;
-      --brown-100:   #e8d5be;
-      --brown-300:   #c4956a;
-      --brown-500:   #a0704a;
-      --brown-700:   #7a4f2e;
-      --ink:         #1e160c;
-      --ink-2:       #3a2c1e;
-      --muted:       #7a6a58;
-      --card:        #fff;
-      --shadow:      0 8px 28px rgba(160, 112, 74, 0.14);
-      --radius:      16px;
-      --space-1:     0.5rem;
-      --space-2:     1rem;
-      --space-3:     1.5rem;
-      --space-4:     2rem;
-      --space-6:     3rem;
-      --space-8:     4rem;
-      --space-12:    6rem;
-    }
+  .serif { font-family: 'Fraunces', 'Georgia', serif; font-optical-sizing: auto; }
+  h1, h2, h3, h4 { font-family: 'Fraunces', 'Georgia', serif; color: var(--ink); line-height: 1.08; font-weight: 500; letter-spacing: -.01em; }
+  h1 { font-size: clamp(2.6rem, 7vw, 5.8rem); font-weight: 400; }
+  h2 { font-size: clamp(1.9rem, 4.5vw, 3.1rem); font-weight: 500; }
+  h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: 500; }
+  em.ital { font-style: italic; font-weight: 400; color: var(--accent); }
 
-    /* ============ RESET ============ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 960px; margin: 0 auto; padding: 0 28px; }
 
-    /* ============ TYPOGRAPHY ============ */
-    h1, h2, h3, h4 {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.2;
-      color: var(--ink);
-    }
-    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; }
-    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; }
-    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; }
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--brown-500);
-      margin-bottom: var(--space-2);
-    }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: var(--brown-300);
-      border-radius: 2px;
-    }
-    .section-desc {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 560px;
-      margin-top: var(--space-2);
-    }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
 
-    /* ============ LAYOUT ============ */
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-    section { padding: var(--space-12) 0; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--brown-100);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: var(--space-4);
-    }
-    .grid { display: grid; gap: var(--space-4); }
-    .auto-3 { grid-template-columns: repeat(3, 1fr); }
-    .auto-2 { grid-template-columns: repeat(2, 1fr); }
+  /* ===== TOP BAR ===== */
+  .topbar {
+    background: var(--espresso);
+    color: #e9d9bf;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+  }
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    gap: 16px;
+  }
+  .topbar a { color: #e9d9bf; transition: color .2s; }
+  .topbar a:hover { color: var(--gold); }
+  .topbar-left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar-right { display: flex; gap: 18px; }
+  .topbar .dot-open::before {
+    content: '';
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: #69c25d;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    box-shadow: 0 0 0 3px rgba(105,194,93,.22);
+  }
 
-    /* ============ BUTTONS ============ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 26px;
-      border-radius: 50px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: none;
-      transition: all .2s;
-    }
-    .btn--fill {
-      background: linear-gradient(135deg, var(--brown-500), var(--brown-300));
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(160, 112, 74, 0.35);
-    }
-    .btn--fill:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,112,74,.45); }
-    .btn--outline {
-      background: transparent;
-      color: var(--brown-500);
-      border: 2px solid var(--brown-300);
-    }
-    .btn--outline:hover { background: var(--cream-2); border-color: var(--brown-500); }
+  /* ===== HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(245, 236, 222, 0.85);
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s, background .25s;
+  }
+  header.scrolled { border-color: var(--rule); background: rgba(245, 236, 222, 0.94); }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .brand .mark {
+    font-family: 'Fraunces', serif;
+    font-size: 1.55rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -.01em;
+  }
+  .brand .mark b { color: var(--accent); font-weight: 700; font-style: normal; }
+  .brand .kind {
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-left: 10px;
+    border-left: 1px solid var(--rule);
+  }
+  nav.primary ul {
+    display: flex;
+    gap: 38px;
+  }
+  nav.primary a {
+    font-size: .87rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    position: relative;
+    padding: 6px 0;
+    transition: color .2s;
+  }
+  nav.primary a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 100%; bottom: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: right .3s;
+  }
+  nav.primary a:hover { color: var(--accent); }
+  nav.primary a:hover::after { right: 0; }
 
-    /* ============ TOP PROGRESS BAR ============ */
-    #progress {
-      position: fixed;
-      top: 0; left: 0;
-      height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--brown-300), var(--brown-500));
-      z-index: 9999;
-      transition: width .1s linear;
-    }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 22px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: .85rem;
+    transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    background: none; border: none; padding: 8px; cursor: pointer;
+    flex-direction: column; gap: 5px;
+  }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .3s; }
+  .mobile-menu {
+    display: none;
+    padding: 18px 28px 24px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 12px 6px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  .mobile-menu a:last-child { border: none; }
 
-    /* ============ HEADER / NAV ============ */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(253, 246, 238, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color .3s, box-shadow .3s;
-    }
-    header.scrolled { border-color: var(--brown-100); box-shadow: 0 2px 12px rgba(160,112,74,.1); }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-    .nav-logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--brown-700);
-      letter-spacing: .02em;
-    }
-    .nav-logo span { color: var(--brown-300); }
-    nav ul {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-    }
-    nav a {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--ink-2);
-      transition: color .2s;
-    }
-    nav a:hover { color: var(--brown-500); }
-    .nav-cta { display: flex; align-items: center; gap: var(--space-2); }
-    .nav-phone {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: var(--brown-500);
-      padding: 8px 18px;
-      border: 1.5px solid var(--brown-300);
-      border-radius: 50px;
-      transition: all .2s;
-    }
-    .nav-phone:hover { background: var(--brown-300); color: #fff; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      background: none;
-      border: none;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--ink);
-      border-radius: 2px;
-      transition: all .3s;
-    }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      padding: 16px 20px 20px;
-      border-top: 1px solid var(--brown-100);
-      background: rgba(253, 246, 238, 0.98);
-      gap: 4px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      padding: 10px 12px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--ink-2);
-      border-radius: 8px;
-      transition: background .2s;
-    }
-    .mobile-menu a:hover { background: var(--cream-2); }
+  /* ===== HERO ===== */
+  #hero { position: relative; overflow: hidden; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 60px;
+    align-items: center;
+    padding: 72px 0 90px;
+  }
+  .hero-text .eyebrow { margin-bottom: 28px; }
+  .hero-title { margin-bottom: 28px; }
+  .hero-sub {
+    font-size: 1.18rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 38px;
+    line-height: 1.55;
+  }
+  .hero-sub em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: .92rem;
+    border: none;
+    cursor: pointer;
+    transition: all .25s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn--solid {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn--solid:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(182,85,44,.28); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn--ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn--arrow::after { content: '→'; transition: transform .25s; }
+  .btn--arrow:hover::after { transform: translateX(4px); }
 
-    /* ============ HERO ============ */
-    #hero {
-      padding: var(--space-12) 0 var(--space-8);
-      background: linear-gradient(160deg, var(--cream) 60%, var(--cream-2) 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-8);
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: var(--cream-3);
-      color: var(--brown-700);
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 50px;
-      margin-bottom: var(--space-3);
-    }
-    .hero-title { margin-bottom: var(--space-3); }
-    .hero-title em {
-      font-style: normal;
-      color: var(--brown-500);
-    }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: var(--space-4);
-      max-width: 480px;
-    }
-    .hero-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-    .hero-rating {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: var(--space-4);
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .hero-rating .stars { color: #e8a020; font-size: 1rem; letter-spacing: 2px; }
-    .hero-rating strong { color: var(--ink); }
-    .hero-visual { position: relative; }
-    .visual-stack {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 240px 180px;
-      gap: 12px;
-    }
-    .visual-stack .img-main {
-      grid-column: 1 / -1;
-      grid-row: 1;
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .visual-stack .img-main img,
-    .visual-stack .img-sub img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .visual-stack .img-sub { border-radius: var(--radius); overflow: hidden; }
-    .visual-float {
-      position: absolute;
-      bottom: -16px;
-      left: -20px;
-      background: var(--card);
-      border: 1px solid var(--brown-100);
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-    }
-    .visual-float .dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: #5cb85c;
-      flex-shrink: 0;
-    }
-    .visual-float strong { font-family: 'Poppins', sans-serif; font-size: 0.9rem; }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    font-size: .88rem;
+    color: var(--muted);
+  }
+  .hero-meta strong { color: var(--ink); font-weight: 600; }
+  .hero-meta .sep {
+    width: 4px; height: 4px;
+    background: var(--muted);
+    border-radius: 50%;
+  }
 
-    /* ============ STATS BAR ============ */
-    #stats {
-      padding: var(--space-6) 0;
-      background: var(--brown-700);
-      color: #fff;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-4);
-      text-align: center;
-    }
-    .stat-num {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--brown-300);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,.7);
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
+  .hero-visual { position: relative; }
+  .hero-photo {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow: 0 36px 80px -20px rgba(42,26,16,.35), 0 12px 30px -10px rgba(42,26,16,.25);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(42,26,16,.45));
+  }
+  .hero-photo-caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 28px;
+    color: var(--paper);
+    z-index: 2;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+  }
+  .hero-badge {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 130px; height: 130px;
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: .95rem;
+    line-height: 1.2;
+    padding: 14px;
+    transform: rotate(8deg);
+    box-shadow: 0 14px 30px rgba(182,85,44,.35);
+  }
+  .hero-badge strong { display: block; font-size: 1.55rem; font-weight: 700; font-style: normal; letter-spacing: .02em; }
 
-    /* ============ O NÁS ============ */
-    #onas { background: var(--cream); }
-    .onas-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: var(--space-8);
-      align-items: center;
-    }
-    .onas-img {
-      border-radius: var(--radius);
-      overflow: hidden;
-      height: 480px;
-    }
-    .onas-img img { width: 100%; height: 100%; object-fit: cover; }
-    .onas-text .section-label { margin-bottom: var(--space-2); }
-    .onas-text h2 { margin-bottom: var(--space-3); }
-    .onas-text p { color: var(--muted); margin-bottom: var(--space-3); line-height: 1.75; }
-    .onas-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-3); }
-    .chip {
-      display: inline-block;
-      padding: 6px 14px;
-      background: var(--cream-2);
-      border: 1.5px solid var(--brown-100);
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--brown-700);
-    }
+  .hero-photo-small {
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 44%;
+    aspect-ratio: 1/1;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 8px solid var(--bg);
+    box-shadow: 0 18px 40px -8px rgba(42,26,16,.3);
+    z-index: 2;
+  }
+  .hero-photo-small img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* ============ NÁPOJOVÝ LÍSTEK ============ */
-    #napoje { background: var(--cream-2); }
-    .napoje-header { text-align: center; max-width: 560px; margin: 0 auto var(--space-6); }
-    .napoje-header .section-label { justify-content: center; }
-    .napoje-header .section-label::before { display: none; }
-    .filter-bar {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: var(--space-6);
-    }
-    .filter-btn {
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1.5px solid var(--brown-100);
-      background: var(--card);
-      color: var(--muted);
-      transition: all .2s;
-    }
-    .filter-btn:hover { border-color: var(--brown-300); color: var(--brown-500); }
-    .filter-btn.active {
-      background: var(--brown-500);
-      border-color: var(--brown-500);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(160,112,74,.3);
-    }
-    .napoje-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
-    .napoj-card {
-      background: var(--card);
-      border: 1px solid var(--brown-100);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .napoj-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .napoj-img { height: 160px; overflow: hidden; }
-    .napoj-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .napoj-card:hover .napoj-img img { transform: scale(1.05); }
-    .napoj-body { padding: 16px 18px; }
-    .napoj-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--brown-500);
-      background: var(--cream-2);
-      padding: 3px 10px;
-      border-radius: 50px;
-      margin-bottom: 8px;
-    }
-    .napoj-body h3 { font-size: 0.98rem; margin-bottom: 4px; }
-    .napoj-body p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
-    .napoj-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 18px;
-      border-top: 1px solid var(--cream-2);
-    }
-    .napoj-price {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      color: var(--brown-500);
-      font-size: 1.05rem;
-    }
+  /* ===== STRIP / JULIUS MEINL ===== */
+  #strip {
+    background: var(--espresso);
+    color: var(--paper);
+    padding: 28px 0;
+    overflow: hidden;
+  }
+  .strip-track {
+    display: flex;
+    gap: 60px;
+    animation: slide 35s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+    align-items: center;
+  }
+  .strip-item {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #e9d9bf;
+    display: inline-flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .strip-item::after {
+    content: '✦';
+    color: var(--gold);
+    font-size: 1rem;
+    font-style: normal;
+  }
+  @keyframes slide {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
 
-    /* ============ GALERIE ============ */
-    #galerie { background: var(--cream); overflow: hidden; }
-    .galerie-header { margin-bottom: var(--space-6); }
-    .marquee-wrap { position: relative; }
-    .marquee-track {
-      display: flex;
-      gap: 16px;
-      animation: marquee 30s linear infinite;
-      width: max-content;
-    }
-    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-    .marquee-track .gal-img {
-      width: 280px;
-      height: 200px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .marquee-track .gal-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .marquee-track .gal-img:hover img { transform: scale(1.06); }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .marquee-fade-l, .marquee-fade-r {
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .marquee-fade-l { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
-    .marquee-fade-r { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+  /* ===== O NÁS ===== */
+  #onas { padding: 120px 0; background: var(--bg); }
+  .onas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .onas-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+  .onas-visual .big {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .onas-visual .big img { width: 100%; height: 100%; object-fit: cover; }
+  .onas-visual .small {
+    position: absolute;
+    right: -30px;
+    bottom: -30px;
+    width: 55%;
+    aspect-ratio: 1/1;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 10px solid var(--bg);
+    box-shadow: 0 18px 40px -10px rgba(42,26,16,.3);
+  }
+  .onas-visual .small img { width: 100%; height: 100%; object-fit: cover; }
+  .onas-visual .tag {
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    background: var(--paper);
+    padding: 18px 22px;
+    border-radius: 4px;
+    box-shadow: 0 10px 24px rgba(42,26,16,.15);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 2;
+  }
+  .onas-visual .tag-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .onas-visual .tag-label { font-size: .78rem; color: var(--muted); line-height: 1.4; }
 
-    /* ============ RECENZE ============ */
-    #recenze { background: var(--cream-2); }
-    .recenze-header { text-align: center; margin-bottom: var(--space-6); }
-    .recenze-header .section-label { justify-content: center; }
-    .recenze-header .section-label::before { display: none; }
-    .slider { overflow: hidden; }
-    .slider-track {
-      display: flex;
-      transition: transform .5s cubic-bezier(.4,0,.2,1);
-    }
-    .review-slide {
-      min-width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-3);
-    }
-    .review-card {
-      background: var(--card);
-      border: 1px solid var(--brown-100);
-      border-radius: var(--radius);
-      padding: var(--space-4);
-    }
-    .review-stars { color: #e8a020; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 12px; }
-    .review-text {
-      font-size: 0.95rem;
-      color: var(--ink-2);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: var(--space-3);
-    }
-    .review-author { font-size: 0.83rem; font-weight: 600; color: var(--muted); }
-    .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: var(--space-4); }
-    .dot-btn {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      border: none;
-      background: var(--brown-100);
-      cursor: pointer;
-      transition: all .2s;
-    }
-    .dot-btn.active { background: var(--brown-500); width: 22px; border-radius: 4px; }
+  .onas-text h2 { margin-bottom: 28px; }
+  .onas-text .lead {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.45;
+    margin-bottom: 24px;
+  }
+  .onas-text p { color: var(--ink-soft); margin-bottom: 18px; max-width: 560px; }
+  .onas-sig {
+    margin-top: 32px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+  .onas-sig small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+  }
 
-    /* ============ SPECIÁLNÍ NABÍDKA ============ */
-    #special {
-      background: linear-gradient(135deg, var(--brown-700) 0%, var(--brown-500) 100%);
-      color: #fff;
-      padding: var(--space-12) 0;
-    }
-    .special-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-8);
-      align-items: center;
-    }
-    .special-text .section-label { color: var(--brown-300); }
-    .special-text .section-label::before { background: var(--brown-300); }
-    .special-text h2 { color: #fff; margin-bottom: var(--space-3); }
-    .special-text p { color: rgba(255,255,255,.8); margin-bottom: var(--space-4); font-size: 1.05rem; }
-    .special-text .btn--fill {
-      background: #fff;
-      color: var(--brown-700);
-      box-shadow: 0 4px 16px rgba(0,0,0,.2);
-    }
-    .special-text .btn--fill:hover { background: var(--cream); }
-    .special-img {
-      border-radius: var(--radius);
-      overflow: hidden;
-      height: 340px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.25);
-    }
-    .special-img img { width: 100%; height: 100%; object-fit: cover; }
+  /* ===== CO NABÍZÍME ===== */
+  #nabidka {
+    padding: 120px 0;
+    background: var(--bg-soft);
+    position: relative;
+  }
+  .nabidka-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 70px;
+  }
+  .nabidka-head .eyebrow { margin-bottom: 20px; }
+  .nabidka-head .eyebrow::before { display: none; }
+  .nabidka-head h2 { margin-bottom: 18px; }
+  .nabidka-head p { color: var(--muted); font-size: 1.05rem; }
 
-    /* ============ KONTAKT ============ */
-    #kontakt { background: var(--cream); }
-    .kontakt-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-8);
-      align-items: start;
-    }
-    .kontakt-info h2 { margin-bottom: var(--space-3); }
-    .kontakt-info p { color: var(--muted); margin-bottom: var(--space-4); }
-    .kontakt-items { display: flex; flex-direction: column; gap: var(--space-3); }
-    .kontakt-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 18px;
-      background: var(--cream-2);
-      border-radius: var(--radius);
-      border: 1px solid var(--brown-100);
-    }
-    .kontakt-icon {
-      width: 40px; height: 40px;
-      background: var(--brown-500);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.1rem;
-    }
-    .kontakt-item-text small {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      font-weight: 600;
-    }
-    .kontakt-item-text strong { display: block; font-size: 0.97rem; margin-top: 2px; }
-    .kontakt-map {
-      border-radius: var(--radius);
-      overflow: hidden;
-      height: 380px;
-      border: 1px solid var(--brown-100);
-    }
-    .kontakt-map iframe { width: 100%; height: 100%; border: none; }
+  .nabidka-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .nab-card {
+    background: var(--paper);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .nab-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -16px rgba(42,26,16,.25); }
+  .nab-card .img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .nab-card .img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+  }
+  .nab-card:hover .img img { transform: scale(1.06); }
+  .nab-card .body {
+    padding: 28px 28px 32px;
+    border-top: 4px solid var(--accent);
+  }
+  .nab-card .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: .9rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .nab-card h3 { margin-bottom: 10px; font-size: 1.35rem; }
+  .nab-card p { font-size: .95rem; color: var(--ink-soft); line-height: 1.55; }
 
-    /* ============ FOOTER ============ */
-    footer {
-      background: var(--ink);
-      color: rgba(255,255,255,.75);
-      padding: var(--space-8) 0 var(--space-4);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: var(--space-6);
-      margin-bottom: var(--space-6);
-    }
-    .footer-brand .nav-logo { color: var(--brown-300); font-size: 1.1rem; }
-    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: var(--space-2); }
-    .footer-col h4 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: var(--space-2);
-    }
-    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul a { font-size: 0.88rem; transition: color .2s; }
-    .footer-col ul a:hover { color: var(--brown-300); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.1);
-      padding-top: var(--space-3);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.82rem;
-    }
-    .footer-bottom a { color: var(--brown-300); }
+  /* ===== QUOTE / ATMOSFÉRA ===== */
+  #atmosfera {
+    padding: 120px 0;
+    background: var(--espresso);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  #atmosfera::before {
+    content: '"';
+    position: absolute;
+    top: 40px;
+    right: 8%;
+    font-family: 'Fraunces', serif;
+    font-size: 28rem;
+    line-height: 1;
+    color: rgba(200,155,74,.08);
+    pointer-events: none;
+  }
+  .atm-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+  }
+  .atm-text .eyebrow { color: var(--gold); margin-bottom: 28px; }
+  .atm-text .eyebrow::before { background: var(--gold); }
+  .atm-text h2 { color: var(--paper); margin-bottom: 28px; }
+  .atm-text h2 em { color: var(--gold); font-style: italic; }
+  .atm-text p { color: rgba(233,217,191,.85); font-size: 1.05rem; margin-bottom: 20px; max-width: 500px; }
 
-    /* ============ REVEAL ANIMATION ============ */
-    [data-r] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-    [data-r].in {
-      opacity: 1;
-      transform: none;
-    }
+  .atm-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 30px;
+    margin-top: 32px;
+  }
+  .atm-feat {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: .95rem;
+    color: #e9d9bf;
+  }
+  .atm-feat .ico {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(200,155,74,.3);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    font-size: .95rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
 
-    /* ============ RESPONSIVE ============ */
-    @media (max-width: 1000px) {
-      .auto-3 { grid-template-columns: repeat(2, 1fr); }
-      .napoje-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4) var(--space-6); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+  .atm-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 180px;
+    gap: 16px;
+  }
+  .atm-photos .p {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .atm-photos .p img { width: 100%; height: 100%; object-fit: cover; }
+  .atm-photos .p1 { grid-row: 1 / 3; aspect-ratio: unset; }
+  .atm-photos .p2 { height: 220px; }
+  .atm-photos .p3 { height: 180px; }
+
+  /* ===== GALERIE ===== */
+  #galerie { padding: 120px 0; background: var(--bg); }
+  .gal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .gal-head h2 { max-width: 560px; }
+  .gal-head-right { text-align: right; max-width: 320px; }
+  .gal-head-right p { color: var(--muted); font-size: .95rem; }
+
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 180px;
+    gap: 16px;
+  }
+  .gal-item {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .gal-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .8s ease;
+  }
+  .gal-item:hover img { transform: scale(1.05); }
+  .g1 { grid-column: span 6; grid-row: span 2; }
+  .g2 { grid-column: span 3; grid-row: span 1; }
+  .g3 { grid-column: span 3; grid-row: span 1; }
+  .g4 { grid-column: span 3; grid-row: span 1; }
+  .g5 { grid-column: span 3; grid-row: span 1; }
+  .g6 { grid-column: span 4; grid-row: span 1; }
+  .g7 { grid-column: span 4; grid-row: span 1; }
+  .g8 { grid-column: span 4; grid-row: span 1; }
+
+  /* ===== KONTAKT ===== */
+  #kontakt {
+    padding: 120px 0;
+    background: var(--paper);
+  }
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+  }
+  .kontakt-info h2 { margin-bottom: 24px; }
+  .kontakt-info .lead {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    max-width: 420px;
+    line-height: 1.45;
+  }
+  .kontakt-block { margin-bottom: 34px; }
+  .kontakt-block small {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .kontakt-block .val {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .kontakt-block .val a:hover { color: var(--accent); }
+  .hours-list { display: grid; gap: 8px; margin-top: 4px; }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+    font-size: .98rem;
+    color: var(--ink-soft);
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row .day { font-weight: 500; }
+  .hours-row.closed .time { color: var(--muted); font-style: italic; }
+  .hours-row.today {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .hours-row.today .day::before {
+    content: '▸ ';
+  }
+
+  .kontakt-visual {
+    position: relative;
+  }
+  .map-frame {
+    border-radius: 4px;
+    overflow: hidden;
+    height: 380px;
+    box-shadow: 0 18px 40px -12px rgba(42,26,16,.25);
+  }
+  .map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+  .visit-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 30px;
+    border-radius: 4px;
+    margin-top: -60px;
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px -12px rgba(42,26,16,.5);
+  }
+  .visit-card .row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .visit-card .title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--paper);
+  }
+  .visit-card .title small { display: block; font-family: 'Inter', sans-serif; font-style: normal; font-size: .72rem; color: var(--gold); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .visit-card .btn { background: var(--gold); color: var(--ink); }
+  .visit-card .btn:hover { background: var(--paper); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--espresso);
+    color: rgba(233,217,191,.8);
+    padding: 80px 0 28px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+  .foot-brand .mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--paper);
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .foot-brand .mark b { color: var(--gold); font-weight: 700; font-style: normal; }
+  .foot-brand p { font-size: .9rem; line-height: 1.7; max-width: 280px; margin-bottom: 18px; }
+  .foot-social {
+    display: flex; gap: 10px;
+  }
+  .foot-social a {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(200,155,74,.3);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    color: var(--gold);
+    transition: all .2s;
+  }
+  .foot-social a:hover { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
+  .foot-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .foot-col ul { display: grid; gap: 10px; }
+  .foot-col a { font-size: .92rem; transition: color .2s; }
+  .foot-col a:hover { color: var(--paper); }
+  .foot-bottom {
+    border-top: 1px solid rgba(200,155,74,.18);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .82rem;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .foot-bottom a { color: var(--gold); }
+
+  /* ===== REVEAL ===== */
+  [data-r] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  [data-r].in { opacity: 1; transform: none; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1000px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 60px; padding: 50px 0 70px; }
+    .hero-visual { max-width: 420px; margin: 0 auto; }
+    .onas-grid, .atm-grid, .kontakt-grid { grid-template-columns: 1fr; gap: 60px; }
+    .onas-visual { max-width: 460px; }
+    .nabidka-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .gal-grid { grid-auto-rows: 140px; }
+  }
+  @media (max-width: 800px) {
+    nav.primary ul, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .topbar-left { gap: 12px; font-size: .72rem; }
+    .topbar-right { display: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .wrap, .wrap-narrow { padding: 0 22px; }
+    #onas, #nabidka, #atmosfera, #galerie, #kontakt { padding: 80px 0; }
+    .nabidka-grid { grid-template-columns: 1fr; }
+    .atm-features { grid-template-columns: 1fr; }
+    .atm-photos { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .atm-photos .p1, .atm-photos .p2, .atm-photos .p3 { height: 220px; grid-row: auto; }
+    .gal-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 140px;
     }
-    @media (max-width: 900px) {
-      nav ul, .nav-phone { display: none; }
-      .hamburger { display: flex; }
-      .hero-grid, .onas-grid, .special-grid, .kontakt-grid { grid-template-columns: 1fr; }
-      .hero-visual { order: -1; }
-      .visual-stack { grid-template-rows: 200px 150px; }
-      .visual-float { display: none; }
-      .review-slide { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-    }
-    @media (max-width: 600px) {
-      .auto-3, .napoje-grid, .auto-2 { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .onas-img { height: 280px; }
-      .special-img { height: 220px; }
-      section { padding: var(--space-6) 0; }
-      #hero { padding: var(--space-6) 0 var(--space-4); }
-      #special { padding: var(--space-6) 0; }
-      footer { padding: var(--space-6) 0 var(--space-3); }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-      .kontakt-map { height: 250px; }
-      .stat-num { font-size: 1.8rem; }
-      .card { padding: var(--space-3); }
-    }
-  </style>
+    .g1, .g2, .g3, .g4, .g5, .g6, .g7, .g8 { grid-column: span 1; grid-row: span 1; }
+    .g1 { grid-column: span 2; grid-row: span 2; }
+    .hero-photo-small { left: -20px; bottom: -30px; }
+    .hero-badge { width: 100px; height: 100px; font-size: .82rem; right: -10px; top: -14px; }
+    .hero-badge strong { font-size: 1.25rem; }
+    .foot-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .visit-card { margin: -50px 16px 0; padding: 22px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- Progress bar -->
-<div id="progress"></div>
-
-<!-- ===== HEADER ===== -->
-<header id="header">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">☕ <span>kavárna cafisco</span></a>
-      <nav aria-label="Hlavní navigace">
-        <ul>
-          <li><a href="#onas">O nás</a></li>
-          <li><a href="#napoje">Nápoje</a></li>
-          <li><a href="#galerie">Galerie</a></li>
-          <li><a href="#recenze">Recenze</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </nav>
-      <div class="nav-cta">
-        <a href="tel:722 471 582" class="nav-phone">📞 Zavolat</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Otevřít menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span class="dot-open" id="openNow">Otevřeno · zavíráme v 19:00</span>
+        <span>Bezručova 6, Blansko</span>
+      </div>
+      <div class="topbar-right">
+        <a href="tel:+420722471582">+420 722 471 582</a>
+        <a href="mailto:info@cafisco.eu">info@cafisco.eu</a>
       </div>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu" role="navigation">
+</div>
+
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <div class="wrap">
+    <div class="nav">
+      <a href="#" class="brand">
+        <span class="mark">ca<b>fisco</b></span>
+        <span class="kind">kavárna · Blansko</span>
+      </a>
+      <nav class="primary" aria-label="Hlavní">
+        <ul>
+          <li><a href="#onas">O nás</a></li>
+          <li><a href="#nabidka">Co nabízíme</a></li>
+          <li><a href="#atmosfera">Atmosféra</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a href="tel:+420722471582" class="nav-cta">Rezervovat stůl</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
     <a href="#onas">O nás</a>
-    <a href="#napoje">Nápoje</a>
+    <a href="#nabidka">Co nabízíme</a>
+    <a href="#atmosfera">Atmosféra</a>
     <a href="#galerie">Galerie</a>
-    <a href="#recenze">Recenze</a>
     <a href="#kontakt">Kontakt</a>
-    <a href="tel:722 471 582">📞 722 471 582</a>
+    <a href="tel:+420722471582">📞 722 471 582</a>
   </div>
 </header>
 
 <!-- ===== HERO ===== -->
 <section id="hero">
-  <div class="container">
+  <div class="wrap">
     <div class="hero-grid">
-      <div class="hero-text" data-r>
-        <div class="hero-badge">Blansko · Kavárna</div>
-        <h1 class="hero-title">
-          Kde každý šálek chutná víc<br>
-          <em>kavárna cafisco</em>
+      <div class="hero-text">
+        <span class="eyebrow" data-r>Káva · Snídaně · Pečivo</span>
+        <h1 class="hero-title serif" data-r>
+          Ten, kdo by rád<br>
+          kávu <em class="ital">pil</em>,<br>
+          Cafisco je jeho <em class="ital">cíl.</em>
         </h1>
-        <p class="hero-sub">Specialty káva, čerstvé dezerty a přátelská obsluha – to jsme my.</p>
-        <div class="hero-actions">
-          <a href="#napoje" class="btn btn--fill">Naše nápoje ↓</a>
-          <a href="#kontakt" class="btn btn--outline">Kde nás najdete</a>
+        <p class="hero-sub" data-r>
+          Vaří se u nás <em>Julius Meinl</em>, peče se čerstvé pečivo a k tomu snídaně, zákusky i domácí zmrzlina. Jsme kavárna na <em>Bezručově ulici</em> v Blansku — už roky váš první šálek dne.
+        </p>
+        <div class="hero-actions" data-r>
+          <a href="#kontakt" class="btn btn--solid btn--arrow">Přijďte na kávu</a>
+          <a href="#nabidka" class="btn btn--ghost">Co u nás najdete</a>
         </div>
-        <div class="hero-rating">
-          <span class="stars">★★★★★</span>
-          <strong>4.6 / 5</strong>
-          <span>· 153 hodnocení na Google</span>
+        <div class="hero-meta" data-r>
+          <span><strong>Po–Pá</strong> 8:00 – 19:00</span>
+          <span class="sep"></span>
+          <span>Wi-Fi zdarma</span>
+          <span class="sep"></span>
+          <span>Venkovní posezení</span>
         </div>
       </div>
+
       <div class="hero-visual" data-r>
-        <div class="visual-stack">
-          <div class="img-main">
-            <img src="../stock_photos/photo_1.jpg" alt="kavárna cafisco – kavárna" loading="lazy" />
-          </div>
-          <div class="img-sub">
-            <img src="../stock_photos/photo_2.jpg" alt="kavárna cafisco – interiér" loading="lazy" />
-          </div>
-          <div class="img-sub">
-            <img src="../stock_photos/photo_1.jpg" alt="kavárna cafisco – káva" loading="lazy" style="filter: brightness(.95) saturate(1.1);" />
-          </div>
+        <div class="hero-photo">
+          <img src="https://static.wixstatic.com/media/050c09_874859054eb54c0abad8acca37bbada2~mv2.jpg" alt="Kavárna Cafisco — interiér" loading="eager" />
+          <div class="hero-photo-caption">Pojďte dál, voní to tu kávou.</div>
         </div>
-        <div class="visual-float">
-          <span class="dot"></span>
-          <div>
-            <strong>Otevřeno</strong><br>
-            <span style="font-size:.8rem;color:var(--muted)">Blansko</span>
-          </div>
+        <div class="hero-badge">
+          <span>káva</span>
+          <strong>Julius<br>Meinl</strong>
+        </div>
+        <div class="hero-photo-small">
+          <img src="https://static.wixstatic.com/media/050c09_7f6b0762953b4680bb186b8d40123a9f~mv2.jpg" alt="Detail kávy" loading="eager" />
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
-<section id="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div data-r>
-        <div class="stat-num" data-count="153">0</div>
-        <div class="stat-label">Spokojených hostů</div>
-      </div>
-      <div data-r>
-        <div class="stat-num" data-count="4.6" data-decimal>0</div>
-        <div class="stat-label">Hvězd na Google</div>
-      </div>
-      <div data-r>
-        <div class="stat-num" data-count="12">0</div>
-        <div class="stat-label">Druhů kávy</div>
-      </div>
-      <div data-r>
-        <div class="stat-num" data-count="7">0</div>
-        <div class="stat-label">Dní v týdnu</div>
-      </div>
-    </div>
+<!-- ===== RUNNING STRIP ===== -->
+<section id="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span class="strip-item">Julius Meinl</span>
+    <span class="strip-item">Čerstvé snídaně</span>
+    <span class="strip-item">Domácí pečivo</span>
+    <span class="strip-item">Zmrzlina</span>
+    <span class="strip-item">Venkovní posezení</span>
+    <span class="strip-item">Wi-Fi zdarma</span>
+    <span class="strip-item">Julius Meinl</span>
+    <span class="strip-item">Čerstvé snídaně</span>
+    <span class="strip-item">Domácí pečivo</span>
+    <span class="strip-item">Zmrzlina</span>
+    <span class="strip-item">Venkovní posezení</span>
+    <span class="strip-item">Wi-Fi zdarma</span>
   </div>
 </section>
 
 <!-- ===== O NÁS ===== -->
 <section id="onas">
-  <div class="container">
+  <div class="wrap">
     <div class="onas-grid">
-      <div class="onas-img" data-r>
-        <img src="../stock_photos/photo_2.jpg" alt="kavárna cafisco" loading="lazy" />
-      </div>
-      <div class="onas-text" data-r>
-        <div class="section-label">O nás</div>
-        <h2>Váš oblíbený kout v Blansko</h2>
-        <p>Naše kavárna vznikla z lásky ke specialty kávě a přátelské atmosféře. Vybíráme zrna od lokálních pražíren a každý šálek připravujeme s maximální péčí. Přijďte si odpočinout a ochutnat.</p>
-        <p class="section-desc">Vaše oblíbené místo na dobrou kávu.</p>
-        <div class="onas-chips">
-          <span class="chip">☕ Specialty káva</span>
-          <span class="chip">🍰 Domácí dezerty</span>
-          <span class="chip">🌿 Čerstvé suroviny</span>
-          <span class="chip">📍 Blansko</span>
+      <div class="onas-visual" data-r>
+        <div class="big">
+          <img src="https://static.wixstatic.com/media/050c09_d98889f99c344dbe97166799719cbe99~mv2_d_2048_1365_s_2.jpg" alt="Kavárna Cafisco — atmosféra" loading="lazy" />
         </div>
-        <div style="margin-top:2rem;">
-          <a href="#kontakt" class="btn btn--fill">Navštivte nás</a>
+        <div class="small">
+          <img src="https://static.wixstatic.com/media/050c09_6cc14fa09ab547ee94f144b1788c32f4~mv2_d_2048_1536_s_2.jpg" alt="Zákoutí v kavárně" loading="lazy" />
+        </div>
+        <div class="tag">
+          <div class="tag-num serif">✦</div>
+          <div class="tag-label">Kavárna<br>v srdci Blanska</div>
+        </div>
+      </div>
+
+      <div class="onas-text" data-r>
+        <span class="eyebrow">O kavárně</span>
+        <h2 style="margin-top:24px;">Místo, <em class="ital">kde se dá nejen dobře napít</em> — ale i zastavit.</h2>
+        <p class="lead">
+          Cafisco je malá rodinná kavárna na Bezručově ulici, kam si lidé z Blanska chodí pro svůj první espresso, odpolední dortík a večerní ticho nad knihou.
+        </p>
+        <p>
+          Vaříme kávu <strong>Julius Meinl</strong>, pečeme čerstvé sladké i slané pečivo a přes léto točíme poctivou zmrzlinu. Venkovní zahrádka je oblíbená za slunných dnů, uvnitř je vždy útulno — a Wi-Fi chytíte všude.
+        </p>
+        <p>
+          Rádi u nás uspořádáme narozeninovou oslavu, menší firemní setkání nebo rodinné posezení. Stačí se ozvat — domluvíme se.
+        </p>
+        <div class="onas-sig">Laďa Nováček
+          <small>Majitel kavárny</small>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== NÁPOJOVÝ LÍSTEK ===== -->
-<section id="napoje">
-  <div class="container">
-    <div class="napoje-header" data-r>
-      <div class="section-label">Nápojový lístek</div>
-      <h2>Co u nás dostanete</h2>
-      <p class="section-desc">Pečlivě vybraná káva, čerstvé nápoje a domácí dezerty připravené každý den.</p>
+<!-- ===== CO NABÍZÍME ===== -->
+<section id="nabidka">
+  <div class="wrap">
+    <div class="nabidka-head" data-r>
+      <span class="eyebrow">Co u nás najdete</span>
+      <h2>Každý den, <em class="ital">jak má být</em></h2>
+      <p>Od ranního espressa přes dobré snídaně až po odpolední zákusek a poctivou zmrzlinu v létě.</p>
     </div>
-    <div class="filter-bar" data-r>
-      <button class="filter-btn active" data-filter="all">Vše</button>
-      <button class="filter-btn" data-filter="kava">☕ Káva</button>
-      <button class="filter-btn" data-filter="napoje">🥤 Nápoje</button>
-      <button class="filter-btn" data-filter="dezerty">🍰 Dezerty</button>
-      <button class="filter-btn" data-filter="specialita">✨ Specialita</button>
+
+    <div class="nabidka-grid">
+      <article class="nab-card" data-r>
+        <div class="img">
+          <img src="https://static.wixstatic.com/media/050c09_7f6b0762953b4680bb186b8d40123a9f~mv2.jpg" alt="Káva Julius Meinl" loading="lazy" />
+        </div>
+        <div class="body">
+          <span class="num serif">— 01</span>
+          <h3>Káva Julius Meinl</h3>
+          <p>Espresso, cappuccino, flat white i klasická lungo. Káva, kterou v Cafiscu vaříme už léta.</p>
+        </div>
+      </article>
+
+      <article class="nab-card" data-r>
+        <div class="img">
+          <img src="https://static.wixstatic.com/media/050c09_082d4f31bc264cd0844b02fb749700ac~mv2_d_2048_1365_s_2.jpg" alt="Snídaně" loading="lazy" />
+        </div>
+        <div class="body">
+          <span class="num serif">— 02</span>
+          <h3>Snídaně & pečivo</h3>
+          <p>Čerstvé pečivo každé ráno, slané i sladké snídaně. Ideální začátek dne před prací.</p>
+        </div>
+      </article>
+
+      <article class="nab-card" data-r>
+        <div class="img">
+          <img src="https://static.wixstatic.com/media/050c09_da0755b9a8634ada9d6d524fc5586cda~mv2_d_2048_1365_s_2.jpg" alt="Zmrzlina a dezerty" loading="lazy" />
+        </div>
+        <div class="body">
+          <span class="num serif">— 03</span>
+          <h3>Zmrzlina & dezerty</h3>
+          <p>V sezóně točíme poctivou zmrzlinu, po celý rok najdete vitrínu plnou čerstvých zákusků.</p>
+        </div>
+      </article>
+
+      <article class="nab-card" data-r>
+        <div class="img">
+          <img src="https://static.wixstatic.com/media/050c09_543203cd768c4972aaf1a688d7c67c04~mv2.jpg" alt="Venkovní posezení" loading="lazy" />
+        </div>
+        <div class="body">
+          <span class="num serif">— 04</span>
+          <h3>Zahrádka & klidné zákoutí</h3>
+          <p>Venkovní posezení přes léto, uvnitř útulné stoly — vyberte si, co vám víc vyhovuje.</p>
+        </div>
+      </article>
+
+      <article class="nab-card" data-r>
+        <div class="img">
+          <img src="https://static.wixstatic.com/media/b2c0a7_22e2906af08a4d428569c1a8013d3807.jpg" alt="Oslavy a akce" loading="lazy" />
+        </div>
+        <div class="body">
+          <span class="num serif">— 05</span>
+          <h3>Oslavy & menší akce</h3>
+          <p>Narozeniny, rodinné sešlosti, firemní setkání — pomůžeme vám to u nás pěkně uspořádat.</p>
+        </div>
+      </article>
+
+      <article class="nab-card" data-r>
+        <div class="img">
+          <img src="https://static.wixstatic.com/media/050c09_874859054eb54c0abad8acca37bbada2~mv2.jpg" alt="Wi-Fi a práce" loading="lazy" />
+        </div>
+        <div class="body">
+          <span class="num serif">— 06</span>
+          <h3>Wi-Fi & klid na práci</h3>
+          <p>Silné Wi-Fi, zásuvky u většiny stolů a atmosféra, kde vám ruka sama sahá po druhé kávě.</p>
+        </div>
+      </article>
     </div>
-    <div class="napoje-grid" id="napojeGrid">
-      <div class="napoj-card" data-cat="kava" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_1.jpg" alt="Espresso" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Káva</span>
-          <h3>Espresso</h3>
-          <p>Silné, výrazné, s dokonalou crema. Základ každého rána.</p>
+  </div>
+</section>
+
+<!-- ===== ATMOSFÉRA ===== -->
+<section id="atmosfera">
+  <div class="wrap">
+    <div class="atm-grid">
+      <div class="atm-text" data-r>
+        <span class="eyebrow">Atmosféra</span>
+        <h2>Kavárna, která <em>nevoní po kanceláři</em>, ale po čerstvě namleté kávě.</h2>
+        <p>
+          Přijďte si odpočinout po nákupech, domluvit schůzku, pracovat na notebooku nebo si jen tak posedět s přáteli — v Cafiscu je na všechno místo.
+        </p>
+        <div class="atm-features">
+          <div class="atm-feat"><span class="ico">☕</span><span><strong>Julius Meinl</strong><br><small style="color:rgba(233,217,191,.6)">Rakouská tradice, čerstvé zrno</small></span></div>
+          <div class="atm-feat"><span class="ico">🥐</span><span><strong>Čerstvé pečivo</strong><br><small style="color:rgba(233,217,191,.6)">Každé ráno nové</small></span></div>
+          <div class="atm-feat"><span class="ico">🌿</span><span><strong>Zahrádka</strong><br><small style="color:rgba(233,217,191,.6)">Venkovní posezení</small></span></div>
+          <div class="atm-feat"><span class="ico">📶</span><span><strong>Wi-Fi zdarma</strong><br><small style="color:rgba(233,217,191,.6)">Rychlé, všude</small></span></div>
+          <div class="atm-feat"><span class="ico">🎉</span><span><strong>Soukromé akce</strong><br><small style="color:rgba(233,217,191,.6)">Oslavy i firemní setkání</small></span></div>
+          <div class="atm-feat"><span class="ico">🍨</span><span><strong>Sezónní zmrzlina</strong><br><small style="color:rgba(233,217,191,.6)">Poctivá, točená</small></span></div>
         </div>
-        <div class="napoj-footer"><span class="napoj-price">55 Kč</span></div>
       </div>
-      <div class="napoj-card" data-cat="kava" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_2.jpg" alt="Flat white" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Káva</span>
-          <h3>Flat White</h3>
-          <p>Dvojitý espresso shot s hedvábným mléčným mikropěna.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">75 Kč</span></div>
-      </div>
-      <div class="napoj-card" data-cat="specialita" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_3.jpg" alt="Specialita" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Specialita</span>
-          <h3>Espresso Tonic</h3>
-          <p>Osvěžující letní drink – espresso, tonik a citrus.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">95 Kč</span></div>
-      </div>
-      <div class="napoj-card" data-cat="dezerty" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_4.jpg" alt="Cheesecake" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Dezert</span>
-          <h3>Domácí Cheesecake</h3>
-          <p>Pečený cheesecake s čerstvým ovocem – pečeme každý den.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">89 Kč</span></div>
-      </div>
-      <div class="napoj-card" data-cat="napoje" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_5.jpg" alt="Matcha" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Nápoj</span>
-          <h3>Matcha Latte</h3>
-          <p>Japonský zelený čaj s teplým mlékem – jemný a uklidňující.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">85 Kč</span></div>
-      </div>
-      <div class="napoj-card" data-cat="dezerty" data-r>
-        <div class="napoj-img"><img src="../stock_photos/photo_3.jpg" alt="Brownie" loading="lazy" /></div>
-        <div class="napoj-body">
-          <span class="napoj-tag">Dezert</span>
-          <h3>Čokoládové Brownie</h3>
-          <p>Hutné, šťavnaté – ideální k odpolední kávě.</p>
-        </div>
-        <div class="napoj-footer"><span class="napoj-price">69 Kč</span></div>
+
+      <div class="atm-photos" data-r>
+        <div class="p p1"><img src="https://static.wixstatic.com/media/050c09_d98889f99c344dbe97166799719cbe99~mv2_d_2048_1365_s_2.jpg" alt="Interiér Cafisco" loading="lazy" /></div>
+        <div class="p p2"><img src="https://static.wixstatic.com/media/050c09_543203cd768c4972aaf1a688d7c67c04~mv2.jpg" alt="Zahrádka" loading="lazy" /></div>
+        <div class="p p3"><img src="https://static.wixstatic.com/media/050c09_da0755b9a8634ada9d6d524fc5586cda~mv2_d_2048_1365_s_2.jpg" alt="Detail" loading="lazy" /></div>
       </div>
     </div>
   </div>
@@ -877,119 +1058,84 @@
 
 <!-- ===== GALERIE ===== -->
 <section id="galerie">
-  <div class="container">
-    <div class="galerie-header" data-r>
-      <div class="section-label">Galerie</div>
-      <h2>Nahlédněte k nám</h2>
+  <div class="wrap">
+    <div class="gal-head" data-r>
+      <div>
+        <span class="eyebrow">Galerie</span>
+        <h2 style="margin-top:20px;">Nahlédněte k nám <em class="ital">ještě dřív, než přijdete</em></h2>
+      </div>
+      <div class="gal-head-right">
+        <p>Interiér, zahrádka, káva — tak to u nás opravdu vypadá. Žádné stock fotky.</p>
+      </div>
     </div>
-  </div>
-  <div class="marquee-wrap">
-    <div class="marquee-track" id="marqueeTrack">
-      <!-- JS doplní fotky -->
-    </div>
-    <div class="marquee-fade-l"></div>
-    <div class="marquee-fade-r"></div>
-  </div>
-</section>
 
-<!-- ===== RECENZE ===== -->
-<section id="recenze">
-  <div class="container">
-    <div class="recenze-header" data-r>
-      <div class="section-label">Recenze</div>
-      <h2>Co říkají naši hosté</h2>
-      <p class="section-desc" style="margin: 0.5rem auto 0;">Hodnocení 4.6 / 5 na základě 153 recenzí.</p>
-    </div>
-    <div class="slider" data-r>
-      <div class="slider-track" id="sliderTrack">
-        <div class="review-slide">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">„Nejlepší kavárna v okolí. Káva je vynikající, personál milý a atmosféra příjemná. Chodím sem každý týden!"</p>
-            <div class="review-author">— Jana K. · Google</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">„Konečně kavárna, kde kávu opravdu umí. Cheesecake je božský a prostředí přímo vybízí k posezení s knihou."</p>
-            <div class="review-author">— Martin V. · Google</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★☆</div>
-            <p class="review-text">„Úžasné místo na práci z notebooku. Rychlé wifi, skvělá káva a klid. Určitě se vrátím."</p>
-            <div class="review-author">— Petra N. · Google</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slider-dots" id="sliderDots">
-      <button class="dot-btn active" data-idx="0" aria-label="Slide 1"></button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SPECIÁLNÍ NABÍDKA ===== -->
-<section id="special">
-  <div class="container">
-    <div class="special-grid">
-      <div class="special-text" data-r>
-        <div class="section-label">Tip týdne</div>
-        <h2>Ochutnejte naši specialitu</h2>
-        <p>Každý týden připravujeme něco výjimečného – sezónní nápoje, dezerty z čerstvého ovoce nebo nová káva z jiné části světa.</p>
-        <a href="#kontakt" class="btn btn--fill">Zjistit více</a>
-      </div>
-      <div class="special-img" data-r>
-        <img src="../stock_photos/photo_3.jpg" alt="Specialita kavárna cafisco" loading="lazy" />
-      </div>
+    <div class="gal-grid">
+      <div class="gal-item g1" data-r><img src="https://static.wixstatic.com/media/050c09_874859054eb54c0abad8acca37bbada2~mv2.jpg" alt="Interiér" loading="lazy" /></div>
+      <div class="gal-item g2" data-r><img src="https://static.wixstatic.com/media/050c09_d98889f99c344dbe97166799719cbe99~mv2_d_2048_1365_s_2.jpg" alt="Atmosféra" loading="lazy" /></div>
+      <div class="gal-item g3" data-r><img src="https://static.wixstatic.com/media/050c09_6cc14fa09ab547ee94f144b1788c32f4~mv2_d_2048_1536_s_2.jpg" alt="Stůl" loading="lazy" /></div>
+      <div class="gal-item g4" data-r><img src="https://static.wixstatic.com/media/050c09_7f6b0762953b4680bb186b8d40123a9f~mv2.jpg" alt="Káva" loading="lazy" /></div>
+      <div class="gal-item g5" data-r><img src="https://static.wixstatic.com/media/b2c0a7_22e2906af08a4d428569c1a8013d3807.jpg" alt="Zákusek" loading="lazy" /></div>
+      <div class="gal-item g6" data-r><img src="https://static.wixstatic.com/media/050c09_082d4f31bc264cd0844b02fb749700ac~mv2_d_2048_1365_s_2.jpg" alt="Snídaně" loading="lazy" /></div>
+      <div class="gal-item g7" data-r><img src="https://static.wixstatic.com/media/050c09_543203cd768c4972aaf1a688d7c67c04~mv2.jpg" alt="Zahrádka" loading="lazy" /></div>
+      <div class="gal-item g8" data-r><img src="https://static.wixstatic.com/media/050c09_da0755b9a8634ada9d6d524fc5586cda~mv2_d_2048_1365_s_2.jpg" alt="Detail" loading="lazy" /></div>
     </div>
   </div>
 </section>
 
 <!-- ===== KONTAKT ===== -->
 <section id="kontakt">
-  <div class="container">
+  <div class="wrap">
     <div class="kontakt-grid">
       <div class="kontakt-info" data-r>
-        <div class="section-label">Kontakt</div>
-        <h2>Navštivte nás v Blansko</h2>
-        <p>Rádi vás uvítáme. Přijďte na kávu, pracovní schůzku nebo jen tak na chvíli odpočinout.</p>
-        <div class="kontakt-items">
-          <div class="kontakt-item">
-            <div class="kontakt-icon">📍</div>
-            <div class="kontakt-item-text">
-              <small>Adresa</small>
-              <strong>Bezručova 6, 678 01 Blansko-Blansko 1, Česko</strong>
-            </div>
+        <span class="eyebrow">Kontakt &amp; otevírací doba</span>
+        <h2 style="margin-top:20px;">Najdete nás na <em class="ital">Bezručově ulici</em></h2>
+        <p class="lead">Přijďte se posadit, objednat kávu a zpomalit. Rádi vás uvidíme.</p>
+
+        <div class="kontakt-block">
+          <small>Adresa</small>
+          <div class="val">Bezručova 6<br>678 01 Blansko</div>
+        </div>
+
+        <div class="kontakt-block">
+          <small>Telefon &amp; e-mail</small>
+          <div class="val">
+            <a href="tel:+420722471582">+420 722 471 582</a><br>
+            <a href="mailto:info@cafisco.eu">info@cafisco.eu</a>
           </div>
-          <div class="kontakt-item">
-            <div class="kontakt-icon">📞</div>
-            <div class="kontakt-item-text">
-              <small>Telefon</small>
-              <strong><a href="tel:722 471 582">722 471 582</a></strong>
-            </div>
-          </div>
-          <div class="kontakt-item">
-            <div class="kontakt-icon">✉️</div>
-            <div class="kontakt-item-text">
-              <small>Email</small>
-              <strong><a href="mailto:info@cafisco.eu">info@cafisco.eu</a></strong>
-            </div>
-          </div>
-          <div class="kontakt-item">
-            <div class="kontakt-icon">🕐</div>
-            <div class="kontakt-item-text">
-              <small>Otevírací doba</small>
-              <strong>Po–Pá 8:00–19:00 · So–Ne 9:00–18:00</strong>
-            </div>
+        </div>
+
+        <div class="kontakt-block">
+          <small>Otevírací doba</small>
+          <div class="hours-list" id="hoursList">
+            <div class="hours-row" data-day="1"><span class="day">Pondělí</span><span class="time">8:00 — 19:00</span></div>
+            <div class="hours-row" data-day="2"><span class="day">Úterý</span><span class="time">8:00 — 19:00</span></div>
+            <div class="hours-row" data-day="3"><span class="day">Středa</span><span class="time">8:00 — 19:00</span></div>
+            <div class="hours-row" data-day="4"><span class="day">Čtvrtek</span><span class="time">8:00 — 19:00</span></div>
+            <div class="hours-row" data-day="5"><span class="day">Pátek</span><span class="time">8:00 — 19:00</span></div>
+            <div class="hours-row closed" data-day="6"><span class="day">Sobota</span><span class="time">Zavřeno</span></div>
+            <div class="hours-row closed" data-day="0"><span class="day">Neděle</span><span class="time">Zavřeno</span></div>
           </div>
         </div>
       </div>
-      <div class="kontakt-map" data-r>
-        <iframe
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA6JKGsvhe3aoYdguPrtKmvMTEsIICJ3A4&q=Bezručova+6,+678+01+Blansko-Blansko+1,+Česko"
-          allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mapa kavárna cafisco"
-        ></iframe>
+
+      <div class="kontakt-visual" data-r>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=Bezru%C4%8Dova+6,+678+01+Blansko&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa — Kavárna Cafisco, Bezručova 6 Blansko"
+          ></iframe>
+        </div>
+        <div class="visit-card">
+          <div class="row">
+            <div class="title">
+              <small>Stavte se</small>
+              Na kávu, snídani nebo jen tak
+            </div>
+            <a href="tel:+420722471582" class="btn btn--solid">Zavolat</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -997,53 +1143,59 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="nav-logo">☕ <span>kavárna cafisco</span></div>
-        <p>Vaše oblíbené místo na dobrou kávu.<br>Bezručova 6, Blansko</p>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="mark">ca<b>fisco</b></span>
+        <p>Kavárna v Blansku — Julius Meinl, snídaně, pečivo, zmrzlina. Otevřeno Po–Pá 8:00–19:00.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/Cafisco/" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="tel:+420722471582" aria-label="Telefon">☎</a>
+          <a href="mailto:info@cafisco.eu" aria-label="E-mail">✉</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Navigace</h4>
+      <div class="foot-col">
+        <h4>Kavárna</h4>
         <ul>
           <li><a href="#onas">O nás</a></li>
-          <li><a href="#napoje">Nápojový lístek</a></li>
+          <li><a href="#nabidka">Co nabízíme</a></li>
+          <li><a href="#atmosfera">Atmosféra</a></li>
           <li><a href="#galerie">Galerie</a></li>
-          <li><a href="#recenze">Recenze</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="foot-col">
         <h4>Kontakt</h4>
         <ul>
-          <li><a href="tel:722 471 582">722 471 582</a></li>
+          <li><a href="tel:+420722471582">+420 722 471 582</a></li>
           <li><a href="mailto:info@cafisco.eu">info@cafisco.eu</a></li>
-          <li>Bezručova 6</li>
+          <li>Bezručova 6<br>678 01 Blansko</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Otevřeno</h4>
+        <ul>
+          <li>Pondělí — Pátek</li>
+          <li style="color:var(--paper);font-weight:500;">8:00 — 19:00</li>
+          <li>Sobota &amp; Neděle</li>
+          <li style="font-style:italic;">zavřeno</li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 kavárna cafisco · Všechna práva vyhrazena</span>
-      <span>Web od <a href="https://strankyprovas.cz">StránkyProVás</a></span>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Kavárna Cafisco · Bezručova 6, Blansko</span>
+      <span>Web by <a href="https://strankyprovas.cz" target="_blank" rel="noopener">StránkyProVás</a></span>
     </div>
   </div>
 </footer>
 
-<!-- ===== JAVASCRIPT ===== -->
 <script>
-  /* --- Progress bar --- */
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    document.getElementById('progress').style.width = pct + '%';
-  });
-
-  /* --- Sticky header shadow --- */
+  // Sticky header shadow
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 10);
-  });
+  }, { passive: true });
 
-  /* --- Hamburger --- */
+  // Hamburger
   const btn = document.getElementById('hamburgerBtn');
   const menu = document.getElementById('mobileMenu');
   btn.addEventListener('click', () => {
@@ -1052,88 +1204,47 @@
   });
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', false);
+    btn.setAttribute('aria-expanded', 'false');
   }));
 
-  /* --- Reveal on scroll --- */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
-  document.querySelectorAll('[data-r]').forEach(el => observer.observe(el));
+  document.querySelectorAll('[data-r]').forEach(el => io.observe(el));
 
-  /* --- Stats counter --- */
-  const statsObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseFloat(el.dataset.count);
-      const isDecimal = 'decimal' in el.dataset;
-      const duration = 1400;
-      const step = 16;
-      const steps = duration / step;
-      let current = 0;
-      const inc = target / steps;
-      const timer = setInterval(() => {
-        current = Math.min(current + inc, target);
-        el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-        if (current >= target) clearInterval(timer);
-      }, step);
-      statsObs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach(el => statsObs.observe(el));
+  // Zvýraznění dnešního dne + "otevřeno/zavřeno" v topbaru
+  (function () {
+    const now = new Date();
+    const day = now.getDay(); // 0=Ne, 1=Po .. 6=So
+    const hour = now.getHours() + now.getMinutes()/60;
+    const weekday = day >= 1 && day <= 5;
+    const open = weekday && hour >= 8 && hour < 19;
 
-  /* --- Napojový lístek filtr --- */
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.napoj-card').forEach(card => {
-        const match = filter === 'all' || card.dataset.cat === filter;
-        card.style.display = match ? '' : 'none';
-      });
+    // Označ dnešní řádek
+    document.querySelectorAll('#hoursList .hours-row').forEach(row => {
+      if (parseInt(row.dataset.day, 10) === day) row.classList.add('today');
     });
-  });
 
-  /* --- Galerie marquee z fotek --- */
-  const photos = ['../stock_photos/photo_1.jpg','../stock_photos/photo_2.jpg','../stock_photos/photo_3.jpg','../stock_photos/photo_4.jpg','../stock_photos/photo_5.jpg'];
-  const track = document.getElementById('marqueeTrack');
-  if (photos.length > 0 && photos[0]) {
-    const doubled = [...photos, ...photos]; // duplikovat pro nekonečnou smyčku
-    doubled.forEach(src => {
-      const div = document.createElement('div');
-      div.className = 'gal-img';
-      div.innerHTML = `<img src="${src}" alt="Galerie" loading="lazy" />`;
-      track.appendChild(div);
-    });
-    // Pokud málo fotek, zpomalíme animaci
-    if (photos.length < 4) {
-      track.style.animationDuration = '15s';
+    // Status v topbaru
+    const badge = document.getElementById('openNow');
+    if (!badge) return;
+    if (open) {
+      badge.textContent = `Otevřeno · zavíráme v 19:00`;
+    } else if (weekday && hour < 8) {
+      badge.textContent = `Otevíráme v 8:00`;
+      badge.classList.remove('dot-open');
+    } else if (day === 6 || day === 0) {
+      badge.textContent = `Dnes zavřeno · těšíme se v pondělí`;
+      badge.classList.remove('dot-open');
+    } else {
+      badge.textContent = `Zavřeno · otvíráme zítra v 8:00`;
+      badge.classList.remove('dot-open');
     }
-  } else {
-    // Fallback – použij photo_1.jpg a photo_2.jpg
-    ['photo_1.jpg', 'photo_2.jpg', 'photo_1.jpg', 'photo_2.jpg'].forEach(src => {
-      const div = document.createElement('div');
-      div.className = 'gal-img';
-      div.innerHTML = `<img src="photos/${src}" alt="Kavárna" loading="lazy" />`;
-      track.appendChild(div);
-    });
-  }
+  })();
 
-  /* --- Recenze slider --- */
-  const sliderTrack = document.getElementById('sliderTrack');
-  const slides = sliderTrack.querySelectorAll('.review-slide');
-  const dots = document.getElementById('sliderDots');
-  let current = 0;
-
-  function goTo(idx) {
-    current = idx;
-    sliderTrack.style.transform = `translateX(-${idx * 100}%)`;
-    dots.querySelectorAll('.dot-btn').forEach((d, i) => d.classList.toggle('active', i === idx));
-  }
-  dots.querySelectorAll('.dot-btn').forEach((d, i) => d.addEventListener('click', () => goTo(i)));
-  if (slides.length > 1) setInterval(() => goTo((current + 1) % slides.length), 4500);
+  // Rok ve footeru
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
