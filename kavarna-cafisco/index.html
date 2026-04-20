@@ -756,6 +756,179 @@
   }
   .foot-bottom a { color: var(--gold); }
 
+  /* ===== MENU SECTION ===== */
+  #menu { padding: 120px 0; background: var(--paper); }
+  .menu-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+  .menu-head .eyebrow { margin-bottom: 20px; }
+  .menu-head .eyebrow::before { display: none; }
+  .menu-head h2 { margin-bottom: 16px; }
+  .menu-head p { color: var(--muted); }
+  .menu-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+  .menu-tab {
+    padding: 10px 22px;
+    background: transparent;
+    color: var(--muted);
+    border: 1.5px solid var(--rule);
+    border-radius: 50px;
+    font: 500 .85rem 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all .25s;
+  }
+  .menu-tab:hover { color: var(--accent); border-color: var(--accent); }
+  .menu-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .menu-list { max-width: 860px; margin: 0 auto; }
+  .menu-grp { display: none; }
+  .menu-grp.show { display: block; animation: fadein .35s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .menu-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 24px;
+    padding: 16px 4px;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .menu-row:last-child { border-bottom: none; }
+  .menu-row .info { min-width: 0; }
+  .menu-row .name { font-family: 'Fraunces', serif; font-size: 1.12rem; color: var(--ink); font-weight: 500; line-height: 1.3; }
+  .menu-row .desc { font-size: .85rem; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+  .menu-row .price {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .menu-note { text-align: center; color: var(--muted); font-size: .92rem; margin-top: 36px; font-style: italic; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* ===== ZAPLAŤ BÁSNÍ ===== */
+  #poezie { padding: 120px 0; background: var(--espresso); color: var(--paper); position: relative; overflow: hidden; }
+  #poezie::before {
+    content: '"';
+    position: absolute;
+    top: -140px; left: -30px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 32rem;
+    line-height: 1;
+    color: rgba(200,155,74,.06);
+    pointer-events: none;
+  }
+  .poezie-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 70px;
+    align-items: center;
+    position: relative;
+  }
+  .poezie-text .eyebrow { color: var(--gold); margin-bottom: 22px; }
+  .poezie-text .eyebrow::before { background: var(--gold); }
+  .poezie-text h2 {
+    color: var(--paper);
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
+  .poezie-text h2 em { color: var(--gold); font-style: italic; }
+  .poezie-text p { color: rgba(233,217,191,.85); font-size: 1.05rem; margin-bottom: 18px; max-width: 500px; }
+  .poezie-date {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-size: 3.4rem;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+    margin: 28px 0 8px;
+  }
+  .poezie-date small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: .72rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: rgba(200,155,74,.65);
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .poezie-quote {
+    border-left: 2px solid var(--gold);
+    padding: 4px 0 4px 24px;
+    margin: 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(233,217,191,.95);
+    line-height: 1.55;
+  }
+  .poezie-quote cite { display: block; font-style: normal; font-size: .82rem; margin-top: 14px; color: var(--gold); font-family: 'Inter', sans-serif; letter-spacing: .06em; font-weight: 600; }
+
+  /* ===== PRESS BAND ===== */
+  #press { padding: 44px 0; background: var(--bg-soft); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .press-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .press-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-right: 36px;
+    border-right: 1px solid var(--rule);
+    line-height: 1.4;
+  }
+  .press-items { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  .press-item .quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .press-item .src {
+    display: block;
+    font-size: .78rem;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: .05em;
+  }
+
+  /* ===== TIPY NA VÝLETY ===== */
+  #tipy { padding: 120px 0; background: var(--bg); }
+  .tipy-head { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+  .tipy-head .eyebrow { margin-bottom: 20px; }
+  .tipy-head .eyebrow::before { display: none; }
+  .tipy-head h2 { margin-bottom: 16px; }
+  .tipy-head p { color: var(--muted); font-size: 1.02rem; }
+  .tipy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .tip-card {
+    background: var(--paper);
+    padding: 38px 32px 36px;
+    border-radius: 4px;
+    border-top: 4px solid var(--accent);
+    transition: transform .25s, box-shadow .25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .tip-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -14px rgba(42,26,16,.2); }
+  .tip-card .ico {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .tip-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+  .tip-card p { font-size: .93rem; color: var(--ink-soft); line-height: 1.6; }
+
   /* ===== REVEAL ===== */
   [data-r] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
   [data-r].in { opacity: 1; transform: none; }
@@ -764,11 +937,13 @@
   @media (max-width: 1000px) {
     .hero-grid { grid-template-columns: 1fr; gap: 60px; padding: 50px 0 70px; }
     .hero-visual { max-width: 420px; margin: 0 auto; }
-    .onas-grid, .atm-grid, .kontakt-grid { grid-template-columns: 1fr; gap: 60px; }
+    .onas-grid, .atm-grid, .kontakt-grid, .poezie-grid { grid-template-columns: 1fr; gap: 60px; }
     .onas-visual { max-width: 460px; }
-    .nabidka-grid { grid-template-columns: repeat(2, 1fr); }
+    .nabidka-grid, .tipy-grid { grid-template-columns: repeat(2, 1fr); }
     .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     .gal-grid { grid-auto-rows: 140px; }
+    .press-grid { grid-template-columns: 1fr; gap: 20px; }
+    .press-label { border-right: none; border-bottom: 1px solid var(--rule); padding: 0 0 16px; }
   }
   @media (max-width: 800px) {
     nav.primary ul, .nav-cta { display: none; }
@@ -779,8 +954,12 @@
   @media (max-width: 640px) {
     body { font-size: 16px; }
     .wrap, .wrap-narrow { padding: 0 22px; }
-    #onas, #nabidka, #atmosfera, #galerie, #kontakt { padding: 80px 0; }
-    .nabidka-grid { grid-template-columns: 1fr; }
+    #onas, #nabidka, #atmosfera, #galerie, #kontakt, #menu, #poezie, #tipy { padding: 80px 0; }
+    .nabidka-grid, .tipy-grid { grid-template-columns: 1fr; }
+    .press-items { grid-template-columns: 1fr; gap: 20px; }
+    .poezie-date { font-size: 2.4rem; }
+    .menu-tabs { gap: 8px; }
+    .menu-tab { padding: 8px 16px; font-size: .78rem; }
     .atm-features { grid-template-columns: 1fr; }
     .atm-photos { grid-template-columns: 1fr; grid-template-rows: auto; }
     .atm-photos .p1, .atm-photos .p2, .atm-photos .p3 { height: 220px; grid-row: auto; }
@@ -827,8 +1006,8 @@
       <nav class="primary" aria-label="Hlavní">
         <ul>
           <li><a href="#onas">O nás</a></li>
-          <li><a href="#nabidka">Co nabízíme</a></li>
-          <li><a href="#atmosfera">Atmosféra</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#poezie">Zaplať básní</a></li>
           <li><a href="#galerie">Galerie</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
@@ -842,8 +1021,11 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#onas">O nás</a>
     <a href="#nabidka">Co nabízíme</a>
+    <a href="#menu">Menu &amp; ceník</a>
+    <a href="#poezie">Zaplať básní</a>
     <a href="#atmosfera">Atmosféra</a>
     <a href="#galerie">Galerie</a>
+    <a href="#tipy">Tipy na výlety</a>
     <a href="#kontakt">Kontakt</a>
     <a href="tel:+420722471582">📞 722 471 582</a>
   </div>
@@ -861,7 +1043,7 @@
           Cafisco je jeho <em class="ital">cíl.</em>
         </h1>
         <p class="hero-sub" data-r>
-          Vaří se u nás <em>Julius Meinl</em>, peče se čerstvé pečivo a k tomu snídaně, zákusky i domácí zmrzlina. Jsme kavárna na <em>Bezručově ulici</em> v Blansku — už roky váš první šálek dne.
+          Vídeňská káva <em>Julius Meinl</em>, italská panini dovážená přímo z Itálie, domácí pohárky a koktejly. V Blansku od roku <em>2010</em> — oceněná časopisem Doma DNES mezi desítkou nejoriginálnějších kaváren v ČR.
         </p>
         <div class="hero-actions" data-r>
           <a href="#kontakt" class="btn btn--solid btn--arrow">Přijďte na kávu</a>
@@ -896,18 +1078,20 @@
 <!-- ===== RUNNING STRIP ===== -->
 <section id="strip" aria-hidden="true">
   <div class="strip-track">
+    <span class="strip-item">Od roku 2010</span>
     <span class="strip-item">Julius Meinl</span>
-    <span class="strip-item">Čerstvé snídaně</span>
-    <span class="strip-item">Domácí pečivo</span>
-    <span class="strip-item">Zmrzlina</span>
-    <span class="strip-item">Venkovní posezení</span>
-    <span class="strip-item">Wi-Fi zdarma</span>
+    <span class="strip-item">Italská panini</span>
+    <span class="strip-item">Zaplať básní · 21.3.</span>
+    <span class="strip-item">Oceněno Doma DNES</span>
+    <span class="strip-item">Zmrzlinové poháry</span>
+    <span class="strip-item">Nekuřácká kavárna</span>
+    <span class="strip-item">Od roku 2010</span>
     <span class="strip-item">Julius Meinl</span>
-    <span class="strip-item">Čerstvé snídaně</span>
-    <span class="strip-item">Domácí pečivo</span>
-    <span class="strip-item">Zmrzlina</span>
-    <span class="strip-item">Venkovní posezení</span>
-    <span class="strip-item">Wi-Fi zdarma</span>
+    <span class="strip-item">Italská panini</span>
+    <span class="strip-item">Zaplať básní · 21.3.</span>
+    <span class="strip-item">Oceněno Doma DNES</span>
+    <span class="strip-item">Zmrzlinové poháry</span>
+    <span class="strip-item">Nekuřácká kavárna</span>
   </div>
 </section>
 
@@ -923,25 +1107,25 @@
           <img src="https://static.wixstatic.com/media/050c09_543203cd768c4972aaf1a688d7c67c04~mv2.jpg" alt="Dezert v kavárně Cafisco" loading="lazy" />
         </div>
         <div class="tag">
-          <div class="tag-num serif">✦</div>
-          <div class="tag-label">Kavárna<br>v srdci Blanska</div>
+          <div class="tag-num serif">2010</div>
+          <div class="tag-label">Kavárna v srdci<br>Blanska · od roku</div>
         </div>
       </div>
 
       <div class="onas-text" data-r>
-        <span class="eyebrow">O kavárně</span>
-        <h2 style="margin-top:24px;">Místo, <em class="ital">kde se dá nejen dobře napít</em> — ale i zastavit.</h2>
+        <span class="eyebrow">Od roku 2010</span>
+        <h2 style="margin-top:24px;">Ke kávě se musí přistupovat <em class="ital">s láskou</em> — jinak zhořkne.</h2>
         <p class="lead">
-          Cafisco je malá rodinná kavárna na Bezručově ulici, kam si lidé z Blanska chodí pro svůj první espresso, odpolední dortík a večerní ticho nad knihou.
+          Cafisco otevřeli Ládík a Marcelka v roce 2010 v bývalém rodinném domě na Bezručově ulici. Moderní červenobílý design s motivem sifonů vznikl z lásky ke kávě — a pozornosti si všimly i italské designové magazíny.
         </p>
         <p>
-          Vaříme kávu <strong>Julius Meinl</strong>, pečeme čerstvé sladké i slané pečivo a přes léto točíme poctivou zmrzlinu. Venkovní zahrádka je oblíbená za slunných dnů, uvnitř je vždy útulno — a Wi-Fi chytíte všude.
+          Časopis <strong>Doma DNES</strong> nás zařadil mezi <strong>desítku nejoriginálnějších kaváren v České republice</strong>. Hosté u nás najdou kožené sedačky, pohodlné klubovky, moderní stolky — a nekuřácký vzduch bez výjimky.
         </p>
         <p>
-          Rádi u nás uspořádáme narozeninovou oslavu, menší firemní setkání nebo rodinné posezení. Stačí se ozvat — domluvíme se.
+          Vaříme vídeňskou kávu <strong>Julius Meinl</strong>, připravujeme italská panini dovážená přímo z Itálie a dezerty odebíráme z regionálních cukráren. Venkovní posezení je otevřené celoročně — v zimě půjčujeme deky.
         </p>
-        <div class="onas-sig">Laďa Nováček
-          <small>Majitel kavárny</small>
+        <div class="onas-sig">Ládík &amp; Marcelka
+          <small>Majitelé · 7. rok s Cafiscem</small>
         </div>
       </div>
     </div>
@@ -975,8 +1159,8 @@
         </div>
         <div class="body">
           <span class="num serif">— 02</span>
-          <h3>Snídaně & pečivo</h3>
-          <p>Čerstvé pečivo každé ráno, slané i sladké snídaně. Ideální začátek dne před prací.</p>
+          <h3>Panini z Itálie</h3>
+          <p>Italská panini dovážená přímo z Itálie — šunka se sýrem, čtyři sýry s rajčaty, mozzarella s provensálskými bylinkami. Wrapy plněné a zapečené.</p>
         </div>
       </article>
 
@@ -986,8 +1170,8 @@
         </div>
         <div class="body">
           <span class="num serif">— 03</span>
-          <h3>Zmrzlina & dezerty</h3>
-          <p>V sezóně točíme poctivou zmrzlinu, po celý rok najdete vitrínu plnou čerstvých zákusků.</p>
+          <h3>Poháry &amp; dezerty</h3>
+          <p>Zmrzlinové poháry, horké maliny, zmrzlinové koktejly. Dezerty odebíráme z regionálních cukráren — nabídka se pravidelně mění.</p>
         </div>
       </article>
 
@@ -997,8 +1181,8 @@
         </div>
         <div class="body">
           <span class="num serif">— 04</span>
-          <h3>Zahrádka & klidné zákoutí</h3>
-          <p>Venkovní posezení přes léto, uvnitř útulné stoly — vyberte si, co vám víc vyhovuje.</p>
+          <h3>Celoroční zahrádka</h3>
+          <p>Venkovní posezení otevřené po celý rok. Kožené sedačky a klubovky uvnitř, v zimě hostům na terase půjčujeme teplé deky.</p>
         </div>
       </article>
 
@@ -1027,6 +1211,82 @@
   </div>
 </section>
 
+<!-- ===== MENU ===== -->
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head" data-r>
+      <span class="eyebrow">Nápojový a jídelní lístek</span>
+      <h2>Z našeho <em class="ital">menu</em></h2>
+      <p>Výběr z nabídky — kompletní lístek najdete u nás v kavárně.</p>
+    </div>
+
+    <div class="menu-tabs" data-r>
+      <button class="menu-tab active" data-menu="kava">Káva</button>
+      <button class="menu-tab" data-menu="studena">Studená &amp; poháry</button>
+      <button class="menu-tab" data-menu="teple">Teplé nápoje</button>
+      <button class="menu-tab" data-menu="jidlo">Jídlo</button>
+      <button class="menu-tab" data-menu="drinky">Drinky &amp; víno</button>
+    </div>
+
+    <div class="menu-list" data-r>
+      <div class="menu-grp show" data-grp="kava">
+        <div class="menu-row"><div class="info"><div class="name">Espresso</div><div class="desc">Klasický základ — 7 g, Julius Meinl</div></div><div class="price">32 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Espresso macchiato</div><div class="desc">S kapkou mléčné pěny</div></div><div class="price">38 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Cappuccino</div><div class="desc">Espresso, našlehané mléko, mléčná pěna</div></div><div class="price">39 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Café latte macchiato</div><div class="desc">Vrstvené mléko, espresso, pěna</div></div><div class="price">45 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Vídeň</div><div class="desc">Espresso lungo s šlehačkou</div></div><div class="price">44 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Doppio espresso</div><div class="desc">Dvojitá porce — 14 g</div></div><div class="price">58 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Český turek</div><div class="desc">Klasicky v šálku</div></div><div class="price">32 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Káva se sirupem</div><div class="desc">Čokoláda, vanilka, karamel, oříšek, perník, praline…</div></div><div class="price">42 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Cafisco blend</div><div class="desc">Náš podnikový mix</div></div><div class="price">49 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Káva s Baileys / Amaretto</div><div class="desc">Latte macchiato s alkoholem</div></div><div class="price">62 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Irská / Mexická / Řecká káva</div><div class="desc">Jameson · Kahlúa · Metaxa 5★</div></div><div class="price">65 Kč</div></div>
+      </div>
+
+      <div class="menu-grp" data-grp="studena">
+        <div class="menu-row"><div class="info"><div class="name">Ledová káva</div><div class="desc">Osvěžující klasika</div></div><div class="price">55 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Frappé</div><div class="desc">Šlehaná káva s ledem</div></div><div class="price">45 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Frappé se zmrzlinou</div><div class="desc">S kopcem vanilkové zmrzliny</div></div><div class="price">55 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Zmrzlinový koktejl</div><div class="desc">Vanilka · čokoláda · jahoda</div></div><div class="price">39 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Míchaný pohár</div><div class="desc">3 kopečky zmrzliny, šlehačka, topping</div></div><div class="price">48 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Horké maliny</div><div class="desc">Maliny s vanilkovou zmrzlinou</div></div><div class="price">55 Kč</div></div>
+      </div>
+
+      <div class="menu-grp" data-grp="teple">
+        <div class="menu-row"><div class="info"><div class="name">Horká čokoláda Ristora</div><div class="desc">Pravá italská tmavá</div></div><div class="price">45 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Horká čokoláda Bahia</div><div class="desc">Bílá, jemná</div></div><div class="price">45 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Čaj — velká konvice</div><div class="desc">0,4 l</div></div><div class="price">38 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Čerstvý zázvor s citronem a medem</div><div class="desc">0,4 l</div></div><div class="price">45 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Kakao</div><div class="desc">Teplé, klasické</div></div><div class="price">25 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Svařené víno</div><div class="desc">V zimě s deka na zahrádku</div></div><div class="price">40 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Grog s rumem</div><div class="desc">Klasický</div></div><div class="price">35 Kč</div></div>
+      </div>
+
+      <div class="menu-grp" data-grp="jidlo">
+        <div class="menu-row"><div class="info"><div class="name">Panino — šunka &amp; sýr</div><div class="desc">Italská panini s rajčetem a zelím</div></div><div class="price">59 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Panino — čtyři sýry</div><div class="desc">S rajčetem a zelím</div></div><div class="price">59 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Panino — mozzarella</div><div class="desc">S rajčetem a provensálskými bylinkami</div></div><div class="price">59 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Zapečený wrap</div><div class="desc">Šunka, sýr, rajče, zelí</div></div><div class="price">39 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Dezert z cukrárny</div><div class="desc">Nabídka se pravidelně mění — podle sezony</div></div><div class="price">dle výběru</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Šlehačka s čokoládovým toppingem</div><div class="desc">Malá sladká radost</div></div><div class="price">12 Kč</div></div>
+      </div>
+
+      <div class="menu-grp" data-grp="drinky">
+        <div class="menu-row"><div class="info"><div class="name">Mojito</div><div class="desc">Bílý rum, limeta, máta, třtinový cukr</div></div><div class="price">79 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Aperol Spritz</div><div class="desc">Aperol, Prosecco, soda</div></div><div class="price">75 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Margarita / Cosmopolitan</div><div class="desc">Klasické koktejly</div></div><div class="price">65 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Sex on the Beach</div><div class="desc">Vodka, broskev, pomeranč, brusinka</div></div><div class="price">65 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Virgin Mojito</div><div class="desc">Nealkoholická varianta</div></div><div class="price">55 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Víno — 0,2 l</div><div class="desc">Bílé · červené · aktuální nabídka</div></div><div class="price">36 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Prosecco — 0,1 l</div><div class="desc">Italské suché</div></div><div class="price">35 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Pilsner Urquell — 0,5 l</div><div class="desc">Lahvové</div></div><div class="price">38 Kč</div></div>
+        <div class="menu-row"><div class="info"><div class="name">Fresh džus</div><div class="desc">0,3 l, čerstvě připravený</div></div><div class="price">55 Kč</div></div>
+      </div>
+    </div>
+    <p class="menu-note">Všechny kávy lze připravit z bezkofeinového zrna. Kompletní ceník na baru.</p>
+  </div>
+</section>
+
 <!-- ===== ATMOSFÉRA ===== -->
 <section id="atmosfera">
   <div class="wrap">
@@ -1038,12 +1298,12 @@
           Přijďte si odpočinout po nákupech, domluvit schůzku, pracovat na notebooku nebo si jen tak posedět s přáteli — v Cafiscu je na všechno místo.
         </p>
         <div class="atm-features">
-          <div class="atm-feat"><span class="ico">☕</span><span><strong>Julius Meinl</strong><br><small style="color:rgba(233,217,191,.6)">Rakouská tradice, čerstvé zrno</small></span></div>
-          <div class="atm-feat"><span class="ico">🥐</span><span><strong>Čerstvé pečivo</strong><br><small style="color:rgba(233,217,191,.6)">Každé ráno nové</small></span></div>
-          <div class="atm-feat"><span class="ico">🌿</span><span><strong>Zahrádka</strong><br><small style="color:rgba(233,217,191,.6)">Venkovní posezení</small></span></div>
-          <div class="atm-feat"><span class="ico">📶</span><span><strong>Wi-Fi zdarma</strong><br><small style="color:rgba(233,217,191,.6)">Rychlé, všude</small></span></div>
-          <div class="atm-feat"><span class="ico">🎉</span><span><strong>Soukromé akce</strong><br><small style="color:rgba(233,217,191,.6)">Oslavy i firemní setkání</small></span></div>
-          <div class="atm-feat"><span class="ico">🍨</span><span><strong>Sezónní zmrzlina</strong><br><small style="color:rgba(233,217,191,.6)">Poctivá, točená</small></span></div>
+          <div class="atm-feat"><span class="ico">☕</span><span><strong>Julius Meinl</strong><br><small style="color:rgba(233,217,191,.6)">Vídeňská káva od roku 1862</small></span></div>
+          <div class="atm-feat"><span class="ico">🛋</span><span><strong>Kožené sedačky</strong><br><small style="color:rgba(233,217,191,.6)">Klubovky, moderní stolky</small></span></div>
+          <div class="atm-feat"><span class="ico">🌿</span><span><strong>Celoroční zahrádka</strong><br><small style="color:rgba(233,217,191,.6)">V zimě s deka a teplý nápoj</small></span></div>
+          <div class="atm-feat"><span class="ico">🚭</span><span><strong>Nekuřácká</strong><br><small style="color:rgba(233,217,191,.6)">Vzduch bez výjimky</small></span></div>
+          <div class="atm-feat"><span class="ico">🎉</span><span><strong>Oslavy &amp; večírky</strong><br><small style="color:rgba(233,217,191,.6)">I mimo otevírací dobu</small></span></div>
+          <div class="atm-feat"><span class="ico">🏆</span><span><strong>Oceněná kavárna</strong><br><small style="color:rgba(233,217,191,.6)">Top 10 v Doma DNES</small></span></div>
         </div>
       </div>
 
@@ -1051,6 +1311,49 @@
         <div class="p p1"><img src="https://static.wixstatic.com/media/050c09_d98889f99c344dbe97166799719cbe99~mv2_d_2048_1365_s_2.jpg" alt="Interiér Cafisco" loading="lazy" /></div>
         <div class="p p2"><img src="https://static.wixstatic.com/media/050c09_543203cd768c4972aaf1a688d7c67c04~mv2.jpg" alt="Zahrádka" loading="lazy" /></div>
         <div class="p p3"><img src="https://static.wixstatic.com/media/050c09_da0755b9a8634ada9d6d524fc5586cda~mv2_d_2048_1365_s_2.jpg" alt="Detail" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ZAPLAŤ BÁSNÍ ===== -->
+<section id="poezie">
+  <div class="wrap">
+    <div class="poezie-grid">
+      <div class="poezie-text" data-r>
+        <span class="eyebrow">Jeden den v roce</span>
+        <h2>Zaplať <em>básní</em> — a odnes si kávu za verš.</h2>
+        <p>
+          Na Světový den poezie u nás nahrazují měnu verše. Nepublikovaná báseň stačí na šálek kávy nebo čaje Julius Meinl. Tradice, kterou pražírna podporuje od roku 1862 — protože káva, kavárny a poezie k sobě odjakživa patří.
+        </p>
+        <div class="poezie-date">21. března
+          <small>Světový den poezie</small>
+        </div>
+      </div>
+      <div data-r>
+        <blockquote class="poezie-quote">
+          Akce Zaplať básní dává svobodu peněženkám a nahrazuje peníze poezií.
+          <cite>— Robert Montgomery, skotský básník &amp; globální ambasador</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRESS BAND ===== -->
+<section id="press">
+  <div class="wrap">
+    <div class="press-grid">
+      <div class="press-label" data-r>Cafisco<br>v tisku</div>
+      <div class="press-items">
+        <div class="press-item" data-r>
+          <div class="quote">„Jedna z desítky nejoriginálnějších kaváren v České republice."</div>
+          <span class="src">— časopis Doma DNES</span>
+        </div>
+        <div class="press-item" data-r>
+          <div class="quote">Článek o designu Cafisca vyšel opakovaně v italských designových magazínech.</div>
+          <span class="src">— italské design magazíny</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1078,6 +1381,35 @@
       <div class="gal-item g6" data-r><img src="https://static.wixstatic.com/media/050c09_543203cd768c4972aaf1a688d7c67c04~mv2.jpg" alt="Pohár s jahodami" loading="lazy" /></div>
       <div class="gal-item g7" data-r><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" alt="Čerstvá káva" loading="lazy" /></div>
       <div class="gal-item g8" data-r><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80" alt="Kávová zrna" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIPY NA VÝLETY ===== -->
+<section id="tipy">
+  <div class="wrap">
+    <div class="tipy-head" data-r>
+      <span class="eyebrow">Blansko a okolí</span>
+      <h2>Přijeli jste na výlet? <em class="ital">Poradíme.</em></h2>
+      <p>Cafisco leží pár kilometrů od Moravského krasu. Stavte se na kávu — rádi vám u baru poradíme, kam dál.</p>
+    </div>
+
+    <div class="tipy-grid">
+      <div class="tip-card" data-r>
+        <div class="ico">I.</div>
+        <h3>Památky v Blansku</h3>
+        <p>Zámek, kostel sv. Martina, muzeum Blanenska — co stojí v centru za zastávku a na co si udělat odpoledne.</p>
+      </div>
+      <div class="tip-card" data-r>
+        <div class="ico">II.</div>
+        <h3>Moravský kras &amp; okolí</h3>
+        <p>Punkevní jeskyně, propast Macocha, Sloupsko-šošůvské jeskyně. Blansko je brána Krasu — 20 km severně od Brna.</p>
+      </div>
+      <div class="tip-card" data-r>
+        <div class="ico">III.</div>
+        <h3>Kam s dětmi</h3>
+        <p>Tipy na rodinné výlety v okolí Blanenska — dětská hřiště, stezky a místa, kde se malí nenudí.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1158,9 +1490,10 @@
         <h4>Kavárna</h4>
         <ul>
           <li><a href="#onas">O nás</a></li>
-          <li><a href="#nabidka">Co nabízíme</a></li>
-          <li><a href="#atmosfera">Atmosféra</a></li>
+          <li><a href="#menu">Menu &amp; ceník</a></li>
+          <li><a href="#poezie">Zaplať básní</a></li>
           <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#tipy">Tipy na výlety</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1242,6 +1575,15 @@
       badge.classList.remove('dot-open');
     }
   })();
+
+  // Menu taby
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.menu;
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.menu-grp').forEach(g => g.classList.toggle('show', g.dataset.grp === target));
+    });
+  });
 
   // Rok ve footeru
   document.getElementById('year').textContent = new Date().getFullYear();
