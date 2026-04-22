@@ -448,13 +448,13 @@
     }
     .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
     .marquee-track .gal-img {
-      width: 280px;
-      height: 200px;
+      height: 340px;
       border-radius: var(--radius);
       overflow: hidden;
       flex-shrink: 0;
+      background: var(--cream-2);
     }
-    .marquee-track .gal-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .marquee-track .gal-img img { width: auto; height: 100%; display: block; transition: transform .4s; }
     .marquee-track .gal-img:hover img { transform: scale(1.06); }
     @keyframes marquee {
       from { transform: translateX(0); }
@@ -1440,28 +1440,42 @@
   });
 
   /* --- Galerie marquee z fotek --- */
-  const photos = ['photos/photo1.jpg','photos/photo2.jpg','photos/photo3.jpg','photos/photo4.jpg','photos/photo5.jpg','photos/photo6.jpg','photos/photo7.jpg','photos/photo8.jpg','photos/photo9.jpg','photos/photo10.jpg','photos/photo11.jpg','photos/photo12.jpg','photos/photo13.jpg','photos/photo14.jpg','photos/photo15.jpg','photos/photo16.jpg','photos/photo17.jpg','photos/photo18.jpg','photos/photo19.jpg','photos/photo20.jpg','photos/photo21.jpg'];
+  const photos = [
+    { src: 'photos/photo22.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo3.jpg',  w: 4016, h: 5623 },
+    { src: 'photos/photo12.jpg', w: 1000, h: 750  },
+    { src: 'photos/photo23.jpg', w: 750,  h: 1000 },
+    { src: 'photos/photo8.jpg',  w: 3051, h: 4272 },
+    { src: 'photos/photo24.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo11.jpg', w: 4672, h: 7008 },
+    { src: 'photos/photo13.jpg', w: 668,  h: 1000 },
+    { src: 'photos/photo20.jpg', w: 1000, h: 750  },
+    { src: 'photos/photo25.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo4.jpg',  w: 4454, h: 6235 },
+    { src: 'photos/photo14.jpg', w: 668,  h: 1000 },
+    { src: 'photos/photo26.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo9.jpg',  w: 4672, h: 7008 },
+    { src: 'photos/photo15.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo27.jpg', w: 714,  h: 1000 },
+    { src: 'photos/photo6.jpg',  w: 4672, h: 7008 },
+    { src: 'photos/photo19.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo28.jpg', w: 750,  h: 1000 },
+    { src: 'photos/photo10.jpg', w: 4456, h: 5942 },
+    { src: 'photos/photo17.jpg', w: 667,  h: 1000 },
+    { src: 'photos/photo21.jpg', w: 667,  h: 1000 }
+  ];
   const track = document.getElementById('marqueeTrack');
-  if (photos.length > 0 && photos[0]) {
+  if (photos.length > 0) {
     const doubled = [...photos, ...photos]; // duplikovat pro nekonečnou smyčku
-    doubled.forEach(src => {
+    doubled.forEach(p => {
       const div = document.createElement('div');
       div.className = 'gal-img';
-      div.innerHTML = `<img src="${src}" alt="Galerie" loading="lazy" />`;
+      div.innerHTML = `<img src="${p.src}" alt="Galerie DUO coffee" loading="lazy" width="${p.w}" height="${p.h}" />`;
       track.appendChild(div);
     });
-    // Pokud málo fotek, zpomalíme animaci
     if (photos.length < 4) {
       track.style.animationDuration = '15s';
     }
-  } else {
-    // Fallback – použij photo_1.jpg a photo_2.jpg
-    ['photo_1.jpg', 'photo_2.jpg', 'photo_1.jpg', 'photo_2.jpg'].forEach(src => {
-      const div = document.createElement('div');
-      div.className = 'gal-img';
-      div.innerHTML = `<img src="photos/${src}" alt="Kavárna" loading="lazy" />`;
-      track.appendChild(div);
-    });
   }
 
   /* --- Recenze slider --- */
