@@ -45,10 +45,10 @@
   .men span{width:24px;height:2px;background:#fff;border-radius:2px}
   header.on .men span{background:var(--ink)}
   /* hero */
-  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;color:#fff;overflow:hidden}
   .hero-bg{position:absolute;inset:0;background:url('photos/espresso.jpg') center/cover}
   .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,18,12,.5),rgba(24,18,12,.25) 45%,rgba(24,18,12,.82))}
-  .hero-in{position:relative;padding:0 0 clamp(56px,8vw,90px);width:100%}
+  .hero-in{position:relative;padding:clamp(150px,18vw,200px) 0 clamp(70px,9vw,110px);width:100%}
   .hero .kick{font-family:var(--body);font-size:.78rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:20px}
   .hero h1{color:#fff}
   .hero h1 em{font-style:italic;color:#f0dcb8;font-weight:500}
@@ -111,11 +111,45 @@
   footer{background:var(--ink);color:rgba(236,224,205,.7);text-align:center;padding:46px 0}
   footer .fb{font-family:var(--display);font-size:1.6rem;color:#fff;margin-bottom:8px}
   footer .demo{margin-top:14px;font-size:.72rem;color:rgba(236,224,205,.42)}
+  /* full-bleed obrazovy pruh s citatem */
+  .band{position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+  .band-bg{position:absolute;inset:0;background:url('photos/tray.jpg') center/cover;transform:scale(1.04)}
+  .band-bg::after{content:"";position:absolute;inset:0;background:rgba(24,18,12,.55)}
+  .band .q{position:relative;max-width:760px;padding:0 24px}
+  .band .q .eyebrow{color:#e6c98a}
+  .band .q p{font-family:var(--display);font-style:italic;font-size:clamp(1.7rem,4vw,2.9rem);line-height:1.3;color:#fff}
+  .band .q span{display:block;margin-top:18px;font-family:var(--body);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  /* sezonni speciality */
+  .season .shead{text-align:center;max-width:620px;margin:0 auto clamp(40px,6vw,56px)}.season .shead .lead{margin:14px auto 0}
+  .seas-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .seas{border-radius:8px;padding:clamp(30px,4vw,44px);border:1px solid var(--line);background:var(--paper)}
+  .seas .ic{font-size:2rem;margin-bottom:14px}
+  .seas h3{margin-bottom:12px}
+  .seas ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .seas li{font-size:.9rem;color:var(--coffee);background:var(--sand);border-radius:999px;padding:7px 16px}
+  .seas p{color:var(--muted)}
+  /* recenze */
+  .reviews{background:var(--paper)}
+  .rhead{text-align:center;max-width:620px;margin:0 auto clamp(40px,6vw,54px)}
+  .rstars{font-size:1.4rem;color:var(--brass);letter-spacing:3px;margin-bottom:8px}
+  .rhead .sub{font-size:.9rem;color:var(--muted);margin-top:6px}
+  .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rev{border:1px solid var(--line);border-radius:8px;padding:28px 26px;background:var(--cream)}
+  .rev .st{color:var(--brass);letter-spacing:2px;font-size:.95rem;margin-bottom:12px}
+  .rev p{font-family:var(--display);font-style:italic;font-size:1.15rem;line-height:1.5;color:var(--ink)}
+  .rev .who{margin-top:16px;font-size:.82rem;letter-spacing:.06em;color:var(--muted)}
+  /* CTA pruh */
+  .cta{background:var(--brass);color:#fff;text-align:center}
+  .cta h2{color:#fff}
+  .cta p{color:rgba(255,255,255,.9);max-width:52ch;margin:14px auto 28px}
+  .cta .btn{background:#fff;color:var(--brass-d);border-color:#fff}
+  .cta .btn:hover{background:transparent;color:#fff}
   svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
   @media(max-width:860px){
     .loc,.loc.rev .loc-media{grid-template-columns:1fr;order:0}
     .loc-media{aspect-ratio:16/11}.loc-body{order:2}
     .ccards{grid-template-columns:1fr}.mosaic{columns:2}
+    .seas-grid{grid-template-columns:1fr}.rgrid{grid-template-columns:1fr}
     .nav a:not(.men-wrap){display:none}.men{display:flex}
     .nav.open{position:fixed;inset:0;background:var(--ink);flex-direction:column;justify-content:center;gap:24px}
     .nav.open a{display:block!important;color:#fff;font-size:1.3rem;font-family:var(--display)}
@@ -207,6 +241,15 @@
   </div>
 </section>
 
+<section class="band">
+  <div class="band-bg"></div>
+  <div class="q reveal">
+    <p class="eyebrow">Luhačovice</p>
+    <p>„V životě jsou okamžiky, kdy je dobré jen to nejlepší. Je třeba si dopřát čas."</p>
+    <span>Vaše kavárny v lázeňském městě</span>
+  </div>
+</section>
+
 <section id="nabidka" class="offer">
   <div class="wrap">
     <div class="ohead reveal">
@@ -230,6 +273,30 @@
   </div>
 </section>
 
+<section class="season">
+  <div class="wrap">
+    <div class="shead reveal">
+      <p class="eyebrow">Po celý rok</p>
+      <h2>Sezónní speciality</h2>
+      <p class="lead">Ať přijdete v létě nebo v zimě, vždycky se u nás najde něco, co se k počasí hodí.</p>
+    </div>
+    <div class="seas-grid">
+      <div class="seas reveal">
+        <div class="ic">🍦</div>
+        <h3>Letní osvěžení</h3>
+        <p>Když sluníčko griluje kolonádu, přijďte se zchladit.</p>
+        <ul><li>Italská zmrzlina</li><li>Zmrzlinové poháry</li><li>Ledová káva</li><li>Domácí ledové čaje</li><li>Mléčné koktejly</li></ul>
+      </div>
+      <div class="seas reveal">
+        <div class="ic">☕</div>
+        <h3>Zimní zahřátí</h3>
+        <p>Když je venku sychravo, sedněte si k nám do tepla.</p>
+        <ul><li>Horká čokoláda</li><li>Svařené víno</li><li>Výběrová káva</li><li>Čaje Sonnentor</li><li>Domácí zákusky</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="galerie">
   <div class="wrap">
     <div class="ghead reveal">
@@ -247,6 +314,22 @@
       <img src="photos/coffee2.jpg" alt="Káva" loading="lazy">
       <img src="photos/bonjour4.jpg" alt="Kavárenská atmosféra" loading="lazy">
       <img src="photos/latte.jpg" alt="Cappuccino s latte art" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="rhead reveal">
+      <div class="rstars">★★★★★</div>
+      <p class="eyebrow">Co říkají hosté</p>
+      <h2>Máme rádi, když se vracíte</h2>
+      <p class="sub">Hodnocení 4,8 z 5 · více než 130 recenzí na Googlu</p>
+    </div>
+    <div class="rgrid">
+      <div class="rev reveal"><div class="st">★★★★★</div><p>„Výborná káva a úžasná zmrzlina. Krásné posezení přímo na kolonádě."</p><div class="who">— host z Googlu</div></div>
+      <div class="rev reveal"><div class="st">★★★★★</div><p>„Milá obsluha a domácí dorty jsou naprostá paráda. Určitě se vrátíme."</p><div class="who">— host z Googlu</div></div>
+      <div class="rev reveal"><div class="st">★★★★★</div><p>„Klidné místo na dobrou kávu, když si chcete od lázní na chvíli odpočinout."</p><div class="who">— host z Googlu</div></div>
     </div>
   </div>
 </section>
@@ -278,6 +361,14 @@
         <a href="https://www.instagram.com/bonjourcaffeluhacovice/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Zastavte se na kávu</h2>
+    <p>Ať jste na procházce po kolonádě, nebo si chcete jen v klidu odpočinout — u nás jste vždycky vítáni. Otevřeno máme každý den.</p>
+    <a href="tel:+420777014705" class="btn">☕ Zavolat 777 014 705</a>
   </div>
 </section>
 

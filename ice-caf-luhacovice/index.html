@@ -113,10 +113,29 @@
   footer .fb{font-family:var(--display);font-size:1.8rem;color:#fff;margin-bottom:8px}
   footer .fn{font-size:.85rem}
   footer .demo{margin-top:14px;font-size:.72rem;color:rgba(244,227,207,.4)}
+  .band{position:relative;min-height:58vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+  .band-bg{position:absolute;inset:0;background:url('photos/espresso.jpg') center/cover;transform:scale(1.04)}
+  .band-bg::after{content:"";position:absolute;inset:0;background:rgba(30,20,12,.58)}
+  .band .q{position:relative;max-width:740px;padding:0 24px}
+  .band .q .eyebrow{color:#e8c98f}
+  .band .q p{font-family:var(--display);font-style:italic;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.3;color:#fff}
+  .band .q span{display:block;margin-top:16px;font-family:var(--body);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .reviews{background:var(--paper)}
+  .rhead{text-align:center;max-width:620px;margin:0 auto clamp(40px,6vw,52px)}
+  .rstars{font-size:1.4rem;color:var(--caramel);letter-spacing:3px;margin-bottom:8px}
+  .rhead .sub{font-size:.9rem;color:var(--muted);margin-top:6px}
+  .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rev{border:1px solid var(--line);border-radius:8px;padding:28px 26px;background:var(--cream)}
+  .rev .st{color:var(--caramel);letter-spacing:2px;font-size:.95rem;margin-bottom:12px}
+  .rev p{font-family:var(--display);font-style:italic;font-size:1.15rem;line-height:1.5;color:var(--espresso)}
+  .rev .who{margin-top:16px;font-size:.82rem;color:var(--muted)}
+  .cta{background:var(--caramel);color:#fff;text-align:center}
+  .cta h2{color:#fff}.cta p{color:rgba(255,255,255,.92);max-width:52ch;margin:14px auto 28px}
+  .cta .btn{background:#fff;color:var(--caramel-d);border-color:#fff}.cta .btn:hover{background:transparent;color:#fff}
   svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
   @media(max-width:860px){
     .about{grid-template-columns:1fr}.about-img{aspect-ratio:16/11;order:-1}
-    .cards{grid-template-columns:1fr 1fr}.mosaic{columns:2}.cgrid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr 1fr}.mosaic{columns:2}.cgrid{grid-template-columns:1fr}.rgrid{grid-template-columns:1fr}
     .nav a:not(.men){display:none}.nav .men{display:flex}
     .nav.open{position:fixed;inset:0;background:var(--espresso);flex-direction:column;justify-content:center;gap:26px}
     .nav.open a:not(.men){display:block;color:#fff;font-size:1.3rem;font-family:var(--display)}
@@ -194,6 +213,15 @@
   </div>
 </section>
 
+<section class="band">
+  <div class="band-bg"></div>
+  <div class="q reveal">
+    <p class="eyebrow">Na kolonádě</p>
+    <p>„Je třeba si dopřát čas — na dobrou kávu, kousek dortu a chvíli klidu."</p>
+    <span>Ice Cafe · Luhačovice</span>
+  </div>
+</section>
+
 <section id="galerie">
   <div class="wrap">
     <div class="gal-head reveal">
@@ -208,6 +236,22 @@
       <img src="photos/dort1.jpg" alt="Domácí pistáciový dort" loading="lazy">
       <img src="photos/coffee2.jpg" alt="Káva v Ice Cafe" loading="lazy">
       <img src="photos/treat.jpg" alt="Sladké dobroty ke kávě" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="rhead reveal">
+      <div class="rstars">★★★★★</div>
+      <p class="eyebrow">Co říkají hosté</p>
+      <h2>Máme rádi, když se vracíte</h2>
+      <p class="sub">Hodnocení 4,8 z 5 · více než 130 recenzí na Googlu</p>
+    </div>
+    <div class="rgrid">
+      <div class="rev reveal"><div class="st">★★★★★</div><p>„Výborná káva a úžasná zmrzlina. Krásné posezení přímo na kolonádě."</p><div class="who">— host z Googlu</div></div>
+      <div class="rev reveal"><div class="st">★★★★★</div><p>„Milá obsluha a domácí dorty jsou naprostá paráda. Určitě se vrátíme."</p><div class="who">— host z Googlu</div></div>
+      <div class="rev reveal"><div class="st">★★★★★</div><p>„Klidné místo na dobrou kávu, když si chcete od lázní na chvíli odpočinout."</p><div class="who">— host z Googlu</div></div>
     </div>
   </div>
 </section>
@@ -249,6 +293,14 @@
         <iframe src="https://maps.google.com/maps?q=Ice%20Cafe%20T%C5%99.%20Dr.%20Vesel%C3%A9ho%20177%20Luha%C4%8Dovice&z=16&output=embed" loading="lazy" title="Mapa – Ice Cafe Luhačovice"></iframe>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Zastavte se na kávu</h2>
+    <p>Najdete nás na kolonádě, otevřeno máme každý den 9–17. Přijďte si dopřát chvíli klidu uprostřed lázní.</p>
+    <a href="tel:+420777014705" class="btn">☕ Zavolat 777 014 705</a>
   </div>
 </section>
 
