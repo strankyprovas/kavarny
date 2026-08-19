@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ice Cafe &amp; Bonjour Caffe — dvě kavárny v Luhačovicích</title>
+<meta name="description" content="Ice Cafe a Bonjour Caffe — dvě kavárny v lázeňském Luhačovicích. Výběrová káva, italská zmrzlina, domácí zákusky a raw dorty. Na kolonádě i v klidné části města.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f6f1e9; --paper:#fffdf9; --ink:#241d16; --coffee:#3a2e22;
+    --brass:#a9863f; --brass-d:#8c6d31; --sand:#ece0cd; --muted:#8c7a63;
+    --line:rgba(36,29,22,.12);
+    --display:'Playfair Display',Georgia,serif; --body:'Jost',system-ui,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1); --max:1200px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--cream);color:var(--coffee);line-height:1.75;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;color:var(--ink)}
+  h1{font-size:clamp(2.8rem,7vw,5.4rem);font-weight:600;letter-spacing:-.01em}
+  h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+  h3{font-size:clamp(1.3rem,2.2vw,1.7rem)}
+  .wrap{width:min(100% - 40px,var(--max));margin-inline:auto}
+  .eyebrow{font-family:var(--body);font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+  .lead{font-size:clamp(1.05rem,1.7vw,1.2rem);color:var(--muted);max-width:60ch}
+  header{position:fixed;inset:0 0 auto 0;z-index:100;padding:22px 0;transition:.4s var(--ease)}
+  header.on{background:rgba(246,241,233,.92);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 1px 0 var(--line)}
+  .hin{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{font-family:var(--display);font-size:1.35rem;font-weight:600;letter-spacing:.01em;color:var(--ink)}
+  header:not(.on) .brand{color:#fff}
+  .nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,30px)}
+  .nav a{font-size:.82rem;letter-spacing:.05em;color:var(--coffee);transition:color .25s}
+  header:not(.on) .nav a{color:rgba(255,255,255,.9)}
+  .nav a:hover{color:var(--brass)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:.76rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:13px 28px;border-radius:999px;border:1.5px solid var(--brass);background:var(--brass);color:#fff;cursor:pointer;transition:.28s var(--ease)}
+  .btn:hover{background:transparent;color:var(--brass)}
+  header:not(.on) .btn{border-color:#fff;background:rgba(255,255,255,.14);color:#fff}
+  header:not(.on) .btn:hover{background:#fff;color:var(--ink)}
+  .men{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .men span{width:24px;height:2px;background:#fff;border-radius:2px}
+  header.on .men span{background:var(--ink)}
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url('photos/espresso.jpg') center/cover}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,18,12,.5),rgba(24,18,12,.25) 45%,rgba(24,18,12,.82))}
+  .hero-in{position:relative;padding:0 0 clamp(56px,8vw,90px);width:100%}
+  .hero .kick{font-family:var(--body);font-size:.78rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:20px}
+  .hero h1{color:#fff}
+  .hero h1 em{font-style:italic;color:#f0dcb8;font-weight:500}
+  .hero p.lead{color:rgba(255,255,255,.9);margin:24px 0 32px;max-width:50ch}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-cta .ghost{background:transparent;border-color:rgba(255,255,255,.6);color:#fff}
+  .hero-cta .ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+  section{padding:clamp(70px,10vw,120px) 0}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  /* intro */
+  .intro{text-align:center}
+  .intro .lead{margin:16px auto 0}
+  .intro h2{max-width:16ch;margin:0 auto}
+  /* location blocks */
+  .loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center}
+  .loc + .loc{margin-top:clamp(56px,8vw,110px)}
+  .loc.rev .loc-media{order:2}
+  .loc-media{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px -34px rgba(36,29,22,.5)}
+  .loc-media img{width:100%;height:100%;object-fit:cover;transition:.6s var(--ease)}
+  .loc-media:hover img{transform:scale(1.04)}
+  .loc-badge{position:absolute;top:18px;left:18px;background:rgba(246,241,233,.92);backdrop-filter:blur(4px);padding:7px 16px;border-radius:999px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:500}
+  .loc-body .name{font-family:var(--display);font-size:clamp(2rem,4vw,2.9rem);font-weight:600;color:var(--ink);line-height:1.05}
+  .loc-body .where{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:10px 0 20px}
+  .loc-body p{color:var(--muted)}
+  .loc-facts{margin:24px 0 26px;border-top:1px solid var(--line)}
+  .loc-facts .f{display:flex;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:.96rem}
+  .loc-facts .f b{flex:0 0 108px;font-weight:500;color:var(--ink);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+  .loc-links{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-sm{font-size:.72rem;padding:11px 22px}
+  .btn-out{background:transparent;color:var(--coffee);border-color:var(--line)}
+  .btn-out:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* offer */
+  .offer{background:var(--ink);color:var(--sand)}
+  .offer h2{color:#fff}.offer .eyebrow{color:var(--brass)}.offer .lead{color:rgba(236,224,205,.7)}
+  .ohead{text-align:center;max-width:640px;margin:0 auto clamp(40px,6vw,60px)}.ohead .lead{margin:14px auto 0}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:820px;margin:0 auto}
+  .chip{border:1px solid rgba(236,224,205,.22);border-radius:999px;padding:12px 22px;font-size:.95rem;color:#f0e6d4;transition:.3s var(--ease)}
+  .chip:hover{background:var(--brass);border-color:var(--brass);color:#fff}
+  /* gallery */
+  .ghead{text-align:center;max-width:600px;margin:0 auto clamp(38px,5vw,54px)}.ghead .lead{margin:14px auto 0}
+  .mosaic{columns:3;column-gap:14px}
+  .mosaic img{width:100%;margin-bottom:14px;border-radius:5px;transition:.4s var(--ease)}
+  .mosaic img:hover{transform:scale(1.015);filter:brightness(1.04)}
+  /* contact */
+  .contact{background:var(--sand)}
+  .chead{text-align:center;margin:0 auto clamp(38px,5vw,52px)}
+  .ccards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .ccard{background:var(--paper);border-radius:8px;padding:32px;box-shadow:0 20px 44px -30px rgba(36,29,22,.35)}
+  .ccard h3{margin-bottom:4px}
+  .ccard .w{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:18px}
+  .ccard .r{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:.96rem}
+  .ccard .r:first-of-type{border-top:0}
+  .ccard .r b{flex:0 0 92px;font-weight:500;color:var(--ink);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+  .ccard .r a:hover{color:var(--brass)}
+  .cshared{text-align:center;margin-top:34px}
+  .socials{display:inline-flex;gap:12px;margin-top:14px}
+  .socials a{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.28s var(--ease);color:var(--coffee)}
+  .socials a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  footer{background:var(--ink);color:rgba(236,224,205,.7);text-align:center;padding:46px 0}
+  footer .fb{font-family:var(--display);font-size:1.6rem;color:#fff;margin-bottom:8px}
+  footer .demo{margin-top:14px;font-size:.72rem;color:rgba(236,224,205,.42)}
+  svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
+  @media(max-width:860px){
+    .loc,.loc.rev .loc-media{grid-template-columns:1fr;order:0}
+    .loc-media{aspect-ratio:16/11}.loc-body{order:2}
+    .ccards{grid-template-columns:1fr}.mosaic{columns:2}
+    .nav a:not(.men-wrap){display:none}.men{display:flex}
+    .nav.open{position:fixed;inset:0;background:var(--ink);flex-direction:column;justify-content:center;gap:24px}
+    .nav.open a{display:block!important;color:#fff;font-size:1.3rem;font-family:var(--display)}
+    .nav.open .men{position:absolute;top:24px;right:24px}.nav.open .men span{background:#fff}
+  }
+  @media(max-width:520px){.mosaic{columns:1}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap hin">
+    <a href="#" class="brand">Ice Cafe <span style="color:var(--brass)">&amp;</span> Bonjour</a>
+    <nav class="nav" id="nav">
+      <a href="#kavarny">Kavárny</a>
+      <a href="#nabidka">Nabídka</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="tel:+420777014705" class="btn">☕ 777 014 705</a>
+      <button class="men" id="men" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <p class="kick">Luhačovice · dvě kavárny</p>
+    <h1>Ice Cafe<br><em>&amp; Bonjour Caffe</em></h1>
+    <p class="lead">Dvě kavárny v srdci lázeňského města — jedna na kolonádě, druhá v klidné části u nábřeží. Výběrová káva, italská zmrzlina a domácí dobroty na obou.</p>
+    <div class="hero-cta">
+      <a href="#kavarny" class="btn">Naše kavárny</a>
+      <a href="#kontakt" class="btn ghost">Kde nás najdete</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap reveal">
+    <p class="eyebrow">Vítejte</p>
+    <h2>Dvě místa, kde se vyplatí zpomalit</h2>
+    <p class="lead">V životě jsou okamžiky, kdy je dobré jen to nejlepší — a je třeba si na ně udělat čas. Ať zamíříte na rušnou kolonádu, nebo do klidu u nábřeží, čeká vás poctivá káva, pravá italská zmrzlina a sladké dobroty.</p>
+  </div>
+</section>
+
+<section id="kavarny">
+  <div class="wrap">
+    <!-- ICE CAFE -->
+    <div class="loc reveal">
+      <div class="loc-media">
+        <img src="photos/latte.jpg" alt="Cappuccino s latte art v Ice Cafe">
+        <span class="loc-badge">Na kolonádě</span>
+      </div>
+      <div class="loc-body">
+        <div class="name">Ice Cafe</div>
+        <div class="where">Tř. Dr. Veselého 177 · Luhačovice</div>
+        <p>Kavárna přímo na lázeňské kolonádě, uprostřed dění. Ideální zastávka při procházce po pramenech — na výběrovou kávu, kopeček italské zmrzliny nebo nadýchaný pohár.</p>
+        <div class="loc-facts">
+          <div class="f"><b>Otevřeno</b><span>Pondělí – Neděle · 9:00 – 17:00</span></div>
+          <div class="f"><b>Adresa</b><span>Tř. Dr. Veselého 177, 763 26 Luhačovice</span></div>
+        </div>
+        <div class="loc-links">
+          <a href="https://maps.google.com/maps?q=Ice+Cafe+T%C5%99.+Dr.+Vesel%C3%A9ho+177+Luha%C4%8Dovice" target="_blank" rel="noopener" class="btn btn-sm">Najít na mapě</a>
+          <a href="tel:+420777014705" class="btn btn-sm btn-out">Zavolat</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BONJOUR CAFFE -->
+    <div class="loc rev reveal">
+      <div class="loc-media">
+        <img src="photos/bonjour1.jpg" alt="Domácí dort v Bonjour Caffe">
+        <span class="loc-badge">V klidné části</span>
+      </div>
+      <div class="loc-body">
+        <div class="name">Bonjour Caffe</div>
+        <div class="where">Nábřeží 1066 · Luhačovice</div>
+        <p>Kavárna v klidné části lázeňského města, kousek od nábřeží. Místo, kde si v pohodě vychutnáte kávu, raw dort nebo pistáciový zákusek — bez spěchu, jen pro potěšení.</p>
+        <div class="loc-facts">
+          <div class="f"><b>Otevřeno</b><span>Pondělí – Neděle · 9:00 – 18:00</span></div>
+          <div class="f"><b>Adresa</b><span>Nábřeží 1066, 763 26 Luhačovice</span></div>
+        </div>
+        <div class="loc-links">
+          <a href="https://maps.google.com/maps?q=Bonjour+Caffe+N%C3%A1b%C5%99e%C5%BE%C3%AD+1066+Luha%C4%8Dovice" target="_blank" rel="noopener" class="btn btn-sm">Najít na mapě</a>
+          <a href="tel:+420777014705" class="btn btn-sm btn-out">Zavolat</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nabidka" class="offer">
+  <div class="wrap">
+    <div class="ohead reveal">
+      <p class="eyebrow">Co u nás najdete</p>
+      <h2>Na obou kavárnách</h2>
+      <p class="lead">Denní nabídku a čerstvé speciality vám rádi doporučíme na místě — vždycky je z čeho vybírat.</p>
+    </div>
+    <div class="chips reveal">
+      <span class="chip">☕ Výběrová káva</span>
+      <span class="chip">🍦 Italská zmrzlina</span>
+      <span class="chip">🍨 Zmrzlinové poháry</span>
+      <span class="chip">🍰 Zákusky &amp; raw dorty</span>
+      <span class="chip">🥞 Palačinky</span>
+      <span class="chip">🍫 Horká čokoláda</span>
+      <span class="chip">🥤 Mléčné koktejly</span>
+      <span class="chip">🧊 Ledové čaje</span>
+      <span class="chip">🌿 Čaje Sonnentor</span>
+      <span class="chip">🍷 Svařené víno</span>
+      <span class="chip">🥪 Chlebíčky</span>
+    </div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="wrap">
+    <div class="ghead reveal">
+      <p class="eyebrow">Galerie</p>
+      <h2>Nahlédněte k nám</h2>
+      <p class="lead">Atmosféra, káva a dobroty z obou našich kaváren.</p>
+    </div>
+    <div class="mosaic reveal">
+      <img src="photos/table.jpg" alt="Kávový stolek s tiramisu" loading="lazy">
+      <img src="photos/dort1.jpg" alt="Pistáciový dort v Bonjour Caffe" loading="lazy">
+      <img src="photos/espresso.jpg" alt="Příprava espressa" loading="lazy">
+      <img src="photos/bonjour2.jpg" alt="Sladké dobroty" loading="lazy">
+      <img src="photos/tray.jpg" alt="Dvě espressa na zlatém podnosu" loading="lazy">
+      <img src="photos/bonjour3.jpg" alt="Domácí dezert" loading="lazy">
+      <img src="photos/coffee2.jpg" alt="Káva" loading="lazy">
+      <img src="photos/bonjour4.jpg" alt="Kavárenská atmosféra" loading="lazy">
+      <img src="photos/latte.jpg" alt="Cappuccino s latte art" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div class="chead reveal">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Přijďte na kávu</h2>
+    </div>
+    <div class="ccards reveal">
+      <div class="ccard">
+        <h3>Ice Cafe</h3>
+        <div class="w">Na kolonádě</div>
+        <div class="r"><b>Adresa</b><span>Tř. Dr. Veselého 177<br>763 26 Luhačovice</span></div>
+        <div class="r"><b>Otevřeno</b><span>Po – Ne · 9:00 – 17:00</span></div>
+      </div>
+      <div class="ccard">
+        <h3>Bonjour Caffe</h3>
+        <div class="w">U nábřeží</div>
+        <div class="r"><b>Adresa</b><span>Nábřeží 1066<br>763 26 Luhačovice</span></div>
+        <div class="r"><b>Otevřeno</b><span>Po – Ne · 9:00 – 18:00</span></div>
+      </div>
+    </div>
+    <div class="cshared reveal">
+      <p style="font-size:1.05rem;color:var(--coffee)">Telefon <a href="tel:+420777014705" style="color:var(--ink);font-weight:500">777 014 705</a> &nbsp;·&nbsp; E-mail <a href="mailto:icecafe@centrum.cz" style="color:var(--ink);font-weight:500">icecafe@centrum.cz</a></p>
+      <div class="socials">
+        <a href="https://www.facebook.com/bonjourcaffeluhacovice" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" viewBox="0 0 24 24"><path d="M14 8h2V5h-2c-2 0-3 1.3-3 3v2H9v3h2v6h3v-6h2l.5-3H14V8.5c0-.3.2-.5.5-.5z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.instagram.com/bonjourcaffeluhacovice/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">Ice Cafe &amp; Bonjour Caffe</div>
+    <div>Luhačovice · 777 014 705 · icecafe@centrum.cz</div>
+    <div class="demo">Ukázka nového webu · připravily StránkyProVás</div>
+  </div>
+</footer>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>hdr.classList.toggle('on',scrollY>40),{passive:true});
+  const nav=document.getElementById('nav'),men=document.getElementById('men');
+  men.addEventListener('click',()=>nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
