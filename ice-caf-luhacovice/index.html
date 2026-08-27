@@ -115,6 +115,25 @@
   .mosaic{columns:3;column-gap:14px}
   .mosaic img{width:100%;margin-bottom:14px;border-radius:5px;transition:.4s var(--ease)}
   .mosaic img:hover{transform:scale(1.015);filter:brightness(1.04)}
+  /* galerie — projíždějící pásy fotek */
+  .mq-wrap{display:flex;flex-direction:column;gap:14px;overflow:hidden}
+  .mrow{display:flex;gap:14px;width:max-content;animation:mq 42s linear infinite}
+  .mrow.rev{animation-direction:reverse;animation-duration:52s}
+  .mrow img{width:320px;height:220px;object-fit:cover;border-radius:10px;flex-shrink:0;transition:transform .4s var(--ease)}
+  .mrow img:hover{transform:scale(1.02)}
+  .mq-wrap:hover .mrow{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  @media(max-width:640px){.mrow img{width:220px;height:150px}}
+  /* recenze — automatický slider */
+  .test-slider{max-width:760px;margin:0 auto;overflow:hidden}
+  .test-track{display:flex;transition:transform .7s var(--ease)}
+  .test-slide{flex:0 0 100%;text-align:center;padding:0 18px}
+  .test-slide .st{color:var(--caramel);letter-spacing:3px;font-size:1.1rem;margin-bottom:14px}
+  .test-slide p{font-family:var(--display);font-style:italic;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.5;color:var(--espresso)}
+  .test-slide .who{margin-top:16px;font-size:.85rem;color:var(--muted)}
+  .test-dots{display:flex;justify-content:center;gap:9px;margin-top:26px}
+  .test-dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(42,31,22,.2);cursor:pointer;transition:.3s}
+  .test-dots button.active{background:var(--caramel);transform:scale(1.25)}
   /* contact */
   .contact{background:var(--milk)}
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,60px);align-items:start}
@@ -290,18 +309,10 @@
       <h2>Nahlédněte k nám</h2>
       <p class="lead">Atmosféra, káva a dobroty z obou našich kaváren.</p>
     </div>
-    <div class="mosaic reveal">
-      <img src="photos/latte.jpg" alt="Cappuccino s latte art" loading="lazy">
-      <img src="photos/bonjour1.jpg" alt="Bonjour Caffe — posezení" loading="lazy">
-      <img src="photos/table.jpg" alt="Kávový stolek s tiramisu a dortem" loading="lazy">
-      <img src="photos/bonjour2.jpg" alt="Dezerty v Bonjour Caffe" loading="lazy">
-      <img src="photos/espresso.jpg" alt="Příprava espressa na kávovaru" loading="lazy">
-      <img src="photos/dort1.jpg" alt="Domácí pistáciový dort" loading="lazy">
-      <img src="photos/bonjour3.jpg" alt="Káva v Bonjour Caffe" loading="lazy">
-      <img src="photos/coffee2.jpg" alt="Káva v Ice Cafe" loading="lazy">
-      <img src="photos/bonjour4.jpg" alt="Sladká nabídka Bonjour Caffe" loading="lazy">
-      <img src="photos/treat.jpg" alt="Sladké dobroty ke kávě" loading="lazy">
-    </div>
+  </div>
+  <div class="mq-wrap reveal">
+    <div class="mrow" id="mrow1"></div>
+    <div class="mrow rev" id="mrow2"></div>
   </div>
 </section>
 
@@ -313,10 +324,14 @@
       <h2>Máme rádi, když se vracíte</h2>
       <p class="sub">Hodnocení 4,8 z 5 · více než 130 recenzí na Googlu</p>
     </div>
-    <div class="rgrid">
-      <div class="rev reveal"><div class="st">★★★★★</div><p>„Výborná káva a úžasná zmrzlina. Krásné posezení přímo na kolonádě."</p><div class="who">— host z Googlu</div></div>
-      <div class="rev reveal"><div class="st">★★★★★</div><p>„Milá obsluha a domácí dorty jsou naprostá paráda. Určitě se vrátíme."</p><div class="who">— host z Googlu</div></div>
-      <div class="rev reveal"><div class="st">★★★★★</div><p>„Klidné místo na dobrou kávu, když si chcete od lázní na chvíli odpočinout."</p><div class="who">— host z Googlu</div></div>
+    <div class="test-slider reveal">
+      <div class="test-track" id="ttrack">
+        <div class="test-slide"><div class="st">★★★★★</div><p>„Výborná káva a úžasná zmrzlina. Krásné posezení přímo na kolonádě."</p><div class="who">— host z Googlu</div></div>
+        <div class="test-slide"><div class="st">★★★★★</div><p>„Milá obsluha a domácí dorty jsou naprostá paráda. Určitě se vrátíme."</p><div class="who">— host z Googlu</div></div>
+        <div class="test-slide"><div class="st">★★★★★</div><p>„Klidné místo na dobrou kávu, když si chcete od lázní na chvíli odpočinout."</p><div class="who">— host z Googlu</div></div>
+        <div class="test-slide"><div class="st">★★★★★</div><p>„Bonjour Caffe je náš objev léta — skvělá káva a klid u nábřeží."</p><div class="who">— host z Googlu</div></div>
+      </div>
+      <div class="test-dots" id="tdots"><button class="active"></button><button></button><button></button><button></button></div>
     </div>
   </div>
 </section>
@@ -381,6 +396,18 @@
   nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  /* projíždějící pásy fotek v galerii */
+  const fotky=['latte','bonjour1','table','bonjour2','espresso','dort1','bonjour3','coffee2','bonjour4','treat','tray'].map(n=>'photos/'+n+'.jpg');
+  [['mrow1',fotky],['mrow2',[...fotky].reverse()]].forEach(([id,list])=>{
+    const row=document.getElementById(id);
+    [...list,...list].forEach(src=>{const im=document.createElement('img');im.src=src;im.alt='Galerie — Ice Cafe & Bonjour Caffe';im.loading='lazy';row.appendChild(im)});
+  });
+  /* slider recenzí */
+  const ttrack=document.getElementById('ttrack'),tdots=[...document.querySelectorAll('#tdots button')];
+  let tc=0;
+  const tgo=n=>{tc=n;ttrack.style.transform=`translateX(-${n*100}%)`;tdots.forEach((d,i)=>d.classList.toggle('active',i===n))};
+  tdots.forEach((d,i)=>d.addEventListener('click',()=>tgo(i)));
+  setInterval(()=>tgo((tc+1)%tdots.length),5000);
   /* prolínající se fotky v hero */
   const slides=[...document.querySelectorAll('#slides .slide')];
   const dots=[...document.querySelectorAll('#dots span')];
