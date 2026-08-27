@@ -155,7 +155,7 @@
   footer .fn{font-size:.85rem}
   footer .demo{margin-top:14px;font-size:.72rem;color:rgba(244,227,207,.4)}
   .band{position:relative;min-height:58vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
-  .band-bg{position:absolute;inset:0;background:url('photos/espresso.jpg') center/cover;transform:scale(1.04)}
+  .band-bg{position:absolute;inset:0;background:url('photos/bonjour-vecer.jpg') center/cover;transform:scale(1.04)}
   .band-bg::after{content:"";position:absolute;inset:0;background:rgba(30,20,12,.58)}
   .band .q{position:relative;max-width:740px;padding:0 24px}
   .band .q .eyebrow{color:#e8c98f}
@@ -205,10 +205,10 @@
 
 <section class="hero">
   <div class="hero-bg" id="slides">
-    <div class="slide on" style="background-image:url('photos/table.jpg')"></div>
-    <div class="slide" style="background-image:url('photos/latte.jpg')"></div>
-    <div class="slide" style="background-image:url('photos/bonjour1.jpg')"></div>
-    <div class="slide" style="background-image:url('photos/dort1.jpg')"></div>
+    <div class="slide on" style="background-image:url('photos/kolonada.jpg')"></div>
+    <div class="slide" style="background-image:url('photos/ice-int1.jpg')"></div>
+    <div class="slide" style="background-image:url('photos/bonjour-int1.jpg')"></div>
+    <div class="slide" style="background-image:url('photos/bonjour-vecer.jpg')"></div>
   </div>
   <div class="wrap hero-in">
     <p class="kick">Luhačovice · dvě kavárny</p>
@@ -234,7 +234,7 @@
       <p class="sig">Těšíme se na vás</p>
     </div>
     <div class="about-img reveal">
-      <img src="photos/tray.jpg" alt="Dvě espressa a domácí sušenky na zlatém podnosu">
+      <img src="photos/terasa-stolek.jpg" alt="Stolek na terase Ice Cafe na kolonádě">
       <div class="about-seal"><b>2×</b><span>v Luhačovicích</span></div>
     </div>
   </div>
@@ -249,7 +249,7 @@
     </div>
     <div class="duo">
       <div class="cafe reveal">
-        <div class="ph"><img src="photos/table.jpg" alt="Posezení v Ice Cafe na kolonádě" loading="lazy"></div>
+        <div class="ph"><img src="photos/ice-int2.jpg" alt="Interiér Ice Cafe s historickými fotografiemi Luhačovic" loading="lazy"></div>
         <div class="cin">
           <p class="tagx">Na kolonádě</p>
           <h3>Ice Cafe</h3>
@@ -259,7 +259,7 @@
         </div>
       </div>
       <div class="cafe reveal">
-        <div class="ph"><img src="photos/bonjour1.jpg" alt="Bonjour Caffe u nábřeží" loading="lazy"></div>
+        <div class="ph"><img src="photos/bonjour-int1.jpg" alt="Interiér Bonjour Caffe u nábřeží" loading="lazy"></div>
         <div class="cin">
           <p class="tagx">U nábřeží</p>
           <h3>Bonjour Caffe</h3>
@@ -397,7 +397,7 @@
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   /* projíždějící pásy fotek v galerii */
-  const fotky=['latte','bonjour1','table','bonjour2','espresso','dort1','bonjour3','coffee2','bonjour4','treat','tray'].map(n=>'photos/'+n+'.jpg');
+  const fotky=['kolonada','ice-int1','latte','bonjour-int1','kava-pohar','ice-int2','bonjour-terasa','dort1','bonjour-int2','okno','espresso-tac','ice-int3','bonjour-vecer','drink-servis','terasa-stolek','latte-ruce'].map(n=>'photos/'+n+'.jpg');
   [['mrow1',fotky],['mrow2',[...fotky].reverse()]].forEach(([id,list])=>{
     const row=document.getElementById(id);
     [...list,...list].forEach(src=>{const im=document.createElement('img');im.src=src;im.alt='Galerie — Ice Cafe & Bonjour Caffe';im.loading='lazy';row.appendChild(im)});
