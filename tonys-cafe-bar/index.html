@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TONY'S CAFÉ & BAR — Hotel Paříž Praha | Koncept Day & Night</title>
+<meta name="description" content="TONY'S CAFÉ & BAR v secesním Hotelu Paříž Praha. Moderní gastronomie, koktejly ve stylu 30. let, live piano. U Obecního domu 1, Praha 1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0f1516;
+  --noir2:#141c1e;
+  --petrol:#17313a;
+  --zlato:#c8a35a;
+  --zlato2:#e0c184;
+  --krem:#f1ead9;
+  --krem2:#cfc7b2;
+  --mut:#9aa39f;
+  --ruby:#8e2b3e;
+  --linka:rgba(200,163,90,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--krem);line-height:1.7;font-weight:300;overflow-x:hidden;padding-top:34px}
+h1,h2,h3,h4{font-family:'Marcellus',serif;font-weight:400;line-height:1.15;letter-spacing:.02em}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.sec{padding:110px 0;position:relative}
+
+#navrh-banner{position:fixed;top:0;left:0;width:100%;background:var(--zlato);color:var(--noir);text-align:center;padding:7px;font-size:13px;font-weight:500;letter-spacing:.08em;z-index:9999}
+
+/* deco ornamenty */
+.deco{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--zlato);margin-bottom:22px}
+.deco::before,.deco::after{content:"";height:1px;width:80px;background:linear-gradient(to right,transparent,var(--zlato));}
+.deco::after{background:linear-gradient(to left,transparent,var(--zlato))}
+.deco span{font-size:.8rem;transform:rotate(45deg);border:1px solid var(--zlato);width:9px;height:9px;display:block}
+.oko{display:block;text-align:center;font-size:.78rem;letter-spacing:.42em;text-transform:uppercase;color:var(--zlato);margin-bottom:14px;font-weight:500}
+.sec h2{font-size:clamp(2rem,4.2vw,3.2rem);text-align:center;margin-bottom:18px;color:var(--krem)}
+.lead{color:var(--mut);font-size:1.04rem;max-width:640px;margin:0 auto;text-align:center;font-weight:300}
+
+/* nav */
+#navbar{position:fixed;top:34px;left:0;width:100%;z-index:9000;background:rgba(15,21,22,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linka)}
+.nav-in{max-width:1180px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Marcellus',serif;font-size:1.15rem;letter-spacing:.14em;text-decoration:none;color:var(--krem)}
+.nav-logo span{color:var(--zlato)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:.82rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--krem2);transition:.25s}
+.nav-links a:hover{color:var(--zlato2)}
+.nav-cta{border:1px solid var(--zlato);color:var(--zlato)!important;padding:9px 22px;transition:.25s}
+.nav-cta:hover{background:var(--zlato);color:var(--noir)!important}
+.ham{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--krem)}
+#mobile-nav{position:fixed;inset:0;background:var(--noir);z-index:9500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transform:translateY(-100%);transition:.4s}
+#mobile-nav.open{transform:translateY(0)}
+#mobile-nav a{color:var(--krem);font-family:'Marcellus',serif;font-size:1.5rem;letter-spacing:.1em;text-decoration:none}
+#close-nav{position:absolute;top:24px;right:28px;background:none;border:0;color:var(--zlato);font-size:2.2rem;cursor:pointer}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(15,21,22,.25) 0%, rgba(15,21,22,.9) 100%)}
+.hero-in{position:relative;z-index:2;padding:150px 24px 90px;max-width:820px}
+.hero-kicker{font-size:.82rem;letter-spacing:.5em;text-transform:uppercase;color:var(--zlato2);margin-bottom:26px;font-weight:400}
+#hero h1{font-size:clamp(2.8rem,7vw,5.4rem);color:var(--krem);margin-bottom:10px}
+#hero h1 .amp{color:var(--zlato)}
+.hero-sub{font-size:1.1rem;color:var(--krem2);max-width:560px;margin:18px auto 36px;font-weight:300}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:15px 38px;text-decoration:none;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:.3s}
+.btn-zlaty{background:var(--zlato);color:var(--noir);border:1px solid var(--zlato)}
+.btn-zlaty:hover{background:var(--zlato2);border-color:var(--zlato2)}
+.btn-obrys{border:1px solid var(--krem2);color:var(--krem)}
+.btn-obrys:hover{border-color:var(--zlato);color:var(--zlato2)}
+.hero-hours{margin-top:44px;display:inline-flex;gap:34px;flex-wrap:wrap;justify-content:center;border-top:1px solid var(--linka);padding-top:22px}
+.hh b{display:block;font-family:'Marcellus',serif;font-size:1rem;color:var(--zlato2);letter-spacing:.06em}
+.hh span{font-size:.82rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase}
+
+/* koncept day & night */
+#koncept .dvojice{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+.dn{position:relative;overflow:hidden;border:1px solid var(--linka)}
+.dn img{width:100%;height:480px;object-fit:cover;transition:transform .8s ease}
+.dn:hover img{transform:scale(1.03)}
+.dn .tag{position:absolute;left:0;right:0;bottom:0;padding:26px;background:linear-gradient(to top, rgba(15,21,22,.92), transparent);}
+.dn .tag b{font-family:'Marcellus',serif;font-size:1.5rem;color:var(--krem);letter-spacing:.1em;display:block}
+.dn .tag span{color:var(--krem2);font-size:.94rem}
+#koncept .lead{margin-top:26px}
+
+/* kuchyně */
+#kuchyne{background:var(--noir2);border-top:1px solid var(--linka);border-bottom:1px solid var(--linka)}
+.kuch-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;margin-top:20px}
+.kuch-grid h2{text-align:left}
+.kuch-grid .oko{text-align:left}
+.kuch-grid .deco{justify-content:flex-start}
+.kuch-grid .deco::before{display:none}
+.kuch-text p{color:var(--mut);margin-bottom:16px}
+.kuch-text p strong{color:var(--krem);font-weight:500}
+.jidla{margin-top:26px;border-top:1px solid var(--linka)}
+.jidlo{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--linka)}
+.jidlo .n{font-weight:400;color:var(--krem)}
+.jidlo .tecky{flex:1;border-bottom:1px dotted rgba(200,163,90,.35);transform:translateY(-4px)}
+.jidlo .c{font-family:'Marcellus',serif;color:var(--zlato2);white-space:nowrap}
+.kuch-fotky{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.kuch-fotky img{width:100%;height:250px;object-fit:cover;border:1px solid var(--linka)}
+.kuch-fotky img:first-child{grid-column:1/-1;height:300px}
+
+/* koktejly */
+#koktejly .kok-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center;margin-top:20px}
+#koktejly .kok-grid h2{text-align:left}
+#koktejly .oko{text-align:left}
+#koktejly .deco{justify-content:flex-start}
+#koktejly .deco::before{display:none}
+.kok-foto{position:relative}
+.kok-foto img{width:100%;height:560px;object-fit:cover;border:1px solid var(--linka)}
+.kok-foto::after{content:"";position:absolute;inset:14px;border:1px solid var(--linka);pointer-events:none}
+.kok-text p{color:var(--mut);margin-bottom:16px}
+.kok-text p strong{color:var(--krem);font-weight:500}
+.signature{margin-top:26px;background:var(--noir2);border:1px solid var(--linka);padding:28px 30px;position:relative}
+.signature::before{content:"SIGNATURE";position:absolute;top:-11px;left:26px;background:var(--noir);padding:0 12px;font-size:.68rem;letter-spacing:.34em;color:var(--zlato)}
+.signature h3{font-size:1.4rem;color:var(--krem);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.signature h3 .c{font-family:'Marcellus',serif;color:var(--zlato2);font-size:1.1rem}
+.signature p{color:var(--mut);font-size:.94rem;margin-top:8px}
+.mini-drinky{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.mini-drinky img{width:100%;height:150px;object-fit:cover;border:1px solid var(--linka)}
+
+/* denní menu */
+#denni{background:var(--noir2);border-top:1px solid var(--linka);border-bottom:1px solid var(--linka)}
+.denni-box{max-width:760px;margin:48px auto 0;border:1px solid var(--linka);padding:40px 44px;position:relative;background:var(--noir)}
+.denni-box::after{content:"";position:absolute;inset:10px;border:1px solid var(--linka);pointer-events:none}
+.den{padding:16px 0;border-bottom:1px solid rgba(200,163,90,.15);position:relative;z-index:2}
+.den:last-child{border-bottom:0}
+.den b{font-family:'Marcellus',serif;color:var(--zlato2);letter-spacing:.14em;font-size:.92rem;display:block;margin-bottom:4px;text-transform:uppercase}
+.den .pol{color:var(--mut);font-size:.94rem}
+.den .hl{color:var(--krem);font-weight:400}
+.denni-cena{text-align:center;margin-top:26px;position:relative;z-index:2}
+.denni-cena b{font-family:'Marcellus',serif;font-size:1.3rem;color:var(--zlato)}
+.denni-pozn{text-align:center;color:var(--mut);font-size:.85rem;margin-top:34px}
+
+/* piano band */
+.piano{background:linear-gradient(rgba(15,21,22,.82),rgba(15,21,22,.82)), url('photos/bar-zlato.jpg') center/cover fixed;padding:90px 24px;text-align:center;border-top:1px solid var(--linka);border-bottom:1px solid var(--linka)}
+.piano h2{font-size:clamp(1.8rem,3.6vw,2.7rem);color:var(--krem)}
+.piano p{color:var(--krem2);margin-top:10px;letter-spacing:.2em;text-transform:uppercase;font-size:.9rem}
+
+/* galerie */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--linka);transition:.4s;cursor:pointer}
+.gal img:hover{transform:scale(1.02);border-color:var(--zlato)}
+
+/* historie */
+#historie{background:var(--noir2);border-top:1px solid var(--linka)}
+.hist-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;margin-top:20px}
+.hist-grid img{width:100%;height:520px;object-fit:cover;border:1px solid var(--linka)}
+.hist-grid h2{text-align:left}
+#historie .oko{text-align:left}
+#historie .deco{justify-content:flex-start}
+#historie .deco::before{display:none}
+.hist-text p{color:var(--mut);margin-bottom:16px}
+.hist-text p strong{color:var(--krem);font-weight:500}
+.hist-rok{font-family:'Marcellus',serif;font-size:3rem;color:var(--zlato);line-height:1}
+
+/* kontakt */
+.kont-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px}
+.kont-card{border:1px solid var(--linka);padding:38px;background:var(--noir2)}
+.kont-i{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(200,163,90,.15)}
+.kont-i:last-of-type{border-bottom:0}
+.kont-i .ik{color:var(--zlato)}
+.kont-i strong{display:block;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.map-wrap{margin-top:22px;height:220px;border:1px solid var(--linka);overflow:hidden}
+.map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(.9) contrast(.9)}
+.form-g{margin-bottom:15px}
+.form-g label{display:block;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.form-g input,.form-g textarea,.form-g select{width:100%;padding:13px 15px;border:1px solid var(--linka);background:var(--noir);color:var(--krem);font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300}
+.form-g input:focus,.form-g textarea:focus{outline:none;border-color:var(--zlato)}
+.form-g textarea{min-height:96px;resize:vertical}
+.form-radek{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;padding:15px;background:var(--zlato);color:var(--noir);border:0;font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:.3s}
+.form-submit:hover{background:var(--zlato2)}
+
+footer{border-top:1px solid var(--linka);padding:56px 0 26px;background:var(--noir)}
+.footer-grid{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px}
+.footer-logo{font-family:'Marcellus',serif;font-size:1.2rem;letter-spacing:.14em;text-decoration:none;color:var(--krem)}
+.footer-logo span{color:var(--zlato)}
+.footer-brand p{color:var(--mut);font-size:.9rem;margin-top:12px;max-width:320px}
+.footer-col h4{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;color:var(--zlato);font-family:'Jost',sans-serif;font-weight:500}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px;color:var(--mut);font-size:.92rem}
+.footer-col a{color:var(--mut);text-decoration:none}
+.footer-col a:hover{color:var(--zlato2)}
+.footer-bottom{max-width:1180px;margin:44px auto 0;padding:22px 24px 0;border-top:1px solid rgba(200,163,90,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:.78rem;color:var(--mut)}
+
+[data-r]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+[data-r].vis{opacity:1;transform:none}
+
+@media(max-width:960px){
+  .nav-links{display:none}
+  .ham{display:block}
+  #koncept .dvojice,.kuch-grid,#koktejly .kok-grid,.hist-grid,.kont-grid{grid-template-columns:1fr;gap:36px}
+  .dn img{height:320px}
+  .kok-foto img{height:400px}
+  .hist-grid img{height:340px}
+  .gal{grid-template-columns:1fr 1fr}
+  .sec{padding:72px 0}
+  .denni-box{padding:28px 22px}
+  .form-radek{grid-template-columns:1fr}
+  .hero-hours{gap:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  [data-r]{opacity:1;transform:none}
+  .piano{background-attachment:scroll}
+}
+</style>
+</head>
+<body>
+
+<div id="navrh-banner">NÁVRH NOVÉHO WEBU — pracovní verze pro Hotel Paříž Praha</div>
+
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="#" class="nav-logo">TONY'S <span>CAFÉ &amp; BAR</span></a>
+    <ul class="nav-links">
+      <li><a href="#koncept">Koncept</a></li>
+      <li><a href="#kuchyne">Menu</a></li>
+      <li><a href="#koktejly">Koktejly</a></li>
+      <li><a href="#denni">Denní menu</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#rezervace" class="nav-cta">Rezervace</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div id="mobile-nav">
+  <button id="close-nav" aria-label="Zavřít">×</button>
+  <a href="#koncept">Koncept</a>
+  <a href="#kuchyne">Menu</a>
+  <a href="#koktejly">Koktejly</a>
+  <a href="#denni">Denní menu</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#rezervace">Rezervace</a>
+</div>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-bg"><img src="photos/hero-night.jpg" alt="TONY'S CAFÉ & BAR v noci"></div>
+  <div class="hero-in">
+    <div class="hero-kicker" data-r>Hotel Paříž Praha · Est. 1904</div>
+    <h1 data-r>TONY'S CAFÉ <span class="amp">&amp;</span> BAR</h1>
+    <div class="deco" data-r><span></span></div>
+    <p class="hero-sub" data-r>Koncept Day &amp; Night — restaurace s unikátním secesním prostředím, moderní gastronomií a koktejly inspirovanými odkazem 30. let.</p>
+    <div class="hero-cta" data-r>
+      <a href="#rezervace" class="btn btn-zlaty">Rezervovat stůl</a>
+      <a href="#kuchyne" class="btn btn-obrys">Prohlédnout menu</a>
+    </div>
+    <div class="hero-hours" data-r>
+      <div class="hh"><b>8.30 – 23.30</b><span>Ne – Po</span></div>
+      <div class="hh"><b>8.30 – 1.00</b><span>Út – Čt</span></div>
+      <div class="hh"><b>8.30 – 2.00</b><span>Pá – So</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- KONCEPT -->
+<section class="sec" id="koncept">
+  <div class="wrap">
+    <span class="oko" data-r>Koncept Day &amp; Night</span>
+    <div class="deco" data-r><span></span></div>
+    <h2 data-r>Od ranní kávy po noční drink</h2>
+    <p class="lead" data-r>Stylové místo pro setkávání — ranní káva, obchodní jednání, oběd, odpolední dezert, večeře i večerní koktejl. V prostorách legendárního Hotelu Paříž, s přístupem přímo z ulice.</p>
+    <div class="dvojice">
+      <div class="dn" data-r>
+        <img src="photos/sal-den.jpg" alt="TONY'S ve dne — secesní kavárna">
+        <div class="tag"><b>DAY</b><span>Káva, brunch, oběd a dezerty v secesním sále</span></div>
+      </div>
+      <div class="dn" data-r>
+        <img src="photos/hero-night.jpg" alt="TONY'S v noci — koktejlový bar">
+        <div class="tag"><b>NIGHT</b><span>Koktejly, francouzská vína a live piano</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KUCHYNĚ -->
+<section class="sec" id="kuchyne">
+  <div class="wrap kuch-grid">
+    <div class="kuch-text" data-r>
+      <span class="oko">Kuchyně</span>
+      <div class="deco"><span></span></div>
+      <h2>Pod taktovkou šéfkuchaře Karla Hynka</h2>
+      <p>Šéfkuchař <strong>Karel Hynek</strong> sbíral zkušenosti v Paříži, Velké Británii a řadě prestižních hotelů. Gastronomický zážitek u nás podtrhuje <strong>kvalita surovin a sezónní ingredience</strong>.</p>
+      <div class="jidla">
+        <div class="jidlo"><span class="n">Vejce Royale — snídaně šéfkuchaře</span><span class="tecky"></span><span class="c">350 Kč</span></div>
+        <div class="jidlo"><span class="n">Tartar z Gravlax lososa, červená řepa</span><span class="tecky"></span><span class="c">380 Kč</span></div>
+        <div class="jidlo"><span class="n">Czech Angus burger „Hotel Paříž"</span><span class="tecky"></span><span class="c">420 Kč</span></div>
+        <div class="jidlo"><span class="n">Guláš „Hotel Paris" s karlovarským knedlíkem</span><span class="tecky"></span><span class="c">410 Kč</span></div>
+        <div class="jidlo"><span class="n">Telecí řízek ze svíčkové, bramborové pyré</span><span class="tecky"></span><span class="c">590 Kč</span></div>
+        <div class="jidlo"><span class="n">Salát Nicoise s grilovaným tuňákem</span><span class="tecky"></span><span class="c">460 Kč</span></div>
+      </div>
+      <p style="margin-top:22px"><a href="#" class="btn btn-obrys">Kompletní menu á la carte</a></p>
+    </div>
+    <div class="kuch-fotky" data-r>
+      <img src="photos/tunak.jpg" alt="Grilovaný tuňák">
+      <img src="photos/kachna.jpg" alt="Kachní konfit">
+      <img src="photos/krevety.jpg" alt="Salát s krevetami">
+    </div>
+  </div>
+</section>
+
+<!-- KOKTEJLY -->
+<section class="sec" id="koktejly">
+  <div class="wrap kok-grid">
+    <div class="kok-foto" data-r>
+      <img src="photos/barman.jpg" alt="Barman TONY'S míchá koktejl">
+    </div>
+    <div class="kok-text" data-r>
+      <span class="oko">Bar</span>
+      <div class="deco"><span></span></div>
+      <h2>Koktejly s odkazem na 30. léta</h2>
+      <p>Nabídka inspirovaná <strong>tradicí světových metropolí</strong> — od champagne koktejlů přes gin &amp; tonic výběr až po whisky classics. K tomu široká nabídka kvalitních <strong>francouzských vín</strong>.</p>
+      <div class="signature">
+        <h3>Hotel Paris <span class="c">350 Kč</span></h3>
+        <p>Ciroc vodka, Giffard likér z ostružin, cukr, čerstvé ostružiny, máta a citronová šťáva. Prémiová francouzská vodka z vinné révy a likér z ostružin rodinné likérky Giffard (od roku 1885). Luxusní, svěží, ovocný.</p>
+      </div>
+      <div class="mini-drinky">
+        <img src="photos/negroni.jpg" alt="Negroni">
+        <img src="photos/drink-ruby.jpg" alt="Koktejl">
+        <img src="photos/gin-tonic.jpg" alt="Gin & Tonic">
+      </div>
+      <p style="margin-top:22px"><a href="#" class="btn btn-obrys">Koktejlové menu</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- DENNÍ MENU -->
+<section class="sec" id="denni">
+  <div class="wrap">
+    <span class="oko" data-r>Denní menu</span>
+    <div class="deco" data-r><span></span></div>
+    <h2 data-r>Polévka a hlavní chod za 390 Kč</h2>
+    <div class="denni-box" data-r id="denni-box"></div>
+    <p class="denni-pozn" data-r>Denní menu se mění každý týden — tato sekce se v ostrém provozu plní z administrace,<br>kde nabídku změníte během dvou minut.</p>
+  </div>
+</section>
+
+<!-- PIANO -->
+<section class="piano" data-r>
+  <span class="oko">Živá hudba</span>
+  <h2>Live Piano Music</h2>
+  <p>Každý čtvrtek, pátek a sobotu od 19.00</p>
+</section>
+
+<!-- GALERIE -->
+<section class="sec" id="galerie">
+  <div class="wrap">
+    <span class="oko" data-r>Galerie</span>
+    <div class="deco" data-r><span></span></div>
+    <h2 data-r>Atmosféra, kterou musíte zažít</h2>
+    <div class="gal" data-r>
+      <img src="photos/sal-vitrina.jpg" alt="Secesní sál s vitrínou" loading="lazy">
+      <img src="photos/sal-kresla.jpg" alt="Sametová křesla" loading="lazy">
+      <img src="photos/detail-lustr.jpg" alt="Secesní lustr" loading="lazy">
+      <img src="photos/bar-zlato.jpg" alt="Bar" loading="lazy">
+      <img src="photos/mule.jpg" alt="Moscow Mule" loading="lazy">
+      <img src="photos/bagel.jpg" alt="Bagel s lososem" loading="lazy">
+      <img src="photos/dezert.jpg" alt="Ovocný dezert" loading="lazy">
+      <img src="photos/predkrm.jpg" alt="Předkrm" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIE -->
+<section class="sec" id="historie">
+  <div class="wrap hist-grid">
+    <img src="photos/detail-lustr.jpg" alt="Secesní detail Hotelu Paříž" data-r>
+    <div class="hist-text" data-r>
+      <span class="oko">Hotel Paříž Praha</span>
+      <div class="deco"><span></span></div>
+      <div class="hist-rok">1904</div>
+      <h2>Secesní legenda v srdci Prahy</h2>
+      <p>Elegantní pětihvězdičkový <strong>Hotel Paříž Praha</strong> byl postaven roku 1904 a už po tři generace jej vlastní <strong>rodina Brandejsů</strong>. Novogotická budova u Obecního domu je kulturní památkou a součástí historického jádra Prahy zapsaného na seznamu <strong>UNESCO</strong>.</p>
+      <p>V přízemí hotelu, s přístupem přímo z ulice, vzniklo neobyčejné místo pro setkávání — vřele vás uvítá secesní atmosféra a příjemně překvapí neformální přístup.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REZERVACE / KONTAKT -->
+<section class="sec" id="rezervace">
+  <div class="wrap">
+    <span class="oko" data-r>Rezervace</span>
+    <div class="deco" data-r><span></span></div>
+    <h2 data-r>Rezervujte si svůj stůl</h2>
+    <div class="kont-grid">
+      <div class="kont-card" data-r>
+        <div class="kont-i"><span class="ik">◆</span><div><strong>Adresa</strong>U Obecního domu 1, 110 00 Praha 1</div></div>
+        <div class="kont-i"><span class="ik">◆</span><div><strong>Telefon</strong><a href="tel:+420222195195" style="text-decoration:none">+420 222 195 195</a></div></div>
+        <div class="kont-i"><span class="ik">◆</span><div><strong>E-mail</strong><a href="mailto:fboffice@hotel-paris.cz" style="text-decoration:none">fboffice@hotel-paris.cz</a></div></div>
+        <div class="kont-i"><span class="ik">◆</span><div><strong>Otevírací doba</strong>Ne–Po 8.30–23.30 · Út–Čt 8.30–1.00 · Pá–So 8.30–2.00</div></div>
+        <div class="map-wrap"><iframe src="https://maps.google.com/maps?q=U+Obecn%C3%ADho+domu+1%2C+Praha+1&output=embed" allowfullscreen loading="lazy" title="Mapa – TONY'S CAFÉ & BAR"></iframe></div>
+      </div>
+      <div class="kont-card" data-r>
+        <form onsubmit="return false;">
+          <div class="form-radek">
+            <div class="form-g"><label>Jméno</label><input type="text" placeholder="Vaše jméno"></div>
+            <div class="form-g"><label>Počet osob</label><select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+          </div>
+          <div class="form-radek">
+            <div class="form-g"><label>Datum</label><input type="date"></div>
+            <div class="form-g"><label>Čas</label><input type="time"></div>
+          </div>
+          <div class="form-g"><label>E-mail nebo telefon</label><input type="text" placeholder="Kam potvrdíme rezervaci"></div>
+          <div class="form-g"><label>Poznámka</label><textarea placeholder="Přání k rezervaci…"></textarea></div>
+          <button type="submit" class="form-submit">Odeslat rezervaci</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">TONY'S <span>CAFÉ &amp; BAR</span></a>
+      <p>Koncept Day &amp; Night v secesním Hotelu Paříž Praha — moderní gastronomie, koktejly a live piano.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigace</h4>
+      <ul>
+        <li><a href="#koncept">Koncept</a></li>
+        <li><a href="#kuchyne">Menu</a></li>
+        <li><a href="#koktejly">Koktejly</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#rezervace">Rezervace</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hotel „Paříž" Praha, a.s.</h4>
+      <ul>
+        <li>U Obecního domu 1080/1</li>
+        <li>Staré Město, 110 00 Praha 1</li>
+        <li>IČO: 63999188</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 TONY'S CAFÉ &amp; BAR · Hotel Paříž Praha</p>
+    <p class="footer-copy">Návrh webu: StránkyProVás.cz</p>
+  </div>
+</footer>
+
+<script>
+var ham = document.getElementById('ham'), mnav = document.getElementById('mobile-nav');
+ham.addEventListener('click', function(){ mnav.classList.add('open'); });
+document.getElementById('close-nav').addEventListener('click', function(){ mnav.classList.remove('open'); });
+mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mnav.classList.remove('open'); }); });
+
+var obs = new IntersectionObserver(function(es){
+  es.forEach(function(e,i){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('vis'); }, i*80); obs.unobserve(e.target); } });
+}, {threshold:.1});
+document.querySelectorAll('[data-r]').forEach(function(el){ obs.observe(el); });
+
+// Denní menu — v ostré verzi se plní z data.json přes administraci
+var DENNI_MENU = [
+  {den:"Pondělí", pol:"Hovězí vývar s masem a nudlemi", hl:"Vepřový řízek s bramborovou kaší, nakládaná okurka"},
+  {den:"Úterý", pol:"Bramborová polévka", hl:"Lívance s lesním ovocem a zakysanou smetanou"},
+  {den:"Středa", pol:"Pórkový krém", hl:"Pečená brambora s fazolovým ragú, rajčatový salát"},
+  {den:"Čtvrtek", pol:"Telecí consommé se zeleninou", hl:"Znojemský guláš s dušenou rýží"},
+  {den:"Pátek", pol:"Kapustová polévka se slaninou", hl:"Kuřecí roláda s nádivkou a restovanými brambory"},
+  {den:"Sobota", pol:"Hovězí vývar s krupicovými noky", hl:"Celozrnné špagety s pošírovaným lososem a rukolou"},
+  {den:"Neděle", pol:"Drůbeží kaldoun", hl:"Hovězí guláš na pivě s karlovarskými knedlíky"}
+];
+var box = document.getElementById('denni-box');
+DENNI_MENU.forEach(function(d){
+  var el = document.createElement('div'); el.className='den';
+  el.innerHTML = '<b>'+d.den+'</b><div class="pol">'+d.pol+'</div><div class="hl">'+d.hl+'</div>';
+  box.appendChild(el);
+});
+box.insertAdjacentHTML('beforeend','<div class="denni-cena"><b>Polévka + hlavní chod · 390 Kč</b></div>');
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var el = document.querySelector(a.getAttribute('href'));
+    if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+</body>
+</html>
