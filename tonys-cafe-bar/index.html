@@ -23,14 +23,13 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--krem);line-height:1.7;font-weight:300;overflow-x:hidden;padding-top:34px}
+body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--krem);line-height:1.7;font-weight:300;overflow-x:hidden}
 h1,h2,h3,h4{font-family:'Marcellus',serif;font-weight:400;line-height:1.15;letter-spacing:.02em}
 img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 .sec{padding:110px 0;position:relative}
 
-#navrh-banner{position:fixed;top:0;left:0;width:100%;background:var(--zlato);color:var(--noir);text-align:center;padding:7px;font-size:13px;font-weight:500;letter-spacing:.08em;z-index:9999}
 
 /* deco ornamenty */
 .deco{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--zlato);margin-bottom:22px}
@@ -42,7 +41,7 @@ a{color:inherit}
 .lead{color:var(--mut);font-size:1.04rem;max-width:640px;margin:0 auto;text-align:center;font-weight:300}
 
 /* nav */
-#navbar{position:fixed;top:34px;left:0;width:100%;z-index:9000;background:rgba(15,21,22,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linka)}
+#navbar{position:fixed;top:0;left:0;width:100%;z-index:9000;background:rgba(15,21,22,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linka)}
 .nav-in{max-width:1180px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:'Marcellus',serif;font-size:1.15rem;letter-spacing:.14em;text-decoration:none;color:var(--krem)}
 .nav-logo span{color:var(--zlato)}
@@ -215,8 +214,6 @@ footer{border-top:1px solid var(--linka);padding:56px 0 26px;background:var(--no
 </head>
 <body>
 
-<div id="navrh-banner">NÁVRH NOVÉHO WEBU — pracovní verze pro Hotel Paříž Praha</div>
-
 <nav id="navbar">
   <div class="nav-in">
     <a href="#" class="nav-logo">TONY'S <span>CAFÉ &amp; BAR</span></a>
@@ -340,7 +337,7 @@ footer{border-top:1px solid var(--linka);padding:56px 0 26px;background:var(--no
     <div class="deco" data-r><span></span></div>
     <h2 data-r>Polévka a hlavní chod za 390 Kč</h2>
     <div class="denni-box" data-r id="denni-box"></div>
-    <p class="denni-pozn" data-r>Denní menu se mění každý týden — tato sekce se v ostrém provozu plní z administrace,<br>kde nabídku změníte během dvou minut.</p>
+    <p class="denni-pozn" data-r>Denní menu se mění každý týden.</p>
   </div>
 </section>
 
