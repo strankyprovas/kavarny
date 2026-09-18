@@ -482,14 +482,13 @@ function vykresliMenu(menu, cena){
   var nadpis = document.getElementById('denni-nadpis');
   if (nadpis) nadpis.textContent = 'Polévka a hlavní chod za '+cena+' Kč';
 }
-var AKUZATIV = {'Pondělí':'pondělí','Úterý':'úterý','Středa':'středu','Čtvrtek':'čtvrtek','Pátek':'pátek','Sobota':'sobotu','Neděle':'neděli'};
 var ZKRATKA = {'Pondělí':'Po','Úterý':'Út','Středa':'St','Čtvrtek':'Čt','Pátek':'Pá','Sobota':'So','Neděle':'Ne'};
 function vykresliPiano(dny, cas){
   if (!dny || !dny.length) return;
-  var slova = dny.map(function(d){ return AKUZATIV[d] || d.toLowerCase(); });
+  var slova = dny.map(function(d, i){ return i === 0 ? d : d.toLowerCase(); });
   var veta = slova.length > 1 ? slova.slice(0,-1).join(', ') + ' a ' + slova[slova.length-1] : slova[0];
   var radek = document.getElementById('piano-radek');
-  if (radek) radek.textContent = 'Každý ' + veta + ' od ' + cas;
+  if (radek) radek.textContent = veta + ' — vždy od ' + cas;
   var pas = document.getElementById('piano-pas');
   if (pas) pas.textContent = dny.map(function(d){ return ZKRATKA[d] || d; }).join(' · ') + ' ' + cas;
 }
