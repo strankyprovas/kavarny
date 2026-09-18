@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koktejly — TONY'S CAFÉ & BAR | Hotel Paříž Praha</title>
+<meta name="description" content="Koktejlové menu TONY'S CAFÉ & BAR — signature koktejly, champagne cocktails, gin & tonic výběr, whisky classics. Hotel Paříž Praha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0f1516;
+  --noir2:#141c1e;
+  --petrol:#17313a;
+  --zlato:#c8a35a;
+  --zlato2:#e0c184;
+  --krem:#f1ead9;
+  --krem2:#cfc7b2;
+  --mut:#9aa39f;
+  --ruby:#8e2b3e;
+  --linka:rgba(200,163,90,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--krem);line-height:1.7;font-weight:300;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Marcellus',serif;font-weight:400;line-height:1.15;letter-spacing:.02em}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+
+.deco{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--zlato);margin-bottom:22px}
+.deco::before,.deco::after{content:"";height:1px;width:80px;background:linear-gradient(to right,transparent,var(--zlato));}
+.deco::after{background:linear-gradient(to left,transparent,var(--zlato))}
+.deco span{font-size:.8rem;transform:rotate(45deg);border:1px solid var(--zlato);width:9px;height:9px;display:block}
+.oko{display:block;text-align:center;font-size:.78rem;letter-spacing:.42em;text-transform:uppercase;color:var(--zlato);margin-bottom:14px;font-weight:500}
+
+#navbar{position:fixed;top:0;left:0;width:100%;z-index:9000;background:rgba(15,21,22,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linka)}
+.nav-in{max-width:1180px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Marcellus',serif;font-size:1.15rem;letter-spacing:.14em;text-decoration:none;color:var(--krem)}
+.nav-logo span{color:var(--zlato)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:.82rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--krem2);transition:.25s}
+.nav-links a:hover{color:var(--zlato2)}
+.nav-links a.akt{color:var(--zlato)}
+.nav-cta{border:1px solid var(--zlato);color:var(--zlato)!important;padding:9px 22px;transition:.25s}
+.nav-cta:hover{background:var(--zlato);color:var(--noir)!important}
+.ham{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--krem)}
+#mobile-nav{position:fixed;inset:0;background:var(--noir);z-index:9500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transform:translateY(-100%);transition:.4s}
+#mobile-nav.open{transform:translateY(0)}
+#mobile-nav a{color:var(--krem);font-family:'Marcellus',serif;font-size:1.5rem;letter-spacing:.1em;text-decoration:none}
+#close-nav{position:absolute;top:24px;right:28px;background:none;border:0;color:var(--zlato);font-size:2.2rem;cursor:pointer}
+
+.head{padding:160px 0 40px;text-align:center}
+.head h1{font-size:clamp(2.6rem,6vw,4.2rem)}
+.head p{color:var(--mut);max-width:560px;margin:14px auto 0}
+
+.kat-nav{position:sticky;top:62px;z-index:800;background:rgba(15,21,22,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--linka);border-bottom:1px solid var(--linka);margin-top:40px}
+.kat-nav .in{max-width:900px;margin:0 auto;padding:0 24px;display:flex;gap:26px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kat-nav a{white-space:nowrap;padding:14px 0;text-decoration:none;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--krem2);border-bottom:2px solid transparent;transition:.25s}
+.kat-nav a:hover{color:var(--zlato2)}
+
+.sekce{padding:64px 0 8px}
+.sekce h2{font-size:clamp(1.7rem,3.4vw,2.4rem);text-align:center;margin-bottom:8px;color:var(--krem)}
+.sekce .pozn{text-align:center;color:var(--mut);font-size:.92rem;margin-bottom:8px}
+
+.sig{margin-top:36px;background:linear-gradient(135deg, rgba(23,49,58,.65), rgba(15,21,22,.4));border:1px solid var(--zlato);padding:36px 40px;position:relative}
+.sig::after{content:"◆";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--noir);padding:0 14px;color:var(--zlato)}
+.sig h3{font-size:1.7rem;color:var(--zlato2);display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.sig .slozeni{color:var(--krem2);margin-top:10px}
+.sig .pribeh{color:var(--mut);font-size:.94rem;margin-top:14px;font-style:italic}
+
+.drinky{margin-top:24px;border-top:1px solid var(--linka)}
+.drink{padding:18px 0;border-bottom:1px solid var(--linka)}
+.drink .radek{display:flex;align-items:baseline;gap:12px}
+.drink .n{font-family:'Marcellus',serif;font-size:1.08rem;color:var(--krem);letter-spacing:.04em}
+.drink .tecky{flex:1;border-bottom:1px dotted rgba(200,163,90,.35);transform:translateY(-4px);min-width:30px}
+.drink .c{font-family:'Marcellus',serif;color:var(--zlato2);white-space:nowrap}
+.drink .slozeni{color:var(--mut);font-size:.92rem;margin-top:4px}
+
+.zpet{padding:70px 0 100px;text-align:center}
+.btn{display:inline-block;padding:15px 38px;text-decoration:none;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:.3s;border:1px solid var(--zlato);color:var(--zlato)}
+.btn:hover{background:var(--zlato);color:var(--noir)}
+
+footer{border-top:1px solid var(--linka);padding:56px 0 26px;background:var(--noir)}
+.footer-grid{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px}
+.footer-logo{font-family:'Marcellus',serif;font-size:1.2rem;letter-spacing:.14em;text-decoration:none;color:var(--krem)}
+.footer-logo span{color:var(--zlato)}
+.footer-brand p{color:var(--mut);font-size:.9rem;margin-top:12px;max-width:320px}
+.footer-col h4{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;color:var(--zlato);font-family:'Jost',sans-serif;font-weight:500}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px;color:var(--mut);font-size:.92rem}
+.footer-col a{color:var(--mut);text-decoration:none}
+.footer-col a:hover{color:var(--zlato2)}
+.footer-bottom{max-width:1180px;margin:44px auto 0;padding:22px 24px 0;border-top:1px solid rgba(200,163,90,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:.78rem;color:var(--mut)}
+
+@media(max-width:960px){
+  .nav-links{display:none}
+  .ham{display:block}
+  .head{padding-top:130px}
+  .sig{padding:26px 22px}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="index.html" class="nav-logo">TONY'S <span>CAFÉ &amp; BAR</span></a>
+    <ul class="nav-links">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="koktejly.html" class="akt">Koktejly</a></li>
+      <li><a href="index.html#denni">Denní menu</a></li>
+      <li><a href="index.html#galerie">Galerie</a></li>
+      <li><a href="index.html#rezervace" class="nav-cta">Rezervace</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div id="mobile-nav">
+  <button id="close-nav" aria-label="Zavřít">×</button>
+  <a href="index.html">Úvod</a>
+  <a href="menu.html">Menu</a>
+  <a href="koktejly.html">Koktejly</a>
+  <a href="index.html#denni">Denní menu</a>
+  <a href="index.html#rezervace">Rezervace</a>
+</div>
+
+<header class="head">
+  <span class="oko">Bar</span>
+  <h1>Koktejly</h1>
+  <div class="deco"><span></span></div>
+  <p>Nabídka inspirovaná tradicí světových metropolí a odkazem 30. let — od champagne koktejlů po whisky classics.</p>
+</header>
+
+<nav class="kat-nav">
+  <div class="in">
+    <a href="#signatures">Signatures</a>
+    <a href="#champagne">Champagne</a>
+    <a href="#vodka">Vodka</a>
+    <a href="#gin">Gin</a>
+    <a href="#gt">Gin &amp; Tonics</a>
+    <a href="#rum">Rum</a>
+    <a href="#tequila">Tequila</a>
+    <a href="#whisky">Whisky</a>
+  </div>
+</nav>
+
+<!-- SIGNATURES -->
+<section class="sekce" id="signatures">
+  <div class="wrap">
+    <h2>Signatures</h2>
+    <div class="sig">
+      <h3>Hotel Paris <span style="color:var(--zlato2)">350 Kč</span></h3>
+      <p class="slozeni">Ciroc vodka, Giffard likér z ostružin, cukr, čerstvé ostružiny, máta a citronová šťáva</p>
+      <p class="pribeh">Spojení prémiové francouzské vodky z vinné révy a likéru z nejlepších francouzských ostružin rodinné společnosti Giffard, která již od roku 1885 po pět generací tvoří originální recepty na likéry a sirupy. Luxusní, svěží a ovocný.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAMPAGNE -->
+<section class="sekce" id="champagne">
+  <div class="wrap">
+    <h2>Champagne Cocktails</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Champagne Cocktail</span><span class="tecky"></span><span class="c">530 Kč</span></div><p class="slozeni">Courvoisier VS, cukr, Angostura bitters, šampaňské</p></div>
+      <div class="drink"><div class="radek"><span class="n">French 75</span><span class="tecky"></span><span class="c">530 Kč</span></div><p class="slozeni">Tanqueray No. Ten, čerstvá citronová šťáva, cukrový sirup Giffard, šampaňské</p></div>
+      <div class="drink"><div class="radek"><span class="n">Ritz</span><span class="tecky"></span><span class="c">530 Kč</span></div><p class="slozeni">Courvoisier VSOP, Giffard Parfait Triple sec, pomerančový džus, šampaňské</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VODKA -->
+<section class="sekce" id="vodka">
+  <div class="wrap">
+    <h2>Vodka Cocktails</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Prague Mule</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Cryo česká prémiová vodka, J. Gasco zázvorové pivo, limeta</p></div>
+      <div class="drink"><div class="radek"><span class="n">Cosmopolitan</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Ketel One Citroen, Giffard Parfait Triple sec, čerstvá limetová šťáva, brusinkový džus</p></div>
+      <div class="drink"><div class="radek"><span class="n">Espresso Martini</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Ketel One, Giffard kávový likér, espresso</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GIN -->
+<section class="sekce" id="gin">
+  <div class="wrap">
+    <h2>Gin Cocktails</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Negroni</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Tanqueray London Dry, Campari, Belsazar červený vermut</p></div>
+      <div class="drink"><div class="radek"><span class="n">Parisian</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Tanqueray No. Ten, Belsazar suchý vermut, Giffard Cassis Noir de Bourgogne</p></div>
+      <div class="drink"><div class="radek"><span class="n">Gimlet</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Tanqueray Rangpur, Barange limetový cordial, limeta</p></div>
+      <div class="drink"><div class="radek"><span class="n">Park Avenue</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Tanqueray London Dry, Grand Marnier, Belsazar červený vermut, ananasový džus</p></div>
+      <div class="drink"><div class="radek"><span class="n">Singapore Sling</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Roku Gin, Giffard Cherry Brandy, Angostura bitters, čerstvá citronová šťáva, soda</p></div>
+      <div class="drink"><div class="radek"><span class="n">Breakfast Martini</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Tanqueray No. Ten, Giffard Parfait Triple sec, Giffard cukrový sirup, pomerančová marmeláda, čerstvá citronová šťáva</p></div>
+      <div class="drink"><div class="radek"><span class="n">Bramble</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Gordon's London Dry, Giffard ostružinový likér, Giffard cukrový sirup, čerstvá citronová šťáva</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GIN & TONICS -->
+<section class="sekce" id="gt">
+  <div class="wrap">
+    <h2>Gin &amp; Tonics</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Roku Sonic</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Roku gin, J. Gasco Tonic Evia, soda, citronová kůra</p></div>
+      <div class="drink"><div class="radek"><span class="n">Japanese Gin n' Tonic</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Roku gin, J. Gasco Indian Tonic, čerstvý zázvor</p></div>
+      <div class="drink"><div class="radek"><span class="n">Classic G &amp; T</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Tanqueray London Dry, J. Gasco Indian Tonic, limeta</p></div>
+      <div class="drink"><div class="radek"><span class="n">Tiny Ten G &amp; T</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Tanqueray No. Ten, J. Gasco Dry Bitter Tonic, růžový grep</p></div>
+      <div class="drink"><div class="radek"><span class="n">Pinky T</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Gordon's Premium Pink, J. Gasco Indian Tonic, čerstvé jahody</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RUM -->
+<section class="sekce" id="rum">
+  <div class="wrap">
+    <h2>Rum Cocktails</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Shaken Daiquiri</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Abuelo 7, Giffard cukrový sirup, čerstvá limetová šťáva</p></div>
+      <div class="drink"><div class="radek"><span class="n">Rum Old Fashioned</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Zacapa 23 Centenario, Angostura bitters, Giffard cukrový sirup, pomerančová kůra</p></div>
+      <div class="drink"><div class="radek"><span class="n">Planters Punch</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Republica Reserva, Giffard Grenadina, Angostura bitters, čerstvá citronová šťáva, soda</p></div>
+      <div class="drink"><div class="radek"><span class="n">Mai Tai</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Zacapa 23 Centenario, Giffard Parfait Triple sec, Giffard mandlový sirup, Giffard cukrový sirup, čerstvá limetová šťáva</p></div>
+      <div class="drink"><div class="radek"><span class="n">Passion Fruit Caipirinha</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Ypióca Cachaca, Giffard pyré z marakuji, třtinový cukr, limety</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEQUILA -->
+<section class="sekce" id="tequila">
+  <div class="wrap">
+    <h2>Tequila Cocktails</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Paloma</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Tres Alegres Compadres Blanco, J. Gasco grepová soda, grep</p></div>
+      <div class="drink"><div class="radek"><span class="n">Tony's Margarita</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Don Julio Blanco, Giffard Agave Sec, čerstvá limetová šťáva</p></div>
+      <div class="drink"><div class="radek"><span class="n">Mezcal Negroni</span><span class="tecky"></span><span class="c">320 Kč</span></div><p class="slozeni">Mezcal Bui, Campari, Belsazar červený vermut</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHISKY -->
+<section class="sekce" id="whisky">
+  <div class="wrap">
+    <h2>Whisky Cocktails</h2>
+    <div class="drinky">
+      <div class="drink"><div class="radek"><span class="n">Manhattan</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Jim Beam Black, Belsazar červený vermut, Angostura bitters</p></div>
+      <div class="drink"><div class="radek"><span class="n">Mint Julep</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Bulleit Rye, Giffard cukrový sirup, čerstvá máta, Angostura bitters</p></div>
+      <div class="drink"><div class="radek"><span class="n">Old Fashioned</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Bulleit Bourbon nebo Johnnie Walker Black Label, Angostura bitters, Giffard cukrový sirup, pomerančová kůra</p></div>
+      <div class="drink"><div class="radek"><span class="n">Scotti</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Johnnie Walker Black Label, Giffard broskvový likér, čerstvá citronová šťáva, ananasový a marakujový džus</p></div>
+      <div class="drink"><div class="radek"><span class="n">Skye Sour</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Talisker 10YO, Giffard cukrový sirup, Giffard vaječný bílek, čerstvá citronová šťáva, Angostura bitters</p></div>
+      <div class="drink"><div class="radek"><span class="n">Elderflower Highball</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Johnnie Walker Black Label, Giffard Fleur de Sureau sauvage (bezinkový) likér, soda</p></div>
+      <div class="drink"><div class="radek"><span class="n">Sazerac</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Courvoisier VSOP, Bartida Original Absint, kostka cukru, Peychaud's bitters</p></div>
+      <div class="drink"><div class="radek"><span class="n">Brandy Crusta</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Courvoisier VS, Giffard Parfait Triple Sec a Marasquin likér, Giffard cukrový sirup, Angostura bitters</p></div>
+      <div class="drink"><div class="radek"><span class="n">Brandy Alexander</span><span class="tecky"></span><span class="c">350 Kč</span></div><p class="slozeni">Courvoisier VS, Giffard tmavý kakaový likér, smetana</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="zpet">
+  <a href="index.html" class="btn">← Zpět na úvod</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">TONY'S <span>CAFÉ &amp; BAR</span></a>
+      <p>Koncept Day &amp; Night v secesním Hotelu Paříž Praha — moderní gastronomie, koktejly a live piano.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigace</h4>
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="koktejly.html">Koktejly</a></li>
+        <li><a href="index.html#rezervace">Rezervace</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hotel „Paříž" Praha, a.s.</h4>
+      <ul>
+        <li>U Obecního domu 1080/1</li>
+        <li>Staré Město, 110 00 Praha 1</li>
+        <li>IČO: 63999188</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 TONY'S CAFÉ &amp; BAR · Hotel Paříž Praha</p>
+    <p class="footer-copy">Návrh webu: StránkyProVás.cz</p>
+  </div>
+</footer>
+
+<script>
+var ham = document.getElementById('ham'), mnav = document.getElementById('mobile-nav');
+ham.addEventListener('click', function(){ mnav.classList.add('open'); });
+document.getElementById('close-nav').addEventListener('click', function(){ mnav.classList.remove('open'); });
+mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mnav.classList.remove('open'); }); });
+</script>
+</body>
+</html>
