@@ -336,7 +336,7 @@ footer{border-top:1px solid var(--linka);padding:56px 0 26px;background:var(--no
   <div class="wrap">
     <span class="oko" data-r>Denní menu</span>
     <div class="deco" data-r><span></span></div>
-    <h2 data-r>Polévka a hlavní chod za 390 Kč</h2>
+    <h2 data-r id="denni-nadpis">Polévka a hlavní chod za 390 Kč</h2>
     <div class="denni-box" data-r id="denni-box"></div>
     <p class="denni-pozn" data-r>Denní menu se mění každý týden.</p>
   </div>
@@ -346,7 +346,7 @@ footer{border-top:1px solid var(--linka);padding:56px 0 26px;background:var(--no
 <section class="piano" data-r>
   <span class="oko">Živá hudba</span>
   <h2>Live Piano Music</h2>
-  <p>Každý čtvrtek, pátek a sobotu od 19.00</p>
+  <p id="piano-radek">Každý čtvrtek, pátek a sobotu od 19.00</p>
 </section>
 
 <!-- GALERIE -->
@@ -471,12 +471,38 @@ var DENNI_MENU = [
   {den:"Neděle", pol:"Drůbeží kaldoun", hl:"Hovězí guláš na pivě s karlovarskými knedlíky"}
 ];
 var box = document.getElementById('denni-box');
-DENNI_MENU.forEach(function(d){
-  var el = document.createElement('div'); el.className='den';
-  el.innerHTML = '<b>'+d.den+'</b><div class="pol">'+d.pol+'</div><div class="hl">'+d.hl+'</div>';
-  box.appendChild(el);
-});
-box.insertAdjacentHTML('beforeend','<div class="denni-cena"><b>Polévka + hlavní chod · 390 Kč</b></div>');
+function vykresliMenu(menu, cena){
+  box.innerHTML = '';
+  menu.forEach(function(d){
+    var el = document.createElement('div'); el.className='den';
+    el.innerHTML = '<b>'+d.den+'</b><div class="pol">'+d.pol+'</div><div class="hl">'+d.hl+'</div>';
+    box.appendChild(el);
+  });
+  box.insertAdjacentHTML('beforeend','<div class="denni-cena"><b>Polévka + hlavní chod · '+cena+' Kč</b></div>');
+  var nadpis = document.getElementById('denni-nadpis');
+  if (nadpis) nadpis.textContent = 'Polévka a hlavní chod za '+cena+' Kč';
+}
+var AKUZATIV = {'Pondělí':'pondělí','Úterý':'úterý','Středa':'středu','Čtvrtek':'čtvrtek','Pátek':'pátek','Sobota':'sobotu','Neděle':'neděli'};
+var ZKRATKA = {'Pondělí':'Po','Úterý':'Út','Středa':'St','Čtvrtek':'Čt','Pátek':'Pá','Sobota':'So','Neděle':'Ne'};
+function vykresliPiano(dny, cas){
+  if (!dny || !dny.length) return;
+  var slova = dny.map(function(d){ return AKUZATIV[d] || d.toLowerCase(); });
+  var veta = slova.length > 1 ? slova.slice(0,-1).join(', ') + ' a ' + slova[slova.length-1] : slova[0];
+  var radek = document.getElementById('piano-radek');
+  if (radek) radek.textContent = 'Každý ' + veta + ' od ' + cas;
+  var pas = document.getElementById('piano-pas');
+  if (pas) pas.textContent = dny.map(function(d){ return ZKRATKA[d] || d; }).join(' · ') + ' ' + cas;
+}
+vykresliMenu(DENNI_MENU, '390');
+// Živá data z administrace (strankyprovas.cz/tonys-admin) — když nejsou
+// dostupná, zůstane vestavěná záloha vykreslená výše.
+fetch('https://strankyprovas.cz/tonys-admin/data.json')
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d.denni_menu && d.denni_menu.length) vykresliMenu(d.denni_menu, d.denni_cena || '390');
+    vykresliPiano(d.piano_dny, d.piano_cas || '19.00');
+  })
+  .catch(function(){});
 
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click', function(e){
