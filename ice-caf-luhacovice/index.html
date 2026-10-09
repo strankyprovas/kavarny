@@ -543,6 +543,14 @@
   nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
   document.querySelectorAll('.reveal,.about-img').forEach(el=>io.observe(el));
+  /* pojistka: kdyby prohlížeč nefiroval IntersectionObserver (zakryté okno,
+     webview v mailu), odhal viditelné sekce časovačem */
+  setInterval(()=>{
+    document.querySelectorAll('.reveal:not(.in),.about-img:not(.in)').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<innerHeight*1.05&&r.bottom>-40)el.classList.add('in');
+    });
+  },900);
   /* počítadla */
   const cio=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return;cio.unobserve(e.target);
